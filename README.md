@@ -1,4 +1,4 @@
-### Tictactoe
+## TicTacToe
 
 
 Game written in Java
@@ -29,4 +29,4 @@ $ cd tictactoe-java
 ### Run the game
 
 
-### Run the test
+### Run the tests
