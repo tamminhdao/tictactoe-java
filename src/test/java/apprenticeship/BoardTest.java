@@ -13,6 +13,7 @@ public class BoardTest {
 
     @Before
     public void initBoard() {
+
         tictactoe = new Board();
     }
 
@@ -52,5 +53,6 @@ public class BoardTest {
         char[] expected = new char[] {'x', 'o', 'x', 'o', 'x', 'o', 'x', 'o', 'x'};
 
         assertEquals(actual, Arrays.toString(expected));
+
     }
 }
