@@ -3,7 +3,7 @@ package apprenticeship;
 import java.util.Arrays;
 
 public class Board {
-    public char cells[];
+    private char cells[];
     private int numberOfCells = 9;
 
     public Board() {
@@ -14,16 +14,23 @@ public class Board {
         return this.cells.length;
     }
 
+    public char[] getSymbol() {
+        return this.cells;
+    }
+
+    public char getSymbol (int index) {
+        return this.cells[index];
+    }
+
     public void insertSymbol(char symbol, int index) {
         this.cells[index] = symbol;
     }
 
-    public String turnBoardToString(char cells[]) {
-        return Arrays.toString(cells);
+    public String turnArrayToString(char[] array) {
+        return Arrays.toString(array);
     }
 
     public void printBoard() {
-        System.out.println(turnBoardToString(this.cells));
+        System.out.println(turnArrayToString(this.cells));
     }
-
 }

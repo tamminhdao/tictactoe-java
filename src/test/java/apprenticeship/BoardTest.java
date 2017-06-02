@@ -25,12 +25,15 @@ public class BoardTest {
     @Test
     public void canInsertSymbolOnBoard() throws Exception {
         tictactoe.insertSymbol('x', 0);
-        assertEquals(tictactoe.cells[0], 'x');
+        char atZero = tictactoe.getSymbol(0);
+        assertEquals(atZero, 'x');
     }
 
     @Test
     public void canConvertEmptyBoardToString() throws Exception {
-        String actual = tictactoe.turnBoardToString(tictactoe.cells);
+        char[] allSymbolsOnBoard = tictactoe.getSymbol();
+        String actual = tictactoe.turnArrayToString(allSymbolsOnBoard);
+
         char[] testCells = new char [9];
         assertEquals(actual, Arrays.toString(testCells));
     }
@@ -46,11 +49,11 @@ public class BoardTest {
         tictactoe.insertSymbol('x', 6);
         tictactoe.insertSymbol('o', 7);
         tictactoe.insertSymbol('x', 8);
-        String actual = tictactoe.turnBoardToString(tictactoe.cells);
+        char[] allSymbolsOnBoard = tictactoe.getSymbol();
+        String actual = tictactoe.turnArrayToString(allSymbolsOnBoard);
 
         char[] expected = new char[] {'x', 'o', 'x', 'o', 'x', 'o', 'x', 'o', 'x'};
 
         assertEquals(actual, Arrays.toString(expected));
-
     }
 }
