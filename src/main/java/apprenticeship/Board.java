@@ -4,9 +4,10 @@ import java.util.Arrays;
 
 public class Board {
     public char cells[];
+    private int numberOfCells = 9;
 
     public Board() {
-        this.cells = new char [9];
+        this.cells = new char [numberOfCells];
     }
 
     public int countCells() {

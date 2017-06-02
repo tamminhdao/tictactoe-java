@@ -13,7 +13,6 @@ public class BoardTest {
 
     @Before
     public void initBoard() {
-
         tictactoe = new Board();
     }
 
@@ -21,7 +20,6 @@ public class BoardTest {
     public void aBoardInitializeWithNineCells() throws Exception {
         int emptyCells = tictactoe.countCells();
         assertEquals(emptyCells, 9);
-
     }
 
     @Test
