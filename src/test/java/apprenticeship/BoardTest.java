@@ -55,5 +55,19 @@ public class BoardTest {
         char[] expected = new char[] {'x', 'o', 'x', 'o', 'x', 'o', 'x', 'o', 'x'};
 
         assertEquals(actual, Arrays.toString(expected));
+
+
+public class BoardTest {
+    Board threeByThree;
+
+    @Before
+    public void initBoard() {
+        threeByThree = new Board();
+    }
+
+
+    @Test
+    public void drawGrid() {
+        threeByThree.drawGrid();
     }
 }
