@@ -48,12 +48,6 @@ public class BoardTest {
     }
 
     @Test
-    public void printBoard() {
-        tictactoe.insertSymbol("", 0);
-        tictactoe.printBoard();
-    }
-
-    @Test
     public void canRenderGridWithOnlyCellNumberId() throws Exception {
         String emptyGrid = tictactoe.getGrid();
 
@@ -77,11 +71,5 @@ public class BoardTest {
                             " " + "7 | 8 | 9" + "\n";
 
         assertEquals (newGrid, expected);
-    }
-
-    @Test
-    public void drawGrid() {
-        tictactoe.insertSymbol("", 0);
-        tictactoe.drawGrid();
     }
 }
