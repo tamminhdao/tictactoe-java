@@ -4,15 +4,6 @@ import java.util.Arrays;
 
 public class Board {
     private String[] cells = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
-    private int numberOfCells = 9;
-
-    public Board() {
-        this.cells = new String [numberOfCells];
-    }
-
-    public int countCells() {
-        return this.cells.length;
-    }
 
     public String[] getSymbol() {
         return this.cells;
