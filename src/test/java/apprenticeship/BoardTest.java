@@ -53,6 +53,32 @@ public class BoardTest {
     }
 
     @Test
+    public void canRenderGridWithOnlyCellNumberId() throws Exception {
+        String emptyGrid = tictactoe.getGrid();
+
+        String expected =   " " + "1" + " | " + "2" + " | " + "3" + "\n--- --- ---\n" +
+                            " " + "4" + " | " + "5" + " | " + "6" + "\n--- --- ---\n" +
+                            " " + "7" + " | " + "8" + " | " + "9" + "\n";
+
+        assertEquals (emptyGrid, expected);
+    }
+
+    @Test
+    public void canRenderGridWithSymbolsInserted() throws Exception {
+        tictactoe.insertSymbol("X", 0);
+        tictactoe.insertSymbol("O", 1);
+        tictactoe.insertSymbol("X", 2);
+        tictactoe.insertSymbol("O", 3);
+        String newGrid = tictactoe.getGrid();
+
+        String expected =   " " + "X" + " | " + "O" + " | " + "X" + "\n--- --- ---\n" +
+                            " " + "O" + " | " + "5" + " | " + "6" + "\n--- --- ---\n" +
+                            " " + "7" + " | " + "8" + " | " + "9" + "\n";
+
+        assertEquals (newGrid, expected);
+    }
+
+    @Test
     public void drawGrid() {
         tictactoe.drawGrid();
     }

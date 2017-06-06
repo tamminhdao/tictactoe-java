@@ -6,14 +6,17 @@ public class Board {
     private String[] cells = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
     public String[] getSymbol() {
+
         return this.cells;
     }
 
     public String getSymbol (int index) {
+
         return this.cells[index];
     }
 
     public void insertSymbol(String symbol, int index) {
+
         this.cells[index] = symbol;
     }
 
@@ -33,6 +36,5 @@ public class Board {
 
     public void drawGrid() {
         System.out.println(getGrid());
-
     }
 }
