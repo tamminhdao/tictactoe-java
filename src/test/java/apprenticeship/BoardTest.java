@@ -24,50 +24,40 @@ public class BoardTest {
 
     @Test
     public void canInsertSymbolOnBoard() throws Exception {
-        tictactoe.insertSymbol('x', 0);
-        char atZero = tictactoe.getSymbol(0);
-        assertEquals(atZero, 'x');
+        tictactoe.insertSymbol("X", 0);
+        String atZero = tictactoe.getSymbol(0);
+        assertEquals(atZero, "X");
     }
 
-    @Test
-    public void canConvertEmptyBoardToString() throws Exception {
-        char[] allSymbolsOnBoard = tictactoe.getSymbol();
-        String actual = tictactoe.turnArrayToString(allSymbolsOnBoard);
-
-        char[] testCells = new char [9];
-        assertEquals(actual, Arrays.toString(testCells));
-    }
+//    @Test
+//    public void canConvertEmptyBoardToString() throws Exception {
+//        String[] allSymbolsOnBoard = tictactoe.getSymbol();
+//        String actual = tictactoe.turnArrayToString(allSymbolsOnBoard);
+//
+//        String[] testCells = new String [9];
+//        assertEquals(actual, Arrays.toString(testCells));
+//    }
 
     @Test
     public void canConvertNonEmptyBoardToString() throws Exception {
-        tictactoe.insertSymbol('x', 0);
-        tictactoe.insertSymbol('o', 1);
-        tictactoe.insertSymbol('x', 2);
-        tictactoe.insertSymbol('o', 3);
-        tictactoe.insertSymbol('x', 4);
-        tictactoe.insertSymbol('o', 5);
-        tictactoe.insertSymbol('x', 6);
-        tictactoe.insertSymbol('o', 7);
-        tictactoe.insertSymbol('x', 8);
-        char[] allSymbolsOnBoard = tictactoe.getSymbol();
-        String actual = tictactoe.turnArrayToString(allSymbolsOnBoard);
+        tictactoe.insertSymbol("X", 0);
+        tictactoe.insertSymbol("O", 1);
+        tictactoe.insertSymbol("X", 2);
+        tictactoe.insertSymbol("O", 3);
+        tictactoe.insertSymbol("X", 4);
+        tictactoe.insertSymbol("O", 5);
+        tictactoe.insertSymbol("X", 6);
+        tictactoe.insertSymbol("O",7);
+        tictactoe.insertSymbol("X", 8);
+        String[] actual = tictactoe.getSymbol();
 
-        char[] expected = new char[] {'x', 'o', 'x', 'o', 'x', 'o', 'x', 'o', 'x'};
+        String[] expected = new String[] {"X", "O", "X", "O", "X", "O", "X", "O", "X"};
 
-        assertEquals(actual, Arrays.toString(expected));
-
-
-public class BoardTest {
-    Board threeByThree;
-
-    @Before
-    public void initBoard() {
-        threeByThree = new Board();
+        assertArrayEquals(actual, expected);
     }
-
 
     @Test
     public void drawGrid() {
-        threeByThree.drawGrid();
+        tictactoe.drawGrid();
     }
 }

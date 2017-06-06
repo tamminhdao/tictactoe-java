@@ -3,39 +3,36 @@ package apprenticeship;
 import java.util.Arrays;
 
 public class Board {
-    private char cells[];
+    private String[] cells = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
     private int numberOfCells = 9;
 
     public Board() {
-        this.cells = new char [numberOfCells];
+        this.cells = new String [numberOfCells];
     }
 
     public int countCells() {
         return this.cells.length;
     }
 
-    public char[] getSymbol() {
+    public String[] getSymbol() {
         return this.cells;
     }
 
-    public char getSymbol (int index) {
+    public String getSymbol (int index) {
         return this.cells[index];
     }
 
-    public void insertSymbol(char symbol, int index) {
+    public void insertSymbol(String symbol, int index) {
         this.cells[index] = symbol;
     }
 
-    public String turnArrayToString(char[] array) {
+    public String turnArrayToString(String[] array) {
         return Arrays.toString(array);
     }
 
     public void printBoard() {
         System.out.println(turnArrayToString(this.cells));
-
-
-public class Board {
-    private String[] cells = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    }
 
     public String getGrid() {
         return (" " + this.cells[0] + " | " + this.cells[1] + " | " + this.cells[2] + "\n--- --- ---\n" +
