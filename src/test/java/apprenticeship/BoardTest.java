@@ -72,4 +72,21 @@ public class BoardTest {
 
         assertEquals (newGrid, expected);
     }
+
+    @Test
+    public void drawARow() {
+        String aRow = tictactoe.drawARow(6);
+        System.out.println(aRow);
+    }
+
+    @Test
+    public void drawAGrid() {
+        tictactoe.drawGrid();
+    }
+
+    @Test
+    public void getGrid() throws Exception {
+        String aGrid = tictactoe.getGrid();
+        System.out.println(aGrid);
+    }
 }

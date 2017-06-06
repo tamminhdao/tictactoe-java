@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 public class Board {
     private String[] cells = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    private StringBuilder row = new StringBuilder ("");
+    //private StringBuilder grid = new StringBuilder ("");
+    private String grid = "";
+    private int boardDimension = 3;
 
     public String[] getSymbol() {
         return this.cells;
@@ -26,9 +30,35 @@ public class Board {
     }
 
     public String getGrid() {
-        return (" " + this.cells[0] + " | " + this.cells[1] + " | " + this.cells[2] + "\n--- --- ---\n" +
-                " " + this.cells[3] + " | " + this.cells[4] + " | " + this.cells[5] + "\n--- --- ---\n" +
-                " " + this.cells[6] + " | " + this.cells[7] + " | " + this.cells[8] + "\n");
+        for (int cellIndex = 0; cellIndex <= this.cells.length - this.boardDimension; cellIndex += this.boardDimension){
+            //this.grid.append(drawARow(cellIndex));
+            //this.grid.append(drawTheDivider());
+            this.grid = drawARow(cellIndex);
+            //this.grid += drawTheDivider();
+        }
+//        String boardGrid = this.grid.toString();
+//        return boardGrid;
+        return this.grid;
+    }
+
+    public String drawARow(int startingCell) {
+        for (int cellIndex = startingCell; cellIndex < startingCell + boardDimension; cellIndex++) {
+            this.row.append(" " + cells[cellIndex] + " |");
+        }
+        //this.row.append("\n--- --- ---\n");
+        this.row.append(drawTheDivider());
+
+        String aRow = this.row.toString();
+        return aRow;
+    }
+
+    public String drawTheDivider() {
+        String divider = "\n";
+        for (int i = 0; i < this.boardDimension; i++) {
+            divider += "--- ";
+        }
+        divider += "\n";
+        return divider;
     }
 
     public void drawGrid() {
