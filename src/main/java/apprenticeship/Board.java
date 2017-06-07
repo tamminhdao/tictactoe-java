@@ -38,7 +38,7 @@ public class Board {
     private String drawARow(int startingCell) {
         StringBuilder row = new StringBuilder ("");
         for (int cellIndex = startingCell; cellIndex < startingCell + boardDimension; cellIndex++) {
-            row.append(" " + cells[cellIndex] + " |");
+            row.append("  " + cells[cellIndex] + "  |");
         }
         return row.toString();
     }
@@ -46,7 +46,7 @@ public class Board {
     private String drawRowDivider() {
         String horizontalLine = "\n";
         for (int i = 0; i < this.boardDimension; i++) {
-            horizontalLine += "--- ";
+            horizontalLine += "----- ";
         }
         horizontalLine += "\n";
         return horizontalLine;
