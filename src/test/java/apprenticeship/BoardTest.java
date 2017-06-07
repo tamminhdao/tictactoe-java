@@ -29,15 +29,20 @@ public class BoardTest {
         assertArrayEquals(actual, expected);
     }
 
-    @Test
-    public void canConvertNonEmptyBoardToString() throws Exception {
-        for (int i = 0; i < 9; i++) {
+
+    private void iterateThroughCells(int numberOfCells) {
+        for (int i = 0; i < numberOfCells; i++) {
             if (i % 2 == 0) {
                 tictactoe.insertSymbol("X", i);
             } else {
                 tictactoe.insertSymbol("O", i);
             }
         }
+    }
+
+    @Test
+    public void canConvertNonEmptyBoardToString() throws Exception {
+        iterateThroughCells(9);
 
         String[] actual = tictactoe.getSymbol();
 
@@ -59,13 +64,7 @@ public class BoardTest {
 
     @Test
     public void canRenderGridWithSymbolsInserted() throws Exception {
-        for (int i = 0; i < 4; i++) {
-            if (i % 2 == 0) {
-                tictactoe.insertSymbol("X", i);
-            } else {
-                tictactoe.insertSymbol("O", i);
-            }
-        }
+        iterateThroughCells(4);
         String newGrid = tictactoe.getGrid();
 
         String expected =   "  X  |  O  |  X  |" + "\n----- ----- ----- \n" +
