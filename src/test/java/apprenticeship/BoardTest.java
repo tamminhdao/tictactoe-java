@@ -31,15 +31,14 @@ public class BoardTest {
 
     @Test
     public void canConvertNonEmptyBoardToString() throws Exception {
-        tictactoe.insertSymbol("X", 0);
-        tictactoe.insertSymbol("O", 1);
-        tictactoe.insertSymbol("X", 2);
-        tictactoe.insertSymbol("O", 3);
-        tictactoe.insertSymbol("X", 4);
-        tictactoe.insertSymbol("O", 5);
-        tictactoe.insertSymbol("X", 6);
-        tictactoe.insertSymbol("O", 7);
-        tictactoe.insertSymbol("X", 8);
+        for (int i = 0; i < 9; i++) {
+            if (i % 2 == 0) {
+                tictactoe.insertSymbol("X", i);
+            } else {
+                tictactoe.insertSymbol("O", i);
+            }
+        }
+
         String[] actual = tictactoe.getSymbol();
 
         String[] expected = new String[] {"X", "O", "X", "O", "X", "O", "X", "O", "X"};
@@ -60,10 +59,13 @@ public class BoardTest {
 
     @Test
     public void canRenderGridWithSymbolsInserted() throws Exception {
-        tictactoe.insertSymbol("X", 0);
-        tictactoe.insertSymbol("O", 1);
-        tictactoe.insertSymbol("X", 2);
-        tictactoe.insertSymbol("O", 3);
+        for (int i = 0; i < 4; i++) {
+            if (i % 2 == 0) {
+                tictactoe.insertSymbol("X", i);
+            } else {
+                tictactoe.insertSymbol("O", i);
+            }
+        }
         String newGrid = tictactoe.getGrid();
 
         String expected =   "  X  |  O  |  X  |" + "\n----- ----- ----- \n" +
