@@ -4,9 +4,7 @@ import java.util.Arrays;
 
 public class Board {
     private String[] cells = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
-    private StringBuilder row = new StringBuilder ("");
-    //private StringBuilder grid = new StringBuilder ("");
-    private String grid = "";
+    private StringBuilder grid = new StringBuilder ("");
     private double boardDimension = Math.sqrt(this.cells.length);
 
     public String[] getSymbol() {
@@ -31,23 +29,18 @@ public class Board {
 
     public String getGrid() {
         for (int cellIndex = 0; cellIndex <= this.cells.length - this.boardDimension; cellIndex += this.boardDimension){
-            //this.grid.append(drawARow(cellIndex));
-            
-            this.grid = drawARow(cellIndex);
+            this.grid.append(drawARow(cellIndex));
+            this.grid.append(drawRowDivider());
         }
-//        String boardGrid = this.grid.toString();
-//        return boardGrid;
-        return this.grid;
+        return this.grid.toString();
     }
 
     private String drawARow(int startingCell) {
+        StringBuilder row = new StringBuilder ("");
         for (int cellIndex = startingCell; cellIndex < startingCell + boardDimension; cellIndex++) {
-            this.row.append(" " + cells[cellIndex] + " |");
+            row.append(" " + cells[cellIndex] + " |");
         }
-        
-        this.row.append(drawRowDivider());
-        
-        return(this.row.toString());
+        return row.toString();
     }
 
     private String drawRowDivider() {
