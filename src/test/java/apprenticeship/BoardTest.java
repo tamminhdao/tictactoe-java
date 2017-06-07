@@ -3,8 +3,6 @@ package apprenticeship;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static org.junit.Assert.*;
 
 
@@ -16,44 +14,62 @@ public class BoardTest {
         tictactoe = new Board();
     }
 
-    @Test
-    public void aBoardInitializeWithNineCells() throws Exception {
-        int emptyCells = tictactoe.countCells();
-        assertEquals(emptyCells, 9);
-    }
 
     @Test
     public void canInsertSymbolOnBoard() throws Exception {
-        tictactoe.insertSymbol('x', 0);
-        char atZero = tictactoe.getSymbol(0);
-        assertEquals(atZero, 'x');
+        tictactoe.insertSymbol("X", 0);
+        String atZero = tictactoe.getSymbol(0);
+        assertEquals(atZero, "X");
     }
 
     @Test
     public void canConvertEmptyBoardToString() throws Exception {
-        char[] allSymbolsOnBoard = tictactoe.getSymbol();
-        String actual = tictactoe.turnArrayToString(allSymbolsOnBoard);
-
-        char[] testCells = new char [9];
-        assertEquals(actual, Arrays.toString(testCells));
+        String[] actual = tictactoe.getSymbol();
+        String[] expected = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        assertArrayEquals(actual, expected);
     }
 
     @Test
     public void canConvertNonEmptyBoardToString() throws Exception {
-        tictactoe.insertSymbol('x', 0);
-        tictactoe.insertSymbol('o', 1);
-        tictactoe.insertSymbol('x', 2);
-        tictactoe.insertSymbol('o', 3);
-        tictactoe.insertSymbol('x', 4);
-        tictactoe.insertSymbol('o', 5);
-        tictactoe.insertSymbol('x', 6);
-        tictactoe.insertSymbol('o', 7);
-        tictactoe.insertSymbol('x', 8);
-        char[] allSymbolsOnBoard = tictactoe.getSymbol();
-        String actual = tictactoe.turnArrayToString(allSymbolsOnBoard);
+        tictactoe.insertSymbol("X", 0);
+        tictactoe.insertSymbol("O", 1);
+        tictactoe.insertSymbol("X", 2);
+        tictactoe.insertSymbol("O", 3);
+        tictactoe.insertSymbol("X", 4);
+        tictactoe.insertSymbol("O", 5);
+        tictactoe.insertSymbol("X", 6);
+        tictactoe.insertSymbol("O", 7);
+        tictactoe.insertSymbol("X", 8);
+        String[] actual = tictactoe.getSymbol();
 
-        char[] expected = new char[] {'x', 'o', 'x', 'o', 'x', 'o', 'x', 'o', 'x'};
+        String[] expected = new String[] {"X", "O", "X", "O", "X", "O", "X", "O", "X"};
 
-        assertEquals(actual, Arrays.toString(expected));
+        assertArrayEquals(actual, expected);
+    }
+
+    @Test
+    public void canRenderGridWithOnlyCellNumberId() throws Exception {
+        String emptyGrid = tictactoe.getGrid();
+
+        String expected =   "  1  |  2  |  3  |" + "\n----- ----- ----- \n" +
+                            "  4  |  5  |  6  |" + "\n----- ----- ----- \n" +
+                            "  7  |  8  |  9  |" + "\n----- ----- ----- \n";
+
+        assertEquals (emptyGrid, expected);
+    }
+
+    @Test
+    public void canRenderGridWithSymbolsInserted() throws Exception {
+        tictactoe.insertSymbol("X", 0);
+        tictactoe.insertSymbol("O", 1);
+        tictactoe.insertSymbol("X", 2);
+        tictactoe.insertSymbol("O", 3);
+        String newGrid = tictactoe.getGrid();
+
+        String expected =   "  X  |  O  |  X  |" + "\n----- ----- ----- \n" +
+                            "  O  |  5  |  6  |" + "\n----- ----- ----- \n" +
+                            "  7  |  8  |  9  |" + "\n----- ----- ----- \n";
+
+        assertEquals (newGrid, expected);
     }
 }
