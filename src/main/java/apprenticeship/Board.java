@@ -27,6 +27,7 @@ public class Board {
     }
 
     public String getSymbol (int index) {
+
         return this.cells[index];
     }
 
