@@ -30,7 +30,7 @@ public class BoardTest {
     }
 
 
-    private void iterateThroughCells(int numberOfCells) {
+    private void populateBoard(int numberOfCells) {
         for (int i = 0; i < numberOfCells; i++) {
             if (i % 2 == 0) {
                 tictactoe.insertSymbol("X", i);
@@ -42,8 +42,7 @@ public class BoardTest {
 
     @Test
     public void canConvertNonEmptyBoardToString() throws Exception {
-        iterateThroughCells(9);
-
+        populateBoard(9);
         String[] actual = tictactoe.getSymbol();
 
         String[] expected = new String[] {"X", "O", "X", "O", "X", "O", "X", "O", "X"};
@@ -64,7 +63,7 @@ public class BoardTest {
 
     @Test
     public void canRenderGridWithSymbolsInserted() throws Exception {
-        iterateThroughCells(4);
+        populateBoard(4);
         String newGrid = tictactoe.getGrid();
 
         String expected =   "  X  |  O  |  X  |" + "\n----- ----- ----- \n" +
