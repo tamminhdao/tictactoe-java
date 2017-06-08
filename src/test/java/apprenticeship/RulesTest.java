@@ -96,4 +96,24 @@ public class RulesTest {
         String winner = "O";
         assertEquals(winner, gameRules.getWinner());
     }
+
+    @Test
+    public void winningBy_0_4_8_Diagonal() throws Exception {
+        for (int i = 0; i < 9; i += 4) {
+            tictactoe.insertSymbol("X", i);
+        }
+        boolean hasWinner = gameRules.checkForDiagonalWin(tictactoe);
+
+        assertTrue(hasWinner);
+    }
+
+    @Test
+    public void winningBy_2_4_6_Diagonal() throws Exception {
+        for (int i = 2; i < 7; i += 2) {
+            tictactoe.insertSymbol("O", i);
+        }
+        boolean hasWinner = gameRules.checkForDiagonalWin(tictactoe);
+
+        assertTrue(hasWinner);
+    }
 }

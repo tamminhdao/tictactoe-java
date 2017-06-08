@@ -58,4 +58,20 @@ public class Rules {
                 board.getSymbol(cellIndex) == board.getSymbol(cellIndex + 3) &&
                 board.getSymbol(cellIndex + 3) == board.getSymbol(cellIndex +  6);
     }
+
+    public boolean checkForDiagonalWin(Board board) {
+        for (int cellIndex = 0, step = 4; cellIndex <= 2; cellIndex += 2, step -= 2) {
+            if (winningByDiagonal(board, cellIndex, step)) {
+                this.hasWinner = true;
+                this.winner = board.getSymbol(cellIndex);
+            }
+        }
+        return this.hasWinner;
+    }
+
+    private boolean winningByDiagonal(Board board, int cellIndex, int step) {
+        return board.getSymbol(cellIndex) != " " &&
+                board.getSymbol(cellIndex) == board.getSymbol(cellIndex + step) &&
+                board.getSymbol(cellIndex + step) == board.getSymbol(cellIndex + 2 * step);
+    }
 }
