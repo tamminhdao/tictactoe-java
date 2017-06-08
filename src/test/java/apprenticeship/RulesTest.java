@@ -23,10 +23,10 @@ public class RulesTest {
         assertFalse(hasWinner);
     }
 
-//    @Test
-//    public void gameStartsOutWithAllEmptyCellsOnBoard() throws Exception {
-//        boolean numberOfEmptyCells = gameRules.countEmptyCells();
-//        assertEquals(numberOfEmptyCells, tictactoe.length);
-//    }
+    @Test
+    public void gameStartsOutWithAllEmptyCellsOnBoard() throws Exception {
+        int numberOfEmptyCells = gameRules.countEmptyCells();
+        assertEquals(numberOfEmptyCells, tictactoe.countCells());
+    }
 
 }

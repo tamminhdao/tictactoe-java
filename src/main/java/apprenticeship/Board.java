@@ -3,9 +3,25 @@ package apprenticeship;
 import java.util.Arrays;
 
 public class Board {
-    private String[] cells = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    private String[] cells = new String[9];
     private StringBuilder grid = new StringBuilder ("");
     private double boardDimension = Math.sqrt(this.cells.length);
+
+    private void populateBoardWithEmptyCells() {
+        String emptyCell = " ";
+        for (int i = 0; i < this.cells.length; i++) {
+            this.cells[i] = emptyCell;
+        }
+    }
+
+    public void getNewBoard() {
+        populateBoardWithEmptyCells();
+    }
+
+
+    public int countCells() {
+        return this.cells.length;
+    }
 
     public String[] getSymbol() {
         return this.cells;
@@ -25,6 +41,18 @@ public class Board {
 
     public void printBoard() {
         System.out.println(turnArrayToString(this.cells));
+    }
+
+    private void populateBoardWithOnlyCellNumberId() {
+        String[] id = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+            for (int i = 0; i < id.length; i++) {
+                this.cells[i] = id[i];
+            }
+    }
+
+    public String drawGridWithOnlyCellNumberId() {
+        populateBoardWithOnlyCellNumberId();
+        return (getGrid());
     }
 
     public String getGrid() {

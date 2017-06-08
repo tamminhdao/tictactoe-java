@@ -12,6 +12,7 @@ public class BoardTest {
     @Before
     public void initBoard() {
         tictactoe = new Board();
+        tictactoe.getNewBoard();
     }
 
 
@@ -25,7 +26,11 @@ public class BoardTest {
     @Test
     public void canConvertEmptyBoardToString() throws Exception {
         String[] actual = tictactoe.getSymbol();
-        String[] expected = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        //String[] expected = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        String[] expected = new String[9];
+        for (int i = 0; i < expected.length; i++) {
+            expected[i] = " ";
+        }
         assertArrayEquals(actual, expected);
     }
 
@@ -49,7 +54,7 @@ public class BoardTest {
 
     @Test
     public void canRenderGridWithOnlyCellNumberId() throws Exception {
-        String emptyGrid = tictactoe.getGrid();
+        String emptyGrid = tictactoe.drawGridWithOnlyCellNumberId();
 
         String expected =   "  1  |  2  |  3  |" + "\n----- ----- ----- \n" +
                             "  4  |  5  |  6  |" + "\n----- ----- ----- \n" +
@@ -67,9 +72,21 @@ public class BoardTest {
         String newGrid = tictactoe.getGrid();
 
         String expected =   "  X  |  O  |  X  |" + "\n----- ----- ----- \n" +
-                            "  O  |  5  |  6  |" + "\n----- ----- ----- \n" +
-                            "  7  |  8  |  9  |" + "\n----- ----- ----- \n";
+                            "  O  |     |     |" + "\n----- ----- ----- \n" +
+                            "     |     |     |" + "\n----- ----- ----- \n";
 
         assertEquals (newGrid, expected);
+    }
+
+    @Test
+    public void drawGrid() throws Exception {
+        tictactoe.drawGrid();
+    }
+
+    @Test
+    public void drawGridWithId() throws Exception {
+        String gridWithId = tictactoe.drawGridWithOnlyCellNumberId();
+        System.out.println(gridWithId);
+
     }
 }

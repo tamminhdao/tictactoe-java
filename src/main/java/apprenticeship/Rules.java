@@ -8,4 +8,8 @@ public class Rules {
         this.hasWinner = false;
         return this.hasWinner;
     }
+
+    public int countEmptyCells() {
+        return 9;
+    }
 }
