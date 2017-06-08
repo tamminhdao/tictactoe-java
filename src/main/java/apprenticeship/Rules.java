@@ -2,10 +2,17 @@ package apprenticeship;
 
 
 public class Rules {
-    private boolean hasWinner;
+    private boolean hasWinner = false;
+    private boolean gameInProgress = true;
+
+    public boolean gameProgress(Board board) {
+        if (board.countEmptyCells() == 0) {
+            this.gameInProgress = false;
+        }
+        return this.gameInProgress;
+    }
 
     public boolean hasWinner() {
-        this.hasWinner = false;
         return this.hasWinner;
     }
 

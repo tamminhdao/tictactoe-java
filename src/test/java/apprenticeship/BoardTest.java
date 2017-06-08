@@ -12,7 +12,7 @@ public class BoardTest {
     @Before
     public void initBoard() {
         tictactoe = new Board();
-        tictactoe.getNewBoard();
+        tictactoe.clearBoard();
     }
 
 
@@ -76,6 +76,14 @@ public class BoardTest {
                             "     |     |     |" + "\n----- ----- ----- \n";
 
         assertEquals (newGrid, expected);
+    }
+
+
+    @Test
+    public void boardStartsOutWithAllEmptyCells() throws Exception {
+        int totalNumberOfCells = tictactoe.countCells();
+        int numberOfEmptyCells = tictactoe.countEmptyCells();
+        assertEquals(totalNumberOfCells, numberOfEmptyCells);
     }
 
     @Test

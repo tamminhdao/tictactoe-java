@@ -14,10 +14,9 @@ public class Board {
         }
     }
 
-    public void getNewBoard() {
+    public void clearBoard() {
         populateBoardWithEmptyCells();
     }
-
 
     public int countCells() {
         return this.cells.length;
@@ -43,17 +42,6 @@ public class Board {
         System.out.println(turnArrayToString(this.cells));
     }
 
-    private void populateBoardWithOnlyCellNumberId() {
-        String[] id = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
-            for (int i = 0; i < id.length; i++) {
-                this.cells[i] = id[i];
-            }
-    }
-
-    public String drawGridWithOnlyCellNumberId() {
-        populateBoardWithOnlyCellNumberId();
-        return (getGrid());
-    }
 
     public String getGrid() {
         for (int cellIndex = 0; cellIndex <= this.cells.length - this.boardDimension; cellIndex += this.boardDimension){
@@ -82,5 +70,27 @@ public class Board {
 
     public void drawGrid() {
         System.out.println(getGrid());
+    }
+
+    private void populateBoardWithOnlyCellNumberId() {
+        String[] id = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        for (int i = 0; i < id.length; i++) {
+            this.cells[i] = id[i];
+        }
+    }
+
+    public String drawGridWithOnlyCellNumberId() {
+        populateBoardWithOnlyCellNumberId();
+        return (getGrid());
+    }
+
+    public int countEmptyCells() {
+        int numberOfEmptyCells = 0;
+        for (int i = 0; i < this.cells.length; i++) {
+            if (this.cells[i] == " ") {
+                numberOfEmptyCells += 1;
+            }
+        }
+        return numberOfEmptyCells;
     }
 }
