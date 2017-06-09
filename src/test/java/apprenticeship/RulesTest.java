@@ -15,21 +15,13 @@ public class RulesTest {
     @Before
     public void createRules() {
         gameRules = new Rules();
-        tictactoe = new Board();
-        tictactoe.clearBoard();
+        tictactoe = new Board(9);
     }
 
     @Test
     public void gameStartsOutWithNoWinner() throws Exception {
         boolean hasWinner = gameRules.checkForWinner();
         assertFalse(hasWinner);
-    }
-
-    @Test
-    public void gameStartsOutWithAllEmptyCellsOnBoard() throws Exception {
-        int numberOfEmptyCells = gameRules.countEmptyCells();
-        int totalNumberOfCells = tictactoe.countCells();
-        assertEquals(numberOfEmptyCells, totalNumberOfCells);
     }
 
     private void populateBoard(int numberOfCells) {

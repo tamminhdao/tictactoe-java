@@ -11,10 +11,8 @@ public class BoardTest {
 
     @Before
     public void initBoard() {
-        tictactoe = new Board();
-        tictactoe.clearBoard();
+        tictactoe = new Board(9);
     }
-
 
     @Test
     public void canInsertSymbolOnBoard() throws Exception {
@@ -34,17 +32,19 @@ public class BoardTest {
         assertArrayEquals(actual, expected);
     }
 
+    private void populateBoard(int numberOfCells) {
+        for (int i = 0; i < numberOfCells; i++) {
+            if (i % 2 == 0) {
+                tictactoe.insertSymbol("X", i);
+            } else {
+                tictactoe.insertSymbol("O", i);
+            }
+        }
+    }
+
     @Test
     public void canConvertNonEmptyBoardToString() throws Exception {
-        tictactoe.insertSymbol("X", 0);
-        tictactoe.insertSymbol("O", 1);
-        tictactoe.insertSymbol("X", 2);
-        tictactoe.insertSymbol("O", 3);
-        tictactoe.insertSymbol("X", 4);
-        tictactoe.insertSymbol("O", 5);
-        tictactoe.insertSymbol("X", 6);
-        tictactoe.insertSymbol("O", 7);
-        tictactoe.insertSymbol("X", 8);
+        populateBoard(9);
         String[] actual = tictactoe.getSymbol();
 
         String[] expected = new String[] {"X", "O", "X", "O", "X", "O", "X", "O", "X"};
@@ -65,10 +65,7 @@ public class BoardTest {
 
     @Test
     public void canRenderGridWithSymbolsInserted() throws Exception {
-        tictactoe.insertSymbol("X", 0);
-        tictactoe.insertSymbol("O", 1);
-        tictactoe.insertSymbol("X", 2);
-        tictactoe.insertSymbol("O", 3);
+        populateBoard(4);
         String newGrid = tictactoe.getGrid();
 
         String expected =   "  X  |  O  |  X  |" + "\n----- ----- ----- \n" +

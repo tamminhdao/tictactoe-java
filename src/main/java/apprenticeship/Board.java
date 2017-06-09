@@ -3,19 +3,22 @@ package apprenticeship;
 import java.util.Arrays;
 
 public class Board {
-    private String[] cells = new String[9];
+    private int boardSize;
+    private String[] cells;
     private StringBuilder grid = new StringBuilder ("");
-    private double boardDimension = Math.sqrt(this.cells.length);
+    private double boardDimension = Math.sqrt(this.boardSize);
+
+    public Board(int boardSize) {
+        this.boardSize = boardSize;
+        this.cells = new String[this.boardSize];
+        populateBoardWithEmptyCells();
+    }
 
     private void populateBoardWithEmptyCells() {
         String emptyCell = " ";
         for (int i = 0; i < this.cells.length; i++) {
             this.cells[i] = emptyCell;
         }
-    }
-
-    public void clearBoard() {
-        populateBoardWithEmptyCells();
     }
 
     public int countCells() {

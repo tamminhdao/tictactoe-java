@@ -22,10 +22,6 @@ public class Rules {
 
     }
 
-    public int countEmptyCells() {
-        return 9;
-    }
-
     public boolean checkForRowWin(Board board) {
         for (int cellIndex = 0; cellIndex <= 6; cellIndex += 3) {
             if (winningByRow(board, cellIndex)) {
