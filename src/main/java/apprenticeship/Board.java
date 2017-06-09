@@ -8,6 +8,14 @@ public class Board {
     private StringBuilder grid = new StringBuilder ("");
     private int cellsPerRow;
 
+
+    public Board() {
+        this.boardSize = 9;
+        this.cellsPerRow = 3;
+        this.cells = new String[9];
+        this.populateBoardWithEmptyCells();
+    }
+
     public Board(int boardSize) {
         this.boardSize = boardSize;
         this.cellsPerRow = (int) Math.sqrt(this.boardSize);

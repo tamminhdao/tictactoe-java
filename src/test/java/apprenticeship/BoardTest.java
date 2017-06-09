@@ -11,7 +11,7 @@ public class BoardTest {
 
     @Before
     public void initBoard() {
-        tictactoe = new Board(9);
+        tictactoe = new Board();
     }
 
     @Test
