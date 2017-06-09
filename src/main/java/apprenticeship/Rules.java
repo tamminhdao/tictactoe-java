@@ -50,7 +50,6 @@ public class Rules {
                 board.getSymbol(cellIndex + 1) == board.getSymbol(cellIndex +  2);
     }
 
-
     private boolean checkForColumnWin(Board board) {
         for (int cellIndex = 0; cellIndex <= 2; cellIndex ++) {
             if (winningByColumn(board, cellIndex)) {
@@ -82,6 +81,4 @@ public class Rules {
                 board.getSymbol(cellIndex) == board.getSymbol(cellIndex + step) &&
                 board.getSymbol(cellIndex + step) == board.getSymbol(cellIndex + 2 * step);
     }
-
-
 }
