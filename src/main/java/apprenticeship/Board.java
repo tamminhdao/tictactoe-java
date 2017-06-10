@@ -3,7 +3,7 @@ package apprenticeship;
 import java.util.Arrays;
 
 public class Board {
-    private int boardSize;
+    private final int boardSize;
     private String[] cells;
     private StringBuilder grid = new StringBuilder ("");
     private int cellsPerRow;
