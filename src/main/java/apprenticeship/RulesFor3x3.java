@@ -1,12 +1,19 @@
 package apprenticeship;
 
 
-public class Rules {
+public class RulesFor3x3 implements Rules {
+    private boolean gameInProgress = true;
     private boolean hasWinner = false;
     private boolean isADraw = false;
     private String winner;
-    private boolean gameInProgress = true;
 
+    private int[][] winningCombos;
+
+    public RulesFor3x3() {
+        this.identifyWinningCombos();
+    }
+
+    @Override
     public boolean gameProgress(Board board) {
         if (board.countEmptyCells() == 0) {
             this.gameInProgress = false;
@@ -16,13 +23,34 @@ public class Rules {
         return this.gameInProgress;
     }
 
+
+    @Override
+    public void identifyWinningCombos() {
+        this.winningCombos = new int[][] {{0,1,2}, {3,4,5}, {6,7,8}, {0,3,6}, {1,4,7}, {2,5,8}, {0,4,8}, {2,4,6}};
+    }
+
+
+    @Override
     public boolean checkForWinner(Board board) {
-        this.checkForRowWin(board);
-        this.checkForDiagonalWin(board);
-        this.checkForColumnWin(board);
+        for (int index = 0; index < this.winningCombos.length; index++) {
+            if (threeInARow(board, index)) {
+                this.hasWinner = true;
+                this.winner = board.getSymbol(this.winningCombos[index][0]);
+                break;
+            } else {
+                this.hasWinner = false;
+            }
+        }
         return this.hasWinner;
     }
 
+    private boolean threeInARow(Board board, int index) {
+        return !(board.getSymbol(this.winningCombos[index][0]).equals(" ")) &&
+                board.getSymbol(this.winningCombos[index][0]).equals(board.getSymbol(this.winningCombos[index][1])) &&
+                board.getSymbol(this.winningCombos[index][1]).equals(board.getSymbol(this.winningCombos[index][2]));
+    }
+
+    @Override
     public boolean endsInADraw() {
         if (!hasWinner && !gameInProgress) {
             this.isADraw = true;
@@ -30,55 +58,8 @@ public class Rules {
         return isADraw;
     }
 
+    @Override
     public String getWinner() {
         return this.winner;
-    }
-
-    private boolean checkForRowWin(Board board) {
-        for (int cellIndex = 0; cellIndex <= 6; cellIndex += 3) {
-            if (winningByRow(board, cellIndex)) {
-                this.hasWinner = true;
-                this.winner = board.getSymbol(cellIndex);
-            }
-        }
-        return this.hasWinner;
-    }
-
-    private boolean winningByRow(Board board, int cellIndex) {
-        return board.getSymbol(cellIndex) != " " &&
-                board.getSymbol(cellIndex) == board.getSymbol(cellIndex + 1) &&
-                board.getSymbol(cellIndex + 1) == board.getSymbol(cellIndex +  2);
-    }
-
-    private boolean checkForColumnWin(Board board) {
-        for (int cellIndex = 0; cellIndex <= 2; cellIndex ++) {
-            if (winningByColumn(board, cellIndex)) {
-                this.hasWinner = true;
-                this.winner = board.getSymbol(cellIndex);
-            }
-        }
-        return this.hasWinner;
-    }
-
-    private boolean winningByColumn(Board board, int cellIndex) {
-        return board.getSymbol(cellIndex) != " " &&
-                board.getSymbol(cellIndex) == board.getSymbol(cellIndex + 3) &&
-                board.getSymbol(cellIndex + 3) == board.getSymbol(cellIndex +  6);
-    }
-
-    private boolean checkForDiagonalWin(Board board) {
-        for (int cellIndex = 0, step = 4; cellIndex <= 2; cellIndex += 2, step -= 2) {
-            if (winningByDiagonal(board, cellIndex, step)) {
-                this.hasWinner = true;
-                this.winner = board.getSymbol(cellIndex);
-            }
-        }
-        return this.hasWinner;
-    }
-
-    private boolean winningByDiagonal(Board board, int cellIndex, int step) {
-        return board.getSymbol(cellIndex) != " " &&
-                board.getSymbol(cellIndex) == board.getSymbol(cellIndex + step) &&
-                board.getSymbol(cellIndex + step) == board.getSymbol(cellIndex + 2 * step);
     }
 }

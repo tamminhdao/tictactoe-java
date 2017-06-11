@@ -8,19 +8,19 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
-public class RulesTest {
+public class RulesFor3x3Test {
     Board tictactoe;
-    Rules gameRules;
+    RulesFor3x3 gameRulesFor3x3;
 
     @Before
     public void createRules() {
-        gameRules = new Rules();
+        gameRulesFor3x3 = new RulesFor3x3();
         tictactoe = new Board(9);
     }
 
     @Test
     public void gameStartsOutWithNoWinner() throws Exception {
-        boolean hasWinner = gameRules.checkForWinner(tictactoe);
+        boolean hasWinner = gameRulesFor3x3.checkForWinner(tictactoe);
         assertFalse(hasWinner);
     }
 
@@ -37,7 +37,7 @@ public class RulesTest {
     @Test
     public void gameInProgressIfThereAreEmptyCellsAndNoWinner() throws Exception {
         populateBoard(5);
-        boolean gameInProgress = gameRules.gameProgress(tictactoe);
+        boolean gameInProgress = gameRulesFor3x3.gameProgress(tictactoe);
         assertTrue(gameInProgress);
     }
 
@@ -45,7 +45,7 @@ public class RulesTest {
     @Test
     public void gameEndsIfThereIsNoMoreEmptyCells() throws Exception {
         populateBoard(9);
-        boolean gameInProgress = gameRules.gameProgress(tictactoe);
+        boolean gameInProgress = gameRulesFor3x3.gameProgress(tictactoe);
         assertFalse(gameInProgress);
     }
 
@@ -54,8 +54,8 @@ public class RulesTest {
         for (int i = 3; i < 6; i++) {
             tictactoe.insertSymbol("X", i);
         }
-        gameRules.checkForWinner(tictactoe);
-        boolean gameInProgress = gameRules.gameProgress(tictactoe);
+        gameRulesFor3x3.checkForWinner(tictactoe);
+        boolean gameInProgress = gameRulesFor3x3.gameProgress(tictactoe);
         assertFalse(gameInProgress);
     }
 
@@ -64,7 +64,7 @@ public class RulesTest {
         for (int i = 0; i < 3; i++) {
             tictactoe.insertSymbol("X", i);
         }
-        boolean hasWinner = gameRules.checkForWinner(tictactoe);
+        boolean hasWinner = gameRulesFor3x3.checkForWinner(tictactoe);
         assertTrue(hasWinner);
     }
 
@@ -73,9 +73,9 @@ public class RulesTest {
         for (int i = 0; i < 3; i++) {
             tictactoe.insertSymbol("X", i);
         }
-        gameRules.checkForWinner(tictactoe);
+        gameRulesFor3x3.checkForWinner(tictactoe);
         String winner = "X";
-        assertEquals(winner, gameRules.getWinner());
+        assertEquals(winner, gameRulesFor3x3.getWinner());
     }
 
     @Test
@@ -83,7 +83,7 @@ public class RulesTest {
         for (int i = 0; i < 7; i += 3) {
             tictactoe.insertSymbol("O", i);
         }
-        boolean hasWinner = gameRules.checkForWinner(tictactoe);
+        boolean hasWinner = gameRulesFor3x3.checkForWinner(tictactoe);
         assertTrue(hasWinner);
     }
 
@@ -92,9 +92,9 @@ public class RulesTest {
         for (int i = 0; i < 7; i += 3) {
             tictactoe.insertSymbol("O", i);
         }
-        gameRules.checkForWinner(tictactoe);
+        gameRulesFor3x3.checkForWinner(tictactoe);
         String winner = "O";
-        assertEquals(winner, gameRules.getWinner());
+        assertEquals(winner, gameRulesFor3x3.getWinner());
     }
 
     @Test
@@ -102,7 +102,7 @@ public class RulesTest {
         for (int i = 0; i < 9; i += 4) {
             tictactoe.insertSymbol("X", i);
         }
-        boolean hasWinner = gameRules.checkForWinner(tictactoe);
+        boolean hasWinner = gameRulesFor3x3.checkForWinner(tictactoe);
         assertTrue(hasWinner);
     }
 
@@ -111,7 +111,7 @@ public class RulesTest {
         for (int i = 2; i < 7; i += 2) {
             tictactoe.insertSymbol("O", i);
         }
-        boolean hasWinner = gameRules.checkForWinner(tictactoe);
+        boolean hasWinner = gameRulesFor3x3.checkForWinner(tictactoe);
         assertTrue(hasWinner);
     }
 
@@ -130,15 +130,15 @@ public class RulesTest {
     @Test
     public void gameTiesWhenThereIsNoWinAndNoMoreEmptyCells() throws Exception {
         simulateAGameWhichEndsInATie();
-        gameRules.gameProgress(tictactoe);
-        gameRules.checkForWinner(tictactoe);
-        assertTrue(gameRules.endsInADraw());
+        gameRulesFor3x3.gameProgress(tictactoe);
+        gameRulesFor3x3.checkForWinner(tictactoe);
+        assertTrue(gameRulesFor3x3.endsInADraw());
     }
 
     @Test
     public void gameEndsWhenThereIsATie() throws Exception {
         simulateAGameWhichEndsInATie();
-        boolean gameInProgress = gameRules.gameProgress(tictactoe);
+        boolean gameInProgress = gameRulesFor3x3.gameProgress(tictactoe);
         assertFalse(gameInProgress);
     }
 }
