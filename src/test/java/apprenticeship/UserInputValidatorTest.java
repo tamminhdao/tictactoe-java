@@ -30,22 +30,50 @@ public class UserInputValidatorTest {
     }
 
     @Test
-    public void returnFalseWhenInputSymbolIsIncorrect() {
-        String user_input = "XO";
+    public void returnFalseWhenInputSymbolIsAnIncorrectString() {
+        String user_input = "XOXOXO";
         boolean result = userInputValidator.validateSymbolSelection(user_input);
         assertEquals(result, false);
     }
 
     @Test
-    public void returnTrueWhenInputCellSelectionIsCorrect() {
+    public void returnFalseWhenInputSymbolIsAnEmptyString() {
+        String user_input = "";
+        boolean result = userInputValidator.validateSymbolSelection(user_input);
+        assertEquals(result, false);
+    }
+
+    @Test
+    public void returnFalseWhenInputSymbolIsASpecialCharacter() {
+        String user_input = "#";
+        boolean result = userInputValidator.validateSymbolSelection(user_input);
+        assertEquals(result, false);
+    }
+
+    @Test
+    public void returnFalseWhenInputSymbolIsANewLineCharacter() {
+        String user_input = "\n";
+        boolean result = userInputValidator.validateSymbolSelection(user_input);
+        assertEquals(result, false);
+    }
+
+    @Test
+    public void returnTrueWhenInputCellSelectionIsInRange() {
         int user_input = 1;
         boolean result = userInputValidator.validateCellSelection(user_input);
         assertEquals(result, true);
     }
 
     @Test
-    public void returnFalseWhenInputCellSelectionIsIncorrect() {
+    public void returnFalseWhenInputCellSelectionIsOutOfRange() {
         int user_input = 10;
+        boolean result = userInputValidator.validateCellSelection(user_input);
+        assertEquals(result, false);
+    }
+
+    @Test
+    public void returnFalseWhenInputCellSelectionIsANegativeNumber() {
+        int user_input = -10;
         boolean result = userInputValidator.validateCellSelection(user_input);
         assertEquals(result, false);
     }
