@@ -14,7 +14,6 @@ public class BoardTest {
         tictactoe = new Board();
     }
 
-
     @Test
     public void canInsertSymbolOnBoard() throws Exception {
         tictactoe.insertSymbol("X", 0);
@@ -25,21 +24,26 @@ public class BoardTest {
     @Test
     public void canConvertEmptyBoardToString() throws Exception {
         String[] actual = tictactoe.getSymbol();
-        String[] expected = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        String[] expected = new String[9];
+        for (int i = 0; i < expected.length; i++) {
+            expected[i] = " ";
+        }
         assertArrayEquals(actual, expected);
+    }
+
+    private void populateBoard(int numberOfCells) {
+        for (int i = 0; i < numberOfCells; i++) {
+            if (i % 2 == 0) {
+                tictactoe.insertSymbol("X", i);
+            } else {
+                tictactoe.insertSymbol("O", i);
+            }
+        }
     }
 
     @Test
     public void canConvertNonEmptyBoardToString() throws Exception {
-        tictactoe.insertSymbol("X", 0);
-        tictactoe.insertSymbol("O", 1);
-        tictactoe.insertSymbol("X", 2);
-        tictactoe.insertSymbol("O", 3);
-        tictactoe.insertSymbol("X", 4);
-        tictactoe.insertSymbol("O", 5);
-        tictactoe.insertSymbol("X", 6);
-        tictactoe.insertSymbol("O", 7);
-        tictactoe.insertSymbol("X", 8);
+        populateBoard(9);
         String[] actual = tictactoe.getSymbol();
 
         String[] expected = new String[] {"X", "O", "X", "O", "X", "O", "X", "O", "X"};
@@ -48,26 +52,46 @@ public class BoardTest {
     }
 
     @Test
-    public void canRenderGridWithOnlyCellNumberId() throws Exception {
-        String emptyGrid = tictactoe.getGrid();
+    public void canPopulateBoardWithOnlyCellNumberId() throws Exception {
+        tictactoe.populateBoardWithOnlyCellNumberId();
+        String[] actual = tictactoe.getSymbol();
 
-        String expected =   "  1  |  2  |  3  |" + "\n----- ----- ----- \n" +
-                            "  4  |  5  |  6  |" + "\n----- ----- ----- \n" +
-                            "  7  |  8  |  9  |" + "\n----- ----- ----- \n";
+        String[] expected = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
-        assertEquals (emptyGrid, expected);
+        assertArrayEquals (actual, expected);
+    }
+
+    @Test
+    public void canRenderGridWithAllEmptyCells() throws Exception {
+        String newGrid = tictactoe.getGrid();
+
+        String expected =   "     |     |     |" + "\n----- ----- ----- \n" +
+                            "     |     |     |" + "\n----- ----- ----- \n" +
+                            "     |     |     |" + "\n----- ----- ----- \n";
+
+        assertEquals (newGrid, expected);
     }
 
     @Test
     public void canRenderGridWithSymbolsInserted() throws Exception {
-        tictactoe.insertSymbol("X", 0);
-        tictactoe.insertSymbol("O", 1);
-        tictactoe.insertSymbol("X", 2);
-        tictactoe.insertSymbol("O", 3);
+        populateBoard(4);
         String newGrid = tictactoe.getGrid();
 
         String expected =   "  X  |  O  |  X  |" + "\n----- ----- ----- \n" +
-                            "  O  |  5  |  6  |" + "\n----- ----- ----- \n" +
+                            "  O  |     |     |" + "\n----- ----- ----- \n" +
+                            "     |     |     |" + "\n----- ----- ----- \n";
+
+        assertEquals (newGrid, expected);
+    }
+
+    @Test
+    public void canRenderGridWithOnlyCellNumberId() throws Exception {
+        tictactoe.populateBoardWithOnlyCellNumberId();
+        String newGrid = tictactoe.getGrid();
+
+
+        String expected =   "  1  |  2  |  3  |" + "\n----- ----- ----- \n" +
+                            "  4  |  5  |  6  |" + "\n----- ----- ----- \n" +
                             "  7  |  8  |  9  |" + "\n----- ----- ----- \n";
 
         assertEquals (newGrid, expected);
