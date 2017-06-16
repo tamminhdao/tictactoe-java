@@ -2,15 +2,14 @@ package apprenticeship;
 
 import org.junit.Test;
 
-import java.util.Scanner;
-
-import static org.junit.Assert.assertEquals;
-
+import static junit.framework.TestCase.assertEquals;
 
 public class UserInputReceiverTest {
-
     @Test
-    public void initClassInstance() {
-        UserInputReceiver inputReceiver = new UserInputReceiver(new Scanner(System.in));
+    public void canCaptureAndReturnInput() {
+        TestScanner scanner = new TestScanner();
+        UserInputReceiver receiver = new UserInputReceiver(scanner);
+        int output = receiver.obtainCellSelection();
+        assertEquals(output, 100);
     }
 }

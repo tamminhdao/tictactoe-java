@@ -1,19 +1,17 @@
 package apprenticeship;
 
 
-import java.util.Scanner;
-
 
 public class UserInputReceiver {
-    private Scanner userInputReceiver;
+    private InputReceiver inputReceiver;
 
-    public UserInputReceiver (Scanner userInputReceiver) {
-        this.userInputReceiver = userInputReceiver;
+    public UserInputReceiver (InputReceiver receiver) {
+        this.inputReceiver = receiver;
     }
 
     public int obtainCellSelection() {
         System.out.println("Enter your cell selection (1 - 9): ");
-        int cell = this.userInputReceiver.nextInt();
+        int cell = this.inputReceiver.returnInput();
         return cell;
     }
 }
