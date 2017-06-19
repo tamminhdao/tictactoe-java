@@ -15,6 +15,7 @@ public class UserInput {
         int cell = this.scanner.nextInt();
         boolean isValid = validator.validateCellSelection(cell);
         if (!isValid) {
+            System.out.println ("Invalid cell number. Choose one of the available cells between 0 and 8");
             cell = this.obtainValidCellSelection();
         }
         return cell;
