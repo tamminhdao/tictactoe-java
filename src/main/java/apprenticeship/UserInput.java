@@ -10,7 +10,7 @@ public class UserInputReceiver {
     }
 
     public int obtainCellSelection() {
-        System.out.println("Enter your cell selection (1 - 9): ");
+        System.out.println("Enter your cell selection (0 - 8): ");
         int cell = this.scanner.nextInt();
         return cell;
     }
