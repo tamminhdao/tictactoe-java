@@ -2,26 +2,58 @@ package apprenticeship;
 
 
 public class Game {
-    private Rules rules;
-    private Board board;
-    private UserInput receiver;
+    private Rules rules = new RulesFor3x3();
+    private Board board = new Board();
+    private HumanPlayer player1;
+    private HumanPlayer player2;
 
-    public Game(Board board, Rules rules, UserInput receiver) {
-        this.rules = rules;
-        this.board = board;
-        this.receiver = receiver;
+    public Game(HumanPlayer player1, HumanPlayer player2) {
+        this.player1 = player1;
+        this.player2 = player2;
+    }
+
+    private void renderBoard() {
+        board.drawGrid();
+    }
+
+    private void gameIntro() {
+        System.out.println("3x3 Tic Tac Toe" + "\n");
+        this.board.drawGridWithOnlyCellNumberId();
+    }
+
+    private void announceWinner (String winner) {
+        System.out.println("The winner is: " + winner);
+    }
+
+    private void announceTie () {
+        System.out.println("It's a tie");
+    }
+
+    private void getResult() {
+        if (this.rules.checkForWinner(board)) {
+            this.announceWinner(this.rules.getWinner());
+        } else {
+            this.announceTie();
+        }
+    }
+
+    private boolean gameInPlay() {
+        return this.rules.gameProgress(this.board);
     }
 
     public void play() {
-        System.out.println("3x3 Tic Tac Toe" + "\n");
-        this.board.drawGridWithOnlyCellNumberId();
+        this.gameIntro();
 
-        boolean gameStatus = this.rules.gameProgress(board);
-        while (gameStatus) {
-            int cell = this.receiver.obtainValidCellSelection();
-            this.board.insertSymbol("X", cell);
-            this.board.drawGrid();
-            gameStatus = false;
+        while (gameInPlay()) {
+            player1.makeMove(this.board);
+            this.renderBoard();
+            if (!gameInPlay()) {
+                break;
+            }
+            player2.makeMove(this.board);
+            this.renderBoard();
         }
+
+        this.getResult();
     }
 }
