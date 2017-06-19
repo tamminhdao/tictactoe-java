@@ -5,7 +5,6 @@ import java.util.Arrays;
 public class Board {
     private final int boardSize;
     private String[] cells;
-    private StringBuilder grid = new StringBuilder ("");
     private int cellsPerRow;
 
 
@@ -63,11 +62,12 @@ public class Board {
 
 
     public String getGrid() {
+        StringBuilder grid = new StringBuilder ("");
         for (int cellIndex = 0; cellIndex <= this.boardSize - this.cellsPerRow; cellIndex += this.cellsPerRow){
-            this.grid.append(drawARow(cellIndex));
-            this.grid.append(drawRowDivider());
+            grid.append(drawARow(cellIndex));
+            grid.append(drawRowDivider());
         }
-        return this.grid.toString();
+        return grid.toString();
     }
 
     private String drawARow(int startingCell) {
@@ -92,7 +92,7 @@ public class Board {
     }
 
     public void populateBoardWithOnlyCellNumberId() {
-        String[] idList = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+        String[] idList = new String[] {"0", "1", "2", "3", "4", "5", "6", "7", "8"};
         for (int i = 0; i < idList.length; i++) {
             this.cells[i] = idList[i];
         }
@@ -101,5 +101,6 @@ public class Board {
     public void drawGridWithOnlyCellNumberId() {
         populateBoardWithOnlyCellNumberId();
         System.out.println (getGrid());
+        populateBoardWithEmptyCells();
     }
 }
