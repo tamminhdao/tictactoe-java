@@ -17,7 +17,7 @@ public class RulesFor3x3 implements Rules {
     public boolean gameProgress(Board board) {
         if (board.countEmptyCells() == 0) {
             this.gameInProgress = false;
-        } else if (this.hasWinner) {
+        } else if (this.checkForWinner(board)) {
             this.gameInProgress = false;
         }
         return this.gameInProgress;
