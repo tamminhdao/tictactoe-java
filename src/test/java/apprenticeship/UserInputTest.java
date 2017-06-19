@@ -8,14 +8,16 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-public class UserInputReceiverTest {
+public class UserInputTest {
     @Test
-    public void canCaptureAndReturnInput() {
-        InputStream stream = new ByteArrayInputStream("100".getBytes(StandardCharsets.UTF_8));
+    public void canCaptureAndReturnValidInput() {
+        InputStream stream = new ByteArrayInputStream("1".getBytes(StandardCharsets.UTF_8));
         Scanner scanner = new Scanner(stream);
-        UserInputReceiver receiver = new UserInputReceiver(scanner);
-        int output = receiver.obtainCellSelection();
-        assertEquals(output, 100);
+        UserInput receiver = new UserInput(scanner);
+        int output = receiver.obtainValidCellSelection();
+        assertEquals(output, 1);
     }
 }
