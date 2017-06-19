@@ -1,6 +1,5 @@
 package apprenticeship;
 
-
 public class Game {
     private Rules rules = new RulesFor3x3();
     private Board board = new Board();

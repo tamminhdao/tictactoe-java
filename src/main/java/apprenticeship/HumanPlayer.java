@@ -1,6 +1,5 @@
 package apprenticeship;
 
-
 public class HumanPlayer {
     private String symbol;
     private UserInput receiver;

@@ -6,9 +6,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
-
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
 
 public class HumanPlayerTest {
 

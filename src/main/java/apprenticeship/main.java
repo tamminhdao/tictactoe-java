@@ -1,6 +1,5 @@
 package apprenticeship;
 
-
 import java.util.Scanner;
 
 public class main {

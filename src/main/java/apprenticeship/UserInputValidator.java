@@ -1,7 +1,7 @@
 package apprenticeship;
 
-
 public class UserInputValidator {
+
     public boolean validateSymbolSelection(String symbolInput) {
         return symbolInput == "X" || symbolInput == "O";
     }
