@@ -7,6 +7,6 @@ public class UserInputValidator {
     }
 
     public boolean validateCellSelection(int cellSelectionInput) {
-        return 0 <= cellSelectionInput && cellSelectionInput < 9;
+        return 0 < cellSelectionInput && cellSelectionInput < 10;
     }
 }

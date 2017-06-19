@@ -18,7 +18,7 @@ public class HumanPlayerTest {
         UserInput receiver = new UserInput(scanner);
         HumanPlayer player = new HumanPlayer("X", receiver);
         player.makeMove(board);
-        String cell3 = board.getSymbol(3);
+        String cell3 = board.getSymbol(2);
         assertEquals(cell3, player.getSymbol());
     }
 }

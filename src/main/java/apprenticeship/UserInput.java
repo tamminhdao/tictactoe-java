@@ -11,11 +11,11 @@ public class UserInput {
     }
 
     public int obtainValidCellSelection() {
-        System.out.println("Enter your cell selection (0 - 8): ");
+        System.out.println("Enter your cell selection (1 - 9): ");
         int cell = this.scanner.nextInt();
         boolean isValid = validator.validateCellSelection(cell);
         if (!isValid) {
-            System.out.println ("Invalid cell number. Choose one of the available cells between 0 and 8");
+            System.out.println ("Invalid cell number. Choose one of the available cells between 1 and 9");
             cell = this.obtainValidCellSelection();
         }
         return cell;

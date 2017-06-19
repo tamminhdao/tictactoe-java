@@ -15,6 +15,6 @@ public class HumanPlayer {
 
     public void makeMove(Board board) {
         int cellSelection = receiver.obtainValidCellSelection();
-        board.insertSymbol(symbol, cellSelection);
+        board.insertSymbol(symbol, cellSelection - 1);
     }
 }

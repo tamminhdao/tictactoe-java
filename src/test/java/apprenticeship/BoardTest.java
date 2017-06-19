@@ -56,7 +56,7 @@ public class BoardTest {
         tictactoe.populateBoardWithOnlyCellNumberId();
         String[] actual = tictactoe.getSymbol();
 
-        String[] expected = new String[] {"0", "1", "2", "3", "4", "5", "6", "7", "8"};
+        String[] expected = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
         assertArrayEquals (actual, expected);
     }
@@ -90,9 +90,9 @@ public class BoardTest {
         String newGrid = tictactoe.getGrid();
 
 
-        String expected =   "  0  |  1  |  2  |" + "\n----- ----- ----- \n" +
-                            "  3  |  4  |  5  |" + "\n----- ----- ----- \n" +
-                            "  6  |  7  |  8  |" + "\n----- ----- ----- \n";
+        String expected =   "  1  |  2  |  3  |" + "\n----- ----- ----- \n" +
+                            "  4  |  5  |  6  |" + "\n----- ----- ----- \n" +
+                            "  7  |  8  |  9  |" + "\n----- ----- ----- \n";
 
         assertEquals (newGrid, expected);
     }
