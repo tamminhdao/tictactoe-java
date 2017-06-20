@@ -1,4 +1,4 @@
-package apprenticeship;
+package com.java.tictactoe;
 
 import java.util.Arrays;
 

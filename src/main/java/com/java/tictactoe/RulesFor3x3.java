@@ -1,4 +1,4 @@
-package apprenticeship;
+package com.java.tictactoe;
 
 
 public class RulesFor3x3 implements Rules {

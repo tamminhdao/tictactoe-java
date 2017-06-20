@@ -1,4 +1,4 @@
-package apprenticeship;
+package com.java.tictactoe;
 
 import org.junit.Test;
 import java.io.ByteArrayInputStream;

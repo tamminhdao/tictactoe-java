@@ -1,4 +1,4 @@
-package apprenticeship;
+package com.java.tictactoe;
 
 public interface Rules {
     void identifyWinningCombos();

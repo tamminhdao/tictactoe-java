@@ -1,4 +1,4 @@
-package apprenticeship;
+package com.java.tictactoe;
 
 public class Game {
     private Rules rules = new RulesFor3x3();
