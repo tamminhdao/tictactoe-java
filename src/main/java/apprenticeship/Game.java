@@ -36,23 +36,24 @@ public class Game {
         }
     }
 
-    private boolean gameInPlay() {
+    public boolean gameInPlay() {
         return this.rules.gameProgress(this.board);
+    }
+
+    public void makeMoveAndRenderMove (HumanPlayer player) {
+        player.makeMove(this.board);
+        this.renderBoard();
     }
 
     public void play() {
         this.gameIntro();
-
         while (gameInPlay()) {
-            player1.makeMove(this.board);
-            this.renderBoard();
+            makeMoveAndRenderMove(player1);
             if (!gameInPlay()) {
                 break;
             }
-            player2.makeMove(this.board);
-            this.renderBoard();
+            makeMoveAndRenderMove(player2);
         }
-
         this.getResult();
     }
 }
