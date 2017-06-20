@@ -1,4 +1,4 @@
-package com.java.tictactoe;
+package com.tictactoe;
 
 public class Game {
     private Rules rules = new RulesFor3x3();

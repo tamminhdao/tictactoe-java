@@ -1,5 +1,6 @@
-package com.java.tictactoe;
+package com.tictactoe;
 
+import com.tictactoe.UserInput;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;

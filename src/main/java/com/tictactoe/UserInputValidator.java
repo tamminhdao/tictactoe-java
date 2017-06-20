@@ -1,4 +1,4 @@
-package com.java.tictactoe;
+package com.tictactoe;
 
 public class UserInputValidator {
     public boolean validateSymbolSelection(String symbolInput) {

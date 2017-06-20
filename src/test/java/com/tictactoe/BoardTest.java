@@ -1,5 +1,6 @@
-package com.java.tictactoe;
+package com.tictactoe;
 
+import com.tictactoe.Board;
 import org.junit.Before;
 import org.junit.Test;
 

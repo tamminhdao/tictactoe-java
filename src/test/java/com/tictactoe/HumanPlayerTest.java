@@ -1,5 +1,8 @@
-package com.java.tictactoe;
+package com.tictactoe;
 
+import com.tictactoe.Board;
+import com.tictactoe.HumanPlayer;
+import com.tictactoe.UserInput;
 import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

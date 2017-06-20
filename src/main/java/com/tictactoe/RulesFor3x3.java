@@ -1,4 +1,4 @@
-package com.java.tictactoe;
+package com.tictactoe;
 
 
 public class RulesFor3x3 implements Rules {

@@ -29,12 +29,12 @@ $ cd tictactoe-java
 ### Run the game
 
 * Open the project in an IDE (e.g. IntelliJ IDEA)
-* Navigate to `src/main/java/javaTTT/main.java`
+* Navigate to `src/main/java/com/tictactoe/main.java`
 * Run `main.main()`
 
 
 ### Run the tests
 
 * Open the project in an IDE (e.g. IntelliJ IDEA)
-* Navigate to `src/main/java/javaTTT/`
+* Navigate to `src/main/java/com/tictactoe/`
 * Run the test suite

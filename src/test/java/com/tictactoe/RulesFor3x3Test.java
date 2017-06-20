@@ -1,5 +1,7 @@
-package com.java.tictactoe;
+package com.tictactoe;
 
+import com.tictactoe.Board;
+import com.tictactoe.RulesFor3x3;
 import org.junit.Before;
 import org.junit.Test;
 

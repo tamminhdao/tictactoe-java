@@ -1,4 +1,4 @@
-package com.java.tictactoe;
+package com.tictactoe;
 
 public class HumanPlayer {
     private String symbol;
