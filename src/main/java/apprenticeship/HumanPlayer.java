@@ -15,6 +15,12 @@ public class HumanPlayer {
 
     public void makeMove(Board board) {
         int cellSelection = receiver.obtainValidCellSelection();
-        board.insertSymbol(symbol, cellSelection - 1);
+        int cellIndex = cellSelection - 1;
+        if (board.getSymbol(cellIndex).equals(" ")) {
+            board.insertSymbol(symbol, cellIndex);
+        } else {
+            System.out.println("Cell already occupied. Please select an empty cell.");
+            makeMove(board);
+        }
     }
 }
