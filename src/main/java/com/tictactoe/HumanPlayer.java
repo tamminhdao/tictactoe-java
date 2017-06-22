@@ -14,6 +14,7 @@ public class HumanPlayer {
     }
 
     public void makeMove(Board board) {
+        board.drawGridWithOnlyCellNumberId();
         int cellSelection = receiver.obtainValidCellSelection();
         int cellIndex = cellSelection - 1;
         if (board.getSymbol(cellIndex).equals(" ")) {

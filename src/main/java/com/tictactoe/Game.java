@@ -17,7 +17,6 @@ public class Game {
 
     private void gameIntro() {
         System.out.println("3x3 Tic Tac Toe" + "\n");
-        this.board.drawGridWithOnlyCellNumberId();
     }
 
     private void announceWinner (String winner) {
