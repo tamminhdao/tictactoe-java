@@ -21,4 +21,13 @@ public class UserInputTest {
         int output = receiver.obtainValidCellSelection();
         assertEquals(output, 1);
     }
+
+    @Test
+    public void userCanSelectASymbolOfChoice() {
+        InputStream stream = new ByteArrayInputStream("X".getBytes(StandardCharsets.UTF_8));
+        Scanner scanner = new Scanner(stream);
+        UserInput receiver = new UserInput(scanner);
+        String symbol = receiver.pickingSymbol();
+        assertEquals(symbol, "X");
+    }
 }
