@@ -1,5 +1,7 @@
-package apprenticeship;
+package com.tictactoe;
 
+import com.tictactoe.Board;
+import com.tictactoe.RulesFor3x3;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -98,7 +100,7 @@ public class RulesFor3x3Test {
     }
 
     @Test
-    public void winningBy_0_4_8_Diagonal() throws Exception {
+    public void winningByDiagonalTopLeftToBottomRight() throws Exception {
         for (int i = 0; i < 9; i += 4) {
             tictactoe.insertSymbol("X", i);
         }
@@ -107,7 +109,7 @@ public class RulesFor3x3Test {
     }
 
     @Test
-    public void winningBy_2_4_6_Diagonal() throws Exception {
+    public void winningByDiagonalTopRightToBottomLeft() throws Exception {
         for (int i = 2; i < 7; i += 2) {
             tictactoe.insertSymbol("O", i);
         }

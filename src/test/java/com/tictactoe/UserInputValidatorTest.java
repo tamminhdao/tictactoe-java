@@ -1,13 +1,11 @@
-package apprenticeship;
+package com.tictactoe;
 
+import com.tictactoe.UserInputValidator;
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
-
 public class UserInputValidatorTest {
-
     private UserInputValidator userInputValidator;
 
     @Before

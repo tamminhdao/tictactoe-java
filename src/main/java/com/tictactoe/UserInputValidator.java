@@ -1,5 +1,4 @@
-package apprenticeship;
-
+package com.tictactoe;
 
 public class UserInputValidator {
     public boolean validateSymbolSelection(String symbolInput) {

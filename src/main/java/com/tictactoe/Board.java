@@ -1,11 +1,10 @@
-package apprenticeship;
+package com.tictactoe;
 
 import java.util.Arrays;
 
 public class Board {
     private final int boardSize;
     private String[] cells;
-    private StringBuilder grid = new StringBuilder ("");
     private int cellsPerRow;
 
 
@@ -61,19 +60,26 @@ public class Board {
         System.out.println(turnArrayToString(this.cells));
     }
 
-
     public String getGrid() {
+        StringBuilder grid = new StringBuilder ("");
         for (int cellIndex = 0; cellIndex <= this.boardSize - this.cellsPerRow; cellIndex += this.cellsPerRow){
-            this.grid.append(drawARow(cellIndex));
-            this.grid.append(drawRowDivider());
+            grid.append(drawARow(cellIndex));
+            if (cellIndex < this.boardSize - this.cellsPerRow) {
+                grid.append(drawRowDivider());
+            }
         }
-        return this.grid.toString();
+        grid.append("\n");
+        return grid.toString();
     }
 
     private String drawARow(int startingCell) {
         StringBuilder row = new StringBuilder ("");
         for (int cellIndex = startingCell; cellIndex < startingCell + cellsPerRow; cellIndex++) {
-            row.append("  " + cells[cellIndex] + "  |");
+            if (cellIndex % cellsPerRow == this.cellsPerRow - 1) {
+                row.append("  " + cells[cellIndex] + "  ");
+            } else {
+                row.append("  " + cells[cellIndex] + "  " + "|");
+            }
         }
         return row.toString();
     }
@@ -91,15 +97,32 @@ public class Board {
         System.out.println(getGrid());
     }
 
-    public void populateBoardWithOnlyCellNumberId() {
-        String[] idList = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
-        for (int i = 0; i < idList.length; i++) {
-            this.cells[i] = idList[i];
+
+    private String drawARowWithCellId(int startingCell) {
+        StringBuilder row = new StringBuilder ("");
+        for (int i = startingCell; i < startingCell + cellsPerRow; i++) {
+            if (i % cellsPerRow == this.cellsPerRow - 1) {
+                row.append("  " + (i+1) + "  ");
+            } else {
+                row.append("  " + (i+1) + "  " + "|");
+            }
         }
+        return row.toString();
+    }
+
+    public String getGridWithOnlyCellNumberId() {
+        StringBuilder grid = new StringBuilder ("");
+        for (int cellIndex = 0; cellIndex <= this.boardSize - this.cellsPerRow; cellIndex += this.cellsPerRow){
+            grid.append(drawARowWithCellId(cellIndex));
+            if (cellIndex < this.boardSize - this.cellsPerRow) {
+                grid.append(drawRowDivider());
+            }
+        }
+        grid.append("\n");
+        return grid.toString();
     }
 
     public void drawGridWithOnlyCellNumberId() {
-        populateBoardWithOnlyCellNumberId();
-        System.out.println (getGrid());
+        System.out.println(getGridWithOnlyCellNumberId());
     }
 }

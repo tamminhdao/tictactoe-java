@@ -1,5 +1,6 @@
-package apprenticeship;
+package com.tictactoe;
 
+import com.tictactoe.Board;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,23 +52,14 @@ public class BoardTest {
         assertArrayEquals(actual, expected);
     }
 
-    @Test
-    public void canPopulateBoardWithOnlyCellNumberId() throws Exception {
-        tictactoe.populateBoardWithOnlyCellNumberId();
-        String[] actual = tictactoe.getSymbol();
-
-        String[] expected = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
-
-        assertArrayEquals (actual, expected);
-    }
 
     @Test
     public void canRenderGridWithAllEmptyCells() throws Exception {
         String newGrid = tictactoe.getGrid();
 
-        String expected =   "     |     |     |" + "\n----- ----- ----- \n" +
-                            "     |     |     |" + "\n----- ----- ----- \n" +
-                            "     |     |     |" + "\n----- ----- ----- \n";
+        String expected =   "     |     |     " + "\n----- ----- ----- \n" +
+                            "     |     |     " + "\n----- ----- ----- \n" +
+                            "     |     |     " + "\n";
 
         assertEquals (newGrid, expected);
     }
@@ -77,22 +69,21 @@ public class BoardTest {
         populateBoard(4);
         String newGrid = tictactoe.getGrid();
 
-        String expected =   "  X  |  O  |  X  |" + "\n----- ----- ----- \n" +
-                            "  O  |     |     |" + "\n----- ----- ----- \n" +
-                            "     |     |     |" + "\n----- ----- ----- \n";
+        String expected =   "  X  |  O  |  X  " + "\n----- ----- ----- \n" +
+                            "  O  |     |     " + "\n----- ----- ----- \n" +
+                            "     |     |     " + "\n";
 
         assertEquals (newGrid, expected);
     }
 
     @Test
     public void canRenderGridWithOnlyCellNumberId() throws Exception {
-        tictactoe.populateBoardWithOnlyCellNumberId();
-        String newGrid = tictactoe.getGrid();
+        String newGrid = tictactoe.getGridWithOnlyCellNumberId();
 
 
-        String expected =   "  1  |  2  |  3  |" + "\n----- ----- ----- \n" +
-                            "  4  |  5  |  6  |" + "\n----- ----- ----- \n" +
-                            "  7  |  8  |  9  |" + "\n----- ----- ----- \n";
+        String expected =   "  1  |  2  |  3  " + "\n----- ----- ----- \n" +
+                            "  4  |  5  |  6  " + "\n----- ----- ----- \n" +
+                            "  7  |  8  |  9  " + "\n";
 
         assertEquals (newGrid, expected);
     }
