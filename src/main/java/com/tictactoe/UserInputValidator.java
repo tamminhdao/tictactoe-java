@@ -2,7 +2,7 @@ package com.tictactoe;
 
 public class UserInputValidator {
     public boolean validateSymbolSelection(String symbolInput) {
-        return symbolInput == "X" || symbolInput == "O";
+        return symbolInput.equals("X") || symbolInput.equals("O");
     }
 
     public boolean validateCellSelection(int cellSelectionInput) {
