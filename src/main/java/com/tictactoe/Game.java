@@ -39,19 +39,38 @@ public class Game {
         return this.rules.gameProgress(this.board);
     }
 
-    public void makeMoveAndRenderMove (HumanPlayer player) {
-        player.makeMove(this.board);
-        this.renderBoard();
+    public void makeMove(Board board, HumanPlayer player) {
+        board.drawGridWithOnlyCellNumberId();
+        int cellSelection = player.obtainValidCellSelection();
+        int cellIndex = cellSelection - 1;
+        if (board.getSymbol(cellIndex).equals(" ")) {
+            board.insertSymbol(player.getSymbol(), cellIndex);
+        } else {
+            System.out.println("Cell already occupied. Please select an empty cell.");
+            this.makeMove(board, player);
+        }
+    }
+
+    private void assignSymbol(HumanPlayer player1, HumanPlayer player2) {
+        String symbol1 = player1.pickingSymbol();
+        String symbol2 = player2.pickingSymbol();
+        if (symbol2.equals(symbol1)) {
+            System.out.println("Another player already picked that symbol.");
+            symbol2 = player2.pickingSymbol();
+        }
     }
 
     public void play() {
         this.gameIntro();
+        this.assignSymbol(player1, player2);
         while (gameInPlay()) {
-            makeMoveAndRenderMove(player1);
+            this.makeMove(this.board, player1);
+            this.renderBoard();
             if (!gameInPlay()) {
                 break;
             }
-            makeMoveAndRenderMove(player2);
+            this.makeMove(this.board, player2);
+            this.renderBoard();
         }
         this.getResult();
     }

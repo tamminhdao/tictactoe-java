@@ -14,20 +14,11 @@ import static org.junit.Assert.assertTrue;
 
 public class UserInputTest {
     @Test
-    public void canCaptureAndReturnValidInput() {
-        InputStream stream = new ByteArrayInputStream("1".getBytes(StandardCharsets.UTF_8));
-        Scanner scanner = new Scanner(stream);
-        UserInput receiver = new UserInput(scanner);
-        int output = receiver.obtainValidCellSelection();
-        assertEquals(output, 1);
-    }
-
-    @Test
-    public void userCanSelectASymbolOfChoice() {
+    public void canCaptureAndReturnInput() {
         InputStream stream = new ByteArrayInputStream("X".getBytes(StandardCharsets.UTF_8));
         Scanner scanner = new Scanner(stream);
         UserInput receiver = new UserInput(scanner);
-        String symbol = receiver.pickingSymbol();
-        assertEquals(symbol, "X");
+        String output = receiver.obtainInput();
+        assertEquals(output, "X");
     }
 }
