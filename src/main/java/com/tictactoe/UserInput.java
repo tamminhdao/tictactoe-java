@@ -11,13 +11,16 @@ public class UserInput {
         this.scanner = s;
     }
 
+    private String obtainInput() {
+        String input = this.scanner.nextLine();
+        input = input.replaceAll("\\s+", "");
+        return input;
+    }
+
     public String pickingSymbol() {
         System.out.println("Pick between [X] or [O]: ");
-        String symbol = this.scanner.nextLine();
-        symbol = symbol.replaceAll("\\s+", "");
-        System.out.println(symbol);
+        String symbol = this.obtainInput();
         boolean validSymbol = validator.validateSymbolSelection(symbol);
-        System.out.println(symbol.length());
         if (!validSymbol) {
             System.out.println ("Invalid symbol selection. Choose between X and O.");
             symbol = this.pickingSymbol();
@@ -30,11 +33,11 @@ public class UserInput {
         System.out.println("Enter your cell selection (1 - 9): ");
         while (true)  {
             try {
-                cell = this.scanner.nextInt();
+                String selection = this.obtainInput();
+                cell = Integer.parseInt(selection);
                 break;
-            } catch (InputMismatchException ime) {
-                System.out.println("Expected int, got String. Enter a number between 1 and 9: ");
-                this.scanner.next();
+            } catch (NumberFormatException e) {
+                System.out.println("Expected a number. Enter a number between 1 and 9: ");
             }
         }
         boolean isValid = validator.validateCellSelection(cell);
