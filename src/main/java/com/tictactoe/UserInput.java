@@ -25,7 +25,6 @@ public class UserInput {
         return symbol;
     }
 
-
     public int obtainValidCellSelection() {
         int cell;
         System.out.println("Enter your cell selection (1 - 9): ");
