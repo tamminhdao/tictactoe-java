@@ -49,16 +49,4 @@ public class HumanPlayer {
         }
         return cell;
     }
-
-    public void makeMove(Board board) {
-        board.drawGridWithOnlyCellNumberId();
-        int cellSelection = this.obtainValidCellSelection();
-        int cellIndex = cellSelection - 1;
-        if (board.getSymbol(cellIndex).equals(" ")) {
-            board.insertSymbol(symbol, cellIndex);
-        } else {
-            System.out.println("Cell already occupied. Please select an empty cell.");
-            makeMove(board);
-        }
-    }
 }
