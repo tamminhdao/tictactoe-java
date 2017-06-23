@@ -31,12 +31,9 @@ public class UserInput {
         System.out.println("Enter your cell selection (1 - 9): ");
         while (true)  {
             try {
-                String input = this.scanner.next();
-                input = input.replaceAll("\\s+", "");
-                System.out.println(input);
-                cell = Integer.parseInt(input);
+                cell = this.scanner.nextInt();
                 break;
-            } catch (NumberFormatException e) {
+            } catch (InputMismatchException ime) {
                 System.out.println("Expected int, got String. Enter a number between 1 and 9: ");
                 this.scanner.next();
             }
