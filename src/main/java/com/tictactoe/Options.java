@@ -1,6 +1,5 @@
 package com.tictactoe;
 
-
 public class Options {
     private UserInput receiver;
     private UserInputValidator validator = new UserInputValidator();
