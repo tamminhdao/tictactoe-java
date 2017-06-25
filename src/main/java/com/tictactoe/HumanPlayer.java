@@ -1,13 +1,14 @@
 package com.tictactoe;
 
 public class HumanPlayer {
-    private String symbol;
     private String input;
     private UserInput receiver;
     private UserInputValidator validator = new UserInputValidator();
+    private String symbol;
 
-    public HumanPlayer(UserInput receiver) {
+    public HumanPlayer(UserInput receiver, String symbol) {
        this.receiver = receiver;
+       this.symbol = symbol;
     }
 
     public String getInput() {
@@ -15,19 +16,8 @@ public class HumanPlayer {
         return this.input;
     }
 
-    public String pickingSymbol() {
-        System.out.println("Pick between [X] or [O]: ");
-        this.symbol = this.getInput();
-        boolean validSymbol = validator.validateSymbolSelection(symbol);
-        if (!validSymbol) {
-            System.out.println ("Invalid symbol selection. Choose between X and O.");
-            symbol = this.pickingSymbol();
-        }
-        return symbol;
-    }
-
     public String getSymbol() {
-        return symbol;
+        return this.symbol;
     }
 
     public int obtainValidCellSelection() {

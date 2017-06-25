@@ -17,17 +17,9 @@ public class HumanPlayerTest {
     }
 
     @Test
-    public void playerCanPickSymbol() throws Exception {
-        UserInput receiver = simulateHumanPlayerInput("X");
-        HumanPlayer player = new HumanPlayer(receiver);
-        player.pickingSymbol();
-        assertEquals("X", player.getSymbol());
-    }
-
-    @Test
-    public void playerCanSelectCell() throws Exception {
+    public void playerCanSelectAValidCell() throws Exception {
         UserInput receiver = simulateHumanPlayerInput("1");
-        HumanPlayer player = new HumanPlayer(receiver);
+        HumanPlayer player = new HumanPlayer(receiver, "X");
         int cellNumber = player.obtainValidCellSelection();
         assertEquals(1, cellNumber);
     }
