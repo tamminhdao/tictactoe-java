@@ -51,18 +51,8 @@ public class Game {
         }
     }
 
-    private void assignSymbol(HumanPlayer player1, HumanPlayer player2) {
-        String symbol1 = player1.pickingSymbol();
-        String symbol2 = player2.pickingSymbol();
-        if (symbol2.equals(symbol1)) {
-            System.out.println("Another player already picked that symbol.");
-            symbol2 = player2.pickingSymbol();
-        }
-    }
-
     public void play() {
         this.gameIntro();
-        this.assignSymbol(player1, player2);
         while (gameInPlay()) {
             this.makeMove(this.board, player1);
             this.renderBoard();
