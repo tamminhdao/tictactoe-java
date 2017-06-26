@@ -1,30 +1,21 @@
 package com.tictactoe;
 
-public class Options {
+public class GameConfig {
     private UserInput receiver;
     private UserInputValidator validator = new UserInputValidator();
     private String input;
     public SelectedOptions selectedOptions = new SelectedOptions();
 
 
-    public Options (UserInput receiver) {
+    public GameConfig(UserInput receiver) {
         this.receiver = receiver;
     }
 
     public  SelectedOptions collectGamePreference(){
-        boolean allOptionsSelected = false;
-            while(!allOptionsSelected) {
-                System.out.println("Player 1 - Pick your symbol between [X] or [O]: ");
-                this.askForPlayerOneSymbol();
-                System.out.println("Player 2 - Pick your symbol between [X] or [O]: ");
-                this.askForPlayerTwoSymbol();
-
-                while (selectedOptions.player2Symbol.equals(selectedOptions.player1Symbol)){
-                    System.out.println("Another player already pick that symbol. Please pick again.");
-                    selectedOptions.player2Symbol = chooseSymbol();
-                }
-                allOptionsSelected = true;
-            }
+        System.out.println("Player 1 - Pick your symbol between [X] or [O]: ");
+        this.askForPlayerOneSymbol();
+        this.assignSymbolForPlayerTwo();
+        System.out.println("Player 2 will take symbol " + selectedOptions.player2Symbol + "\n");
         return this.selectedOptions;
     }
 
@@ -36,9 +27,10 @@ public class Options {
     private String chooseSymbol () {
         String playerSymbol = this.getInput();
         boolean validSymbol = validator.validateSymbolSelection(playerSymbol);
-        if (!validSymbol) {
+        while (!validSymbol) {
             System.out.println ("Invalid symbol selection. Choose between X and O.");
             playerSymbol = this.chooseSymbol();
+            validSymbol = validator.validateSymbolSelection(playerSymbol);
         }
         return playerSymbol;
     }
@@ -47,7 +39,11 @@ public class Options {
         selectedOptions.player1Symbol = chooseSymbol();
     }
 
-    private void askForPlayerTwoSymbol() {
-        selectedOptions.player2Symbol = chooseSymbol();
+    private void assignSymbolForPlayerTwo() {
+        if (selectedOptions.player1Symbol.equals("X")) {
+            selectedOptions.player2Symbol = "O";
+        } else {
+            selectedOptions.player2Symbol = "X";
+        }
     }
 }
