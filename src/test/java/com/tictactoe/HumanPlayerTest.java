@@ -19,7 +19,9 @@ public class HumanPlayerTest {
     @Test
     public void playerCanSelectAValidCell() throws Exception {
         UserInput receiver = simulateHumanPlayerInput("1");
-        HumanPlayer player = new HumanPlayer(receiver, "X");
+        Board board = new Board();
+        UserInputValidator validator = new UserInputValidator(board);
+        HumanPlayer player = new HumanPlayer(receiver, "X", validator);
         int cellNumber = player.obtainValidCellSelection();
         assertEquals(1, cellNumber);
     }

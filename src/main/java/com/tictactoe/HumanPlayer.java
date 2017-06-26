@@ -3,12 +3,13 @@ package com.tictactoe;
 public class HumanPlayer {
     private String input;
     private UserInput receiver;
-    private UserInputValidator validator = new UserInputValidator();
+    private UserInputValidator validator;
     private String symbol;
 
-    public HumanPlayer(UserInput receiver, String symbol) {
+    public HumanPlayer(UserInput receiver, String symbol, UserInputValidator validator) {
        this.receiver = receiver;
        this.symbol = symbol;
+       this.validator = validator;
     }
 
     public String getInput() {

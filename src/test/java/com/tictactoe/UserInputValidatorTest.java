@@ -7,10 +7,12 @@ import static org.junit.Assert.assertEquals;
 
 public class UserInputValidatorTest {
     private UserInputValidator userInputValidator;
+    private Board board;
 
     @Before
     public void canCreateValidator() {
-        userInputValidator = new UserInputValidator();
+        board = new Board();
+        userInputValidator = new UserInputValidator(board);
     }
 
     @Test
@@ -74,5 +76,13 @@ public class UserInputValidatorTest {
         int user_input = -10;
         boolean result = userInputValidator.validateCellSelection(user_input);
         assertEquals(result, false);
+    }
+
+    @Test
+    public void returnFalseIfCellIsAlreadyOccupied() throws Exception {
+        board.insertSymbol("X", 0);
+        int user_input = 1;
+        boolean result = userInputValidator.validateCellSelection(user_input);
+        assertEquals(false, result);
     }
 }

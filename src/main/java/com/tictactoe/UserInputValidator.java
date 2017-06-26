@@ -12,6 +12,6 @@ public class UserInputValidator {
     }
 
     public boolean validateCellSelection(int cellSelectionInput) {
-        return 0 < cellSelectionInput && cellSelectionInput < 10 && (this.board.getSymbol(cellSelectionInput).equals(" "));
+        return 0 < cellSelectionInput && cellSelectionInput < 10 && (this.board.getSymbol(cellSelectionInput-1).equals(" "));
     }
 }

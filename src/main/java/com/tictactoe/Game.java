@@ -2,11 +2,12 @@ package com.tictactoe;
 
 public class Game {
     private Rules rules = new RulesFor3x3();
-    private Board board = new Board();
+    private Board board;
     private HumanPlayer player1;
     private HumanPlayer player2;
 
-    public Game(HumanPlayer player1, HumanPlayer player2) {
+    public Game(HumanPlayer player1, HumanPlayer player2, Board board) {
+        this.board = board;
         this.player1 = player1;
         this.player2 = player2;
     }
@@ -43,12 +44,7 @@ public class Game {
         board.drawGridWithOnlyCellNumberId();
         int cellSelection = player.obtainValidCellSelection();
         int cellIndex = cellSelection - 1;
-        if (board.getSymbol(cellIndex).equals(" ")) {
-            board.insertSymbol(player.getSymbol(), cellIndex);
-        } else {
-            System.out.println("Cell already occupied. Please select an empty cell.");
-            this.makeMove(board, player);
-        }
+        board.insertSymbol(player.getSymbol(), cellIndex);
     }
 
     public void play() {
