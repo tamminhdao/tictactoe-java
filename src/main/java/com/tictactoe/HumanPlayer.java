@@ -21,13 +21,14 @@ public class HumanPlayer {
     }
 
     public int obtainValidCellSelection() {
-        int cell;
+        int cell = 0;
         System.out.println("Enter your cell selection (1 - 9): ");
-        while (true)  {
+        boolean awaitingSelection = true;
+        while (awaitingSelection)  {
             try {
                 String selection = this.getInput();
                 cell = Integer.parseInt(selection);
-                break;
+                awaitingSelection = false;
             } catch (NumberFormatException e) {
                 System.out.println("Expected a number. Enter a number between 1 and 9: ");
             }
