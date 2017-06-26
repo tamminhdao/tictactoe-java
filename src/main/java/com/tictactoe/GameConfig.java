@@ -4,19 +4,19 @@ public class GameConfig {
     private UserInput receiver;
     private UserInputValidator validator = new UserInputValidator();
     private String input;
-    public SelectedOptions selectedOptions = new SelectedOptions();
+    public GamePreference gamePreference = new GamePreference();
 
 
     public GameConfig(UserInput receiver) {
         this.receiver = receiver;
     }
 
-    public  SelectedOptions collectGamePreference(){
+    public GamePreference collectGamePreference(){
         System.out.println("Player 1 - Pick your symbol between [X] or [O]: ");
         this.askForPlayerOneSymbol();
         this.assignSymbolForPlayerTwo();
-        System.out.println("Player 2 will take symbol " + selectedOptions.player2Symbol + "\n");
-        return this.selectedOptions;
+        System.out.println("Player 2 will take symbol " + gamePreference.player2Symbol + "\n");
+        return this.gamePreference;
     }
 
     private String getInput() {
@@ -36,14 +36,14 @@ public class GameConfig {
     }
 
     private void askForPlayerOneSymbol() {
-        selectedOptions.player1Symbol = chooseSymbol();
+        gamePreference.player1Symbol = chooseSymbol();
     }
 
     private void assignSymbolForPlayerTwo() {
-        if (selectedOptions.player1Symbol.equals("X")) {
-            selectedOptions.player2Symbol = "O";
+        if (gamePreference.player1Symbol.equals("X")) {
+            gamePreference.player2Symbol = "O";
         } else {
-            selectedOptions.player2Symbol = "X";
+            gamePreference.player2Symbol = "X";
         }
     }
 }

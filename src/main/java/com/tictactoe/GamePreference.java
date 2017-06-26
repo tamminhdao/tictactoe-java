@@ -1,6 +1,6 @@
 package com.tictactoe;
 
-public class SelectedOptions {
+public class GamePreference {
     public String player1Symbol;
     public String player2Symbol;
 }
