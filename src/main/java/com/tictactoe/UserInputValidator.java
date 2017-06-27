@@ -8,7 +8,7 @@ public class UserInputValidator {
     }
 
     public boolean validateSymbolSelection(String symbolInput) {
-        return symbolInput.equals("X") || symbolInput.equals("O");
+        return symbolInput.length() > 0 && !symbolInput.equals("\n");
     }
 
     public boolean validateCellSelection(int cellSelectionInput) {
