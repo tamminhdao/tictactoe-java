@@ -43,26 +43,4 @@ public class Configuration {
         }
         return playerSymbol;
     }
-
-    public String formatSymbol(String player1Symbol, String player2Symbol) {
-        int len1 = player1Symbol.length();
-        int len2 = player2Symbol.length();
-        if (len1 > len2) {
-            int lenDiffer = len1 - len2;
-            player2Symbol = player2Symbol + createEmptySpaceBufferForShorterSymbol(lenDiffer);
-            return player2Symbol;
-        } else {
-            int lenDiffer = len2 - len1;
-            player1Symbol = player1Symbol + createEmptySpaceBufferForShorterSymbol(lenDiffer);
-            return player1Symbol;
-        }
-    }
-
-    public String createEmptySpaceBufferForShorterSymbol(int length) {
-        String buffer = "";
-        for (int i = 0; i < length; i++) {
-            buffer += " ";
-        }
-        return buffer;
-    }
 }

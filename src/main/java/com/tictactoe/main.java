@@ -11,6 +11,10 @@ public class main {
         Configuration menu = new Configuration(receiver, validator);
         GamePreference preference = menu.collectGamePreference();
 
+        SymbolFormatter formatter = new SymbolFormatter(preference.player1Symbol, preference.player2Symbol);
+        preference.player1Symbol = formatter.formatSymbol(preference.player1Symbol);
+        preference.player2Symbol = formatter.formatSymbol(preference.player2Symbol);
+
         HumanPlayer player1 = new HumanPlayer(receiver, preference.player1Symbol, validator);
         HumanPlayer player2 = new HumanPlayer(receiver, preference.player2Symbol, validator);
 
