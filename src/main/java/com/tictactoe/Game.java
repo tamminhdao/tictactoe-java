@@ -9,7 +9,7 @@ public class Game {
 
     public Game(HumanPlayer player1, HumanPlayer player2, Board board) {
         this.board = board;
-        this.grid = new Grid(board);
+        this.grid = new Grid(board, player1.getSymbol(), player2.getSymbol());
         this.player1 = player1;
         this.player2 = player2;
     }

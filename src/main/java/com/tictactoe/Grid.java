@@ -4,11 +4,17 @@ public class Grid {
     Board board;
     int boardSize;
     int cellsPerRow;
+    int cellWidth;
+    String player1Symbol;
+    String player2Symbol;
 
-    public Grid(Board board) {
+    public Grid(Board board, String player1Symbol, String player2Symbol) {
         this.board = board;
         this.boardSize = board.getBoardSize();
         this.cellsPerRow = board.getCellsPerRow();
+        this.player1Symbol = player1Symbol;
+        this.player2Symbol = player2Symbol;
+        this.cellWidth = Math.max(player1Symbol.length(), player2Symbol.length());
     }
 
     public String getGrid() {
@@ -27,9 +33,9 @@ public class Grid {
         StringBuilder row = new StringBuilder ("");
         for (int cellIndex = startingCell; cellIndex < startingCell + cellsPerRow; cellIndex++) {
             if (cellIndex % cellsPerRow == this.cellsPerRow - 1) {
-                row.append("  " + board.getSymbol(cellIndex) + "  ");
+                row.append(" " + board.getSymbol(cellIndex) + " ");
             } else {
-                row.append("  " + board.getSymbol(cellIndex) + "  " + "|");
+                row.append(" " + board.getSymbol(cellIndex) + " " + "|");
             }
         }
         return row.toString();
@@ -38,10 +44,27 @@ public class Grid {
     private String drawRowDivider() {
         String horizontalLine = "\n";
         for (int i = 0; i < this.cellsPerRow; i++) {
-            horizontalLine += "----- ";
+            horizontalLine += this.drawingDivider();
+            horizontalLine += " ";
         }
         horizontalLine += "\n";
         return horizontalLine;
+    }
+
+    private String drawingDivider() {
+        String unit = "";
+        for (int j = 0; j < this.cellWidth + 2; j++) {
+            unit += "-";
+        }
+        return unit;
+    }
+
+    private String drawSymbolPadding() {
+        String unit = "";
+        for (int j = 0; j < this.cellWidth; j++) {
+            unit += " ";
+        }
+        return unit;
     }
 
     public void drawGrid() {
@@ -53,9 +76,9 @@ public class Grid {
         StringBuilder row = new StringBuilder ("");
         for (int i = startingCell; i < startingCell + cellsPerRow; i++) {
             if (i % cellsPerRow == this.cellsPerRow - 1) {
-                row.append("  " + (i+1) + "  ");
+                row.append(this.drawSymbolPadding() + (i+1) + " ");
             } else {
-                row.append("  " + (i+1) + "  " + "|");
+                row.append(this.drawSymbolPadding() + (i+1) + " |");
             }
         }
         return row.toString();

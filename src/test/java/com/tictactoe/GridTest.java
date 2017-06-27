@@ -12,7 +12,7 @@ public class GridTest {
     @Before
     public void initBoard() {
         board = new Board();
-        tictactoe = new Grid(board);
+        tictactoe = new Grid(board, "X", "O");
     }
 
     @Test
@@ -60,5 +60,13 @@ public class GridTest {
         assertEquals (newGrid, expected);
     }
 
+    @Test
+    public void testDraw() throws Exception {
+        System.out.println(tictactoe.getGrid());
+    }
 
+    @Test
+    public void testDrawGridId() throws Exception {
+        System.out.println(tictactoe.getGridWithOnlyCellNumberId());
+    }
 }
