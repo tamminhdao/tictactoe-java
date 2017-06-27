@@ -51,40 +51,4 @@ public class BoardTest {
 
         assertArrayEquals(actual, expected);
     }
-
-
-    @Test
-    public void canRenderGridWithAllEmptyCells() throws Exception {
-        String newGrid = tictactoe.getGrid();
-
-        String expected =   "     |     |     " + "\n----- ----- ----- \n" +
-                            "     |     |     " + "\n----- ----- ----- \n" +
-                            "     |     |     " + "\n";
-
-        assertEquals (newGrid, expected);
-    }
-
-    @Test
-    public void canRenderGridWithSymbolsInserted() throws Exception {
-        populateBoard(4);
-        String newGrid = tictactoe.getGrid();
-
-        String expected =   "  X  |  O  |  X  " + "\n----- ----- ----- \n" +
-                            "  O  |     |     " + "\n----- ----- ----- \n" +
-                            "     |     |     " + "\n";
-
-        assertEquals (newGrid, expected);
-    }
-
-    @Test
-    public void canRenderGridWithOnlyCellNumberId() throws Exception {
-        String newGrid = tictactoe.getGridWithOnlyCellNumberId();
-
-
-        String expected =   "  1  |  2  |  3  " + "\n----- ----- ----- \n" +
-                            "  4  |  5  |  6  " + "\n----- ----- ----- \n" +
-                            "  7  |  8  |  9  " + "\n";
-
-        assertEquals (newGrid, expected);
-    }
 }
