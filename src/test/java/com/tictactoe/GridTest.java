@@ -19,9 +19,9 @@ public class GridTest {
     public void canRenderGridWithAllEmptyCells() throws Exception {
         String newGrid = tictactoe.getGrid();
 
-        String expected =   "     |     |     " + "\n----- ----- ----- \n" +
-                            "     |     |     " + "\n----- ----- ----- \n" +
-                            "     |     |     " + "\n";
+        String expected =   "   |   |   " + "\n--- --- --- \n" +
+                            "   |   |   " + "\n--- --- --- \n" +
+                            "   |   |   " + "\n";
 
         assertEquals (newGrid, expected);
     }
@@ -41,9 +41,9 @@ public class GridTest {
         populateBoard(4);
         String newGrid = tictactoe.getGrid();
 
-        String expected =   "  X  |  O  |  X  " + "\n----- ----- ----- \n" +
-                            "  O  |     |     " + "\n----- ----- ----- \n" +
-                            "     |     |     " + "\n";
+        String expected =   " X | O | X " + "\n--- --- --- \n" +
+                            " O |   |   " + "\n--- --- --- \n" +
+                            "   |   |   " + "\n";
 
         assertEquals (newGrid, expected);
     }
@@ -53,9 +53,9 @@ public class GridTest {
         String newGrid = tictactoe.getGridWithOnlyCellNumberId();
 
 
-        String expected =   "  1  |  2  |  3  " + "\n----- ----- ----- \n" +
-                            "  4  |  5  |  6  " + "\n----- ----- ----- \n" +
-                            "  7  |  8  |  9  " + "\n";
+        String expected =   " 1 | 2 | 3 " + "\n--- --- --- \n" +
+                            " 4 | 5 | 6 " + "\n--- --- --- \n" +
+                            " 7 | 8 | 9 " + "\n";
 
         assertEquals (newGrid, expected);
     }

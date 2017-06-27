@@ -35,7 +35,7 @@ public class Grid {
             if (cellIndex % cellsPerRow == this.cellsPerRow - 1) {
                 row.append(" " + board.getSymbol(cellIndex) + " ");
             } else {
-                row.append(" " + board.getSymbol(cellIndex) + " " + "|");
+                row.append(" " + board.getSymbol(cellIndex) + " |");
             }
         }
         return row.toString();
@@ -44,14 +44,14 @@ public class Grid {
     private String drawRowDivider() {
         String horizontalLine = "\n";
         for (int i = 0; i < this.cellsPerRow; i++) {
-            horizontalLine += this.drawingDivider();
+            horizontalLine += this.drawingDividerUnit();
             horizontalLine += " ";
         }
         horizontalLine += "\n";
         return horizontalLine;
     }
 
-    private String drawingDivider() {
+    private String drawingDividerUnit() {
         String unit = "";
         for (int j = 0; j < this.cellWidth + 2; j++) {
             unit += "-";
@@ -100,3 +100,4 @@ public class Grid {
         System.out.println(getGridWithOnlyCellNumberId());
     }
 }
+
