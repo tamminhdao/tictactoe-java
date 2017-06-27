@@ -5,6 +5,7 @@ public class HumanPlayer {
     private UserInput receiver;
     private UserInputValidator validator;
     private String symbol;
+    private int cellWidth;
 
     public HumanPlayer(UserInput receiver, String symbol, UserInputValidator validator) {
        this.receiver = receiver;
