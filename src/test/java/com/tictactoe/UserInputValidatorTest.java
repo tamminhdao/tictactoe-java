@@ -50,6 +50,22 @@ public class UserInputValidatorTest {
     }
 
     @Test
+    public void returnTrueWhenPlayersHaveUniqueSymbols() throws Exception {
+        String player1Symbol = "X";
+        String player2Symbol = "O";
+        boolean result = userInputValidator.playersHaveUniqueSymbols(player1Symbol, player2Symbol);
+        assertEquals(true, result);
+    }
+
+    @Test
+    public void returnFalseWhenPlayersPickTheSameSymbols() throws Exception {
+        String player1Symbol = "XO";
+        String player2Symbol = "XO";
+        boolean result = userInputValidator.playersHaveUniqueSymbols(player1Symbol, player2Symbol);
+        assertEquals(false, result);
+    }
+
+    @Test
     public void returnTrueWhenInputCellSelectionIsInRange() {
         int user_input = 1;
         boolean result = userInputValidator.validateCellSelection(user_input);
