@@ -12,7 +12,7 @@ public class GridTest {
     @Before
     public void initBoard() {
         board = new Board();
-        tictactoe = new Grid(board, "X", "O");
+        tictactoe = new Grid(board);
     }
 
     @Test
@@ -68,5 +68,11 @@ public class GridTest {
     @Test
     public void testDrawGridId() throws Exception {
         System.out.println(tictactoe.getGridWithOnlyCellNumberId());
+    }
+
+    @Test
+    public void test() throws Exception {
+        populateBoard(4);
+        System.out.println(tictactoe.findMaxStringLengthOfSymbols(board));
     }
 }

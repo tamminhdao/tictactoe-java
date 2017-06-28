@@ -1,20 +1,40 @@
 package com.tictactoe;
 
+import java.util.*;
+
 public class Grid {
     Board board;
     int boardSize;
     int cellsPerRow;
     int cellWidth;
-    String player1Symbol;
-    String player2Symbol;
 
-    public Grid(Board board, String player1Symbol, String player2Symbol) {
+    public Grid(Board board) {
         this.board = board;
         this.boardSize = board.getBoardSize();
         this.cellsPerRow = board.getCellsPerRow();
-        this.player1Symbol = player1Symbol;
-        this.player2Symbol = player2Symbol;
-        this.cellWidth = Math.max(player1Symbol.length(), player2Symbol.length());
+    }
+
+    public int findMaxStringLengthOfSymbols(Board board) {
+        String[] boardArray = board.getSymbol();
+        ArrayList<Integer> symbolLength = new ArrayList<>();
+        for (int i = 0; i < boardArray.length; i++) {
+            symbolLength.add(boardArray[i].length());
+        }
+        return Collections.max(symbolLength);
+    }
+
+    public String getPaddedSymbols(String symbol, Integer maxLength) {
+        if (symbol.length() == maxLength) {
+            return symbol;
+        } else {
+            int lengthDifference = maxLength - symbol.length();
+            return this.padLeft(symbol, lengthDifference);
+        }
+    }
+
+    private String padLeft(String symbol, int space) {
+        space = space + 1;
+        return String.format("%1$" + space + "s", symbol);
     }
 
     public String getGrid() {
@@ -31,12 +51,10 @@ public class Grid {
 
     private String drawARow(int startingCell) {
         StringBuilder row = new StringBuilder ("");
+        int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols(board);
         for (int cellIndex = startingCell; cellIndex < startingCell + cellsPerRow; cellIndex++) {
-            if (cellIndex % cellsPerRow == this.cellsPerRow - 1) {
-                row.append(" " + board.getSymbol(cellIndex) + " ");
-            } else {
-                row.append(" " + board.getSymbol(cellIndex) + " |");
-            }
+              String lastCellCharacter = (cellIndex % cellsPerRow == this.cellsPerRow - 1)? " " : " |";
+              row.append(" " + this.getPaddedSymbols(board.getSymbol(cellIndex), maxLengthOfSymbols) + lastCellCharacter);
         }
         return row.toString();
     }
