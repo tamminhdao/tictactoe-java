@@ -3,10 +3,9 @@ package com.tictactoe;
 import java.util.*;
 
 public class Grid {
-    Board board;
-    int boardSize;
-    int cellsPerRow;
-    int cellWidth;
+    private Board board;
+    private int boardSize;
+    private int cellsPerRow;
 
     public Grid(Board board) {
         this.board = board;
@@ -14,8 +13,8 @@ public class Grid {
         this.cellsPerRow = board.getCellsPerRow();
     }
 
-    public int findMaxStringLengthOfSymbols(Board board) {
-        String[] boardArray = board.getSymbol();
+    private int findMaxStringLengthOfSymbols() {
+        String[] boardArray = this.board.getSymbol();
         ArrayList<Integer> symbolLength = new ArrayList<>();
         for (int i = 0; i < boardArray.length; i++) {
             symbolLength.add(boardArray[i].length());
@@ -23,7 +22,7 @@ public class Grid {
         return Collections.max(symbolLength);
     }
 
-    public String getPaddedSymbols(String symbol, Integer maxLength) {
+    private String getPaddedSymbols(String symbol, Integer maxLength) {
         if (symbol.length() == maxLength) {
             return symbol;
         } else {
@@ -51,7 +50,7 @@ public class Grid {
 
     private String drawARow(int startingCell) {
         StringBuilder row = new StringBuilder ("");
-        int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols(board);
+        int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols();
         for (int cellIndex = startingCell; cellIndex < startingCell + cellsPerRow; cellIndex++) {
               String lastCellCharacter = (cellIndex % cellsPerRow == this.cellsPerRow - 1)? " " : " |";
               row.append(" " + this.getPaddedSymbols(board.getSymbol(cellIndex), maxLengthOfSymbols) + lastCellCharacter);
@@ -71,7 +70,8 @@ public class Grid {
 
     private String drawingDividerUnit() {
         String unit = "";
-        for (int j = 0; j < this.cellWidth + 2; j++) {
+        int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols();
+        for (int j = 0; j < maxLengthOfSymbols + 2; j++) {
             unit += "-";
         }
         return unit;
@@ -79,7 +79,8 @@ public class Grid {
 
     private String drawSymbolPadding() {
         String unit = "";
-        for (int j = 0; j < this.cellWidth; j++) {
+        int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols();
+        for (int j = 0; j < maxLengthOfSymbols; j++) {
             unit += " ";
         }
         return unit;
@@ -118,4 +119,3 @@ public class Grid {
         System.out.println(getGridWithOnlyCellNumberId());
     }
 }
-

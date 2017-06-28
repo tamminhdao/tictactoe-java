@@ -2,7 +2,6 @@ package com.tictactoe;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class GridTest {
@@ -58,21 +57,5 @@ public class GridTest {
                             " 7 | 8 | 9 " + "\n";
 
         assertEquals (newGrid, expected);
-    }
-
-    @Test
-    public void testDraw() throws Exception {
-        System.out.println(tictactoe.getGrid());
-    }
-
-    @Test
-    public void testDrawGridId() throws Exception {
-        System.out.println(tictactoe.getGridWithOnlyCellNumberId());
-    }
-
-    @Test
-    public void test() throws Exception {
-        populateBoard(4);
-        System.out.println(tictactoe.findMaxStringLengthOfSymbols(board));
     }
 }
