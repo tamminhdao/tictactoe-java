@@ -8,7 +8,7 @@ public class main {
         UserInput receiver = new UserInput(scanner);
         Board board = new Board();
         UserInputValidator validator = new UserInputValidator(board);
-        Configuration menu = new Configuration(receiver, validator);
+        GameSettings menu = new GameSettings(receiver, validator);
         GamePreference preference = menu.collectGamePreference();
 
         HumanPlayer player1 = new HumanPlayer(receiver, preference.player1Symbol, validator);

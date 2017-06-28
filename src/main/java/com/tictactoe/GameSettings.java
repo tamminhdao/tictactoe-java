@@ -1,12 +1,12 @@
 package com.tictactoe;
 
-public class Configuration {
+public class GameSettings {
     private UserInput receiver;
     private UserInputValidator validator;
     private String input;
     public GamePreference gamePreference = new GamePreference();
 
-    public Configuration(UserInput receiver, UserInputValidator validator) {
+    public GameSettings(UserInput receiver, UserInputValidator validator) {
         this.receiver = receiver;
         this.validator = validator;
     }
