@@ -21,7 +21,7 @@ public class GameSettings {
 
     private void checkForUniqueSymbols(boolean uniqueSymbols) {
         while (!uniqueSymbols) {
-            System.out.println("Another player already pick that symbol.");
+            System.out.println("Another player already picked that symbol.");
             gamePreference.player2Symbol = chooseSymbol("Player 2");
             uniqueSymbols = validator.playersHaveUniqueSymbols(gamePreference.player1Symbol, gamePreference.player2Symbol);
         }
