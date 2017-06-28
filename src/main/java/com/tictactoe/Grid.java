@@ -1,4 +1,6 @@
 package com.tictactoe;
+
+import org.apache.commons.lang.StringUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -26,14 +28,8 @@ public class Grid {
         if (symbol.length() == maxLength) {
             return symbol;
         } else {
-            int lengthDifference = maxLength - symbol.length();
-            return this.padLeft(symbol, lengthDifference);
+            return StringUtils.center(symbol, maxLength);
         }
-    }
-
-    private String padLeft(String symbol, int space) {
-        space = space + 1;
-        return String.format("%1$" + space + "s", symbol);
     }
 
     public String getGrid() {
@@ -93,12 +89,10 @@ public class Grid {
 
     private String drawARowWithCellId(int startingCell) {
         StringBuilder row = new StringBuilder ("");
+        int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols();
         for (int i = startingCell; i < startingCell + cellsPerRow; i++) {
-            if (i % cellsPerRow == this.cellsPerRow - 1) {
-                row.append(this.drawSymbolPadding() + (i+1) + " ");
-            } else {
-                row.append(this.drawSymbolPadding() + (i+1) + " |");
-            }
+            String lastCellCharacter = (i % cellsPerRow == this.cellsPerRow - 1)? " " : " |";
+            row.append(" " + this.getPaddedSymbols(Integer.toString(i+1), maxLengthOfSymbols) + lastCellCharacter);
         }
         return row.toString();
     }
