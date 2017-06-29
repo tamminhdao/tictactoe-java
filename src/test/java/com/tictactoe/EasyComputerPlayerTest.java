@@ -1,21 +1,12 @@
 package com.tictactoe;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class EasyComputerPlayerTest {
-    Board board;
-    EasyComputerPlayer simpleAI;
-    @Before
-    public void setUp() {
-        board = new Board();
-        populateBoard(4);
-        simpleAI = new EasyComputerPlayer("X", board);
-    }
 
-    private void populateBoard(int numberOfCells) {
+    private void populateBoard(Board board, int numberOfCells) {
         for (int i = 0; i < numberOfCells; i++) {
             if (i % 2 == 0) {
                 board.insertSymbol("X", i);
@@ -27,7 +18,10 @@ public class EasyComputerPlayerTest {
 
     @Test
     public void easyComputerPlayerTakesFirstAvailableSpotOnBoard() throws Exception {
+        Board board = new Board();
+        this.populateBoard(board,4);
+        EasyComputerPlayer simpleAI = new EasyComputerPlayer("X", board);
         int cell = simpleAI.obtainValidCellSelection();
-        assertEquals(4, cell);
+        assertEquals(5, cell);
     }
 }
