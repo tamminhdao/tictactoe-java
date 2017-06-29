@@ -16,12 +16,26 @@ public class EasyComputerPlayerTest {
         }
     }
 
+    private void populateAnotherBoard(Board board) {
+        board.insertSymbol("O", 0);
+        board.insertSymbol("X", 4);
+    }
+
     @Test
-    public void easyComputerPlayerTakesFirstAvailableSpotOnBoard() throws Exception {
+    public void easyComputerPlayerTakesFirstAvailableSpotOnBoard_Case1() throws Exception {
         Board board = new Board();
         this.populateBoard(board,4);
         EasyComputerPlayer simpleAI = new EasyComputerPlayer("X", board);
         int cell = simpleAI.obtainValidCellSelection();
         assertEquals(5, cell);
+    }
+
+    @Test
+    public void easyComputerPlayerTakesFirstAvailableSpotOnBoard_Case2() throws Exception {
+        Board board = new Board();
+        this.populateAnotherBoard(board);
+        EasyComputerPlayer simpleAI = new EasyComputerPlayer("X", board);
+        int cell = simpleAI.obtainValidCellSelection();
+        assertEquals(2, cell);
     }
 }
