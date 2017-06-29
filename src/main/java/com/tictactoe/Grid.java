@@ -8,6 +8,7 @@ public class Grid {
     private Board board;
     private int boardSize;
     private int cellsPerRow;
+    private final int CELL_OFFSET = 1;
 
     public Grid(Board board) {
         this.board = board;
@@ -24,12 +25,16 @@ public class Grid {
         return Collections.max(symbolLength);
     }
 
-    private String getPaddedSymbols(String symbol, Integer maxLength) {
+    private String getCenteredSymbols(String symbol, Integer maxLength) {
         if (symbol.length() == maxLength) {
             return symbol;
         } else {
             return StringUtils.center(symbol, maxLength);
         }
+    }
+
+    public void draw() {
+        System.out.println(getGrid());
     }
 
     public String getGrid() {
@@ -48,8 +53,8 @@ public class Grid {
         StringBuilder row = new StringBuilder ("");
         int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols();
         for (int cellIndex = startingCell; cellIndex < startingCell + cellsPerRow; cellIndex++) {
-              String lastCellCharacter = (cellIndex % cellsPerRow == this.cellsPerRow - 1)? " " : " |";
-              row.append(" " + this.getPaddedSymbols(board.getSymbol(cellIndex), maxLengthOfSymbols) + lastCellCharacter);
+              String lastCellCharacter = (cellIndex % cellsPerRow == this.cellsPerRow - CELL_OFFSET)? " " : " |";
+              row.append(" " + this.getCenteredSymbols(board.getSymbol(cellIndex), maxLengthOfSymbols) + lastCellCharacter);
         }
         return row.toString();
     }
@@ -66,35 +71,16 @@ public class Grid {
 
     private String drawingDividerUnit() {
         String unit = "";
+        int paddedSpaceCharacterOnBothEndsOfSymbols = 2;
         int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols();
-        for (int j = 0; j < maxLengthOfSymbols + 2; j++) {
+        for (int j = 0; j < maxLengthOfSymbols + paddedSpaceCharacterOnBothEndsOfSymbols; j++) {
             unit += "-";
         }
         return unit;
     }
 
-    private String drawSymbolPadding() {
-        String unit = "";
-        int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols();
-        for (int j = 0; j < maxLengthOfSymbols; j++) {
-            unit += " ";
-        }
-        return unit;
-    }
-
-    public void drawGrid() {
-        System.out.println(getGrid());
-    }
-
-
-    private String drawARowWithCellId(int startingCell) {
-        StringBuilder row = new StringBuilder ("");
-        int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols();
-        for (int i = startingCell; i < startingCell + cellsPerRow; i++) {
-            String lastCellCharacter = (i % cellsPerRow == this.cellsPerRow - 1)? " " : " |";
-            row.append(" " + this.getPaddedSymbols(Integer.toString(i+1), maxLengthOfSymbols) + lastCellCharacter);
-        }
-        return row.toString();
+    public void drawGridWithOnlyCellNumberId() {
+        System.out.println(getGridWithOnlyCellNumberId());
     }
 
     public String getGridWithOnlyCellNumberId() {
@@ -109,7 +95,13 @@ public class Grid {
         return grid.toString();
     }
 
-    public void drawGridWithOnlyCellNumberId() {
-        System.out.println(getGridWithOnlyCellNumberId());
+    private String drawARowWithCellId(int startingCell) {
+        StringBuilder row = new StringBuilder ("");
+        int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols();
+        for (int i = startingCell; i < startingCell + cellsPerRow; i++) {
+            String lastCellCharacter = (i % cellsPerRow == this.cellsPerRow - CELL_OFFSET)? " " : " |";
+            row.append(" " + this.getCenteredSymbols(Integer.toString(i+CELL_OFFSET), maxLengthOfSymbols) + lastCellCharacter);
+        }
+        return row.toString();
     }
 }

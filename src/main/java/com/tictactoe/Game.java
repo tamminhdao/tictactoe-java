@@ -15,7 +15,7 @@ public class Game {
     }
 
     private void renderBoard() {
-        grid.drawGrid();
+        grid.draw();
     }
 
     private void gameIntro() {
