@@ -17,11 +17,12 @@ public class EasyComputerPlayer implements Player {
     @Override
     public int obtainValidCellSelection() {
         int index;
+        int CELL_OFFSET = 1;
         for (index = 0; index < board.getBoardSize(); index++) {
             if (isEmptyCell(index))
                 break;
         }
-        return index;
+        return index + CELL_OFFSET;
     }
 
     private boolean isEmptyCell(int index) {
