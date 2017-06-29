@@ -2,17 +2,20 @@ package com.tictactoe;
 
 public class Game {
     private Rules rules = new RulesFor3x3();
-    private Board board = new Board();
+    private Board board;
+    private Grid grid;
     private HumanPlayer player1;
     private HumanPlayer player2;
 
-    public Game(HumanPlayer player1, HumanPlayer player2) {
+    public Game(HumanPlayer player1, HumanPlayer player2, Board board) {
+        this.board = board;
+        this.grid = new Grid(board);
         this.player1 = player1;
         this.player2 = player2;
     }
 
     private void renderBoard() {
-        board.drawGrid();
+        grid.draw();
     }
 
     private void gameIntro() {
@@ -39,19 +42,23 @@ public class Game {
         return this.rules.gameProgress(this.board);
     }
 
-    public void makeMoveAndRenderMove (HumanPlayer player) {
-        player.makeMove(this.board);
-        this.renderBoard();
+    public void makeMove(Board board, HumanPlayer player) {
+        grid.drawGridWithOnlyCellNumberId();
+        int cellSelection = player.obtainValidCellSelection();
+        int cellIndex = cellSelection - 1;
+        board.insertSymbol(player.getSymbol(), cellIndex);
     }
 
     public void play() {
         this.gameIntro();
         while (gameInPlay()) {
-            makeMoveAndRenderMove(player1);
+            this.makeMove(this.board, player1);
+            this.renderBoard();
             if (!gameInPlay()) {
                 break;
             }
-            makeMoveAndRenderMove(player2);
+            this.makeMove(this.board, player2);
+            this.renderBoard();
         }
         this.getResult();
     }
