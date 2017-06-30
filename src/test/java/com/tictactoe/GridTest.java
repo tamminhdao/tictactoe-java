@@ -61,6 +61,6 @@ public class GridTest {
 
     @Test
     public void drawTopPadding() throws Exception {
-        System.out.println(tictactoe.drawBottomVerticalPadding());
+        System.out.println(tictactoe.drawBottomVerticalPadding());easy
     }
 }
