@@ -58,4 +58,9 @@ public class GridTest {
 
         assertEquals (newGrid, expected);
     }
+
+    @Test
+    public void drawTopPadding() throws Exception {
+        System.out.println(tictactoe.drawBottomVerticalPadding());
+    }
 }
