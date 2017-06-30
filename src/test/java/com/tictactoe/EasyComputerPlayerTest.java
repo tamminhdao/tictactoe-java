@@ -1,7 +1,6 @@
 package com.tictactoe;
 
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class EasyComputerPlayerTest {
@@ -22,6 +21,14 @@ public class EasyComputerPlayerTest {
     }
 
     @Test
+    public void easyComputerPlayerTakesFirstCellOnEmptyBoard() throws Exception {
+        Board board = new Board();
+        EasyComputerPlayer simpleAI = new EasyComputerPlayer("X", board);
+        int cell = simpleAI.obtainValidCellSelection();
+        assertEquals(1, cell);
+    }
+
+    @Test
     public void easyComputerPlayerTakesFirstAvailableSpotOnBoard_Case1() throws Exception {
         Board board = new Board();
         this.populateBoard(board,4);
@@ -37,5 +44,14 @@ public class EasyComputerPlayerTest {
         EasyComputerPlayer simpleAI = new EasyComputerPlayer("X", board);
         int cell = simpleAI.obtainValidCellSelection();
         assertEquals(2, cell);
+    }
+
+    @Test
+    public void testFullBoard() throws Exception {
+        Board board = new Board();
+        this.populateBoard(board,9);
+        EasyComputerPlayer simpleAI = new EasyComputerPlayer("X", board);
+        int cell = simpleAI.obtainValidCellSelection();
+        assertEquals(10, cell);
     }
 }
