@@ -64,7 +64,7 @@ public class Grid {
     private String drawRowDivider() {
         String horizontalLine = "\n";
         for (int i = 0; i < this.cellsPerRow; i++) {
-            horizontalLine += this.drawingDividerUnit("-");
+            horizontalLine += this.drawingDividerOrPaddingUnit("-");
             horizontalLine += " ";
         }
         horizontalLine += "\n";
@@ -74,7 +74,7 @@ public class Grid {
     private String drawTopVerticalPadding() {
         String space = "";
         for (int i = 0; i < this.cellsPerRow; i++) {
-            space += this.drawingDividerUnit(" ");
+            space += this.drawingDividerOrPaddingUnit(" ");
             if (i != this.cellsPerRow - 1) {
                 space += "|";
             }
@@ -86,7 +86,7 @@ public class Grid {
     private String drawBottomVerticalPadding() {
         String space = "\n";
         for (int i = 0; i < this.cellsPerRow; i++) {
-            space += this.drawingDividerUnit(" ");
+            space += this.drawingDividerOrPaddingUnit(" ");
             if (i != this.cellsPerRow - 1) {
                 space += "|";
             }
@@ -129,7 +129,7 @@ public class Grid {
         return numberOfLowerPaddingRows;
     }
 
-    private String drawingDividerUnit(String pattern) {
+    private String drawingDividerOrPaddingUnit(String pattern) {
         String unit = "";
         int paddedSpaceCharacterOnBothEndsOfSymbols = 2;
         int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols();
