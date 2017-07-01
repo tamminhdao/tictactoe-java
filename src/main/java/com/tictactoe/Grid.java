@@ -52,16 +52,12 @@ public class Grid {
     private String drawARow(int startingCell) {
         StringBuilder row = new StringBuilder ("");
         int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols();
-//        row.append("              |              |              " + "\n");
-//        row.append("              |              |              " + "\n");
-        row.append("     |     |     " + "\n");
+        row.append(this.insertRowsOfUpperVerticalPadding());
         for (int cellIndex = startingCell; cellIndex < startingCell + cellsPerRow; cellIndex++) {
               String lastCellCharacter = (cellIndex % cellsPerRow == this.cellsPerRow - CELL_OFFSET)? " " : " |";
               row.append(" " + this.getCenteredSymbols(board.getSymbol(cellIndex), maxLengthOfSymbols) + lastCellCharacter);
         }
-//        row.append("\n" + "              |              |              ");
-//        row.append("\n" + "              |              |              ");
-        //row.append("\n" + "     |     |     ");
+        row.append(this.insertRowsOfLowerVerticalPadding());
         return row.toString();
     }
 
@@ -74,8 +70,8 @@ public class Grid {
         horizontalLine += "\n";
         return horizontalLine;
     }
-    //change to private
-    public String drawTopVerticalPadding() {
+
+    private String drawTopVerticalPadding() {
         String space = "";
         for (int i = 0; i < this.cellsPerRow; i++) {
             space += this.drawingDividerUnit(" ");
@@ -86,8 +82,8 @@ public class Grid {
         space += "\n";
         return space;
     }
-    //should be private
-    public String drawBottomVerticalPadding() {
+
+    private String drawBottomVerticalPadding() {
         String space = "\n";
         for (int i = 0; i < this.cellsPerRow; i++) {
             space += this.drawingDividerUnit(" ");
@@ -96,6 +92,37 @@ public class Grid {
             }
         }
         return space;
+    }
+
+    private String insertRowsOfUpperVerticalPadding(){
+        StringBuilder rowOfPadding = new StringBuilder ("");
+        int rowsOfPadding = this.numberOfUpperVerticalRowOfPadding();
+        for (int i = 0; i < rowsOfPadding; i++) {
+            rowOfPadding.append(this.drawTopVerticalPadding());
+        }
+        return rowOfPadding.toString();
+    }
+
+    private String insertRowsOfLowerVerticalPadding(){
+        StringBuilder rowOfPadding = new StringBuilder ("");
+        int rowsOfPadding = this.numberOfLowerVerticalRowOfPadding();
+        for (int i = 0; i < rowsOfPadding; i++) {
+            rowOfPadding.append(this.drawBottomVerticalPadding());
+        }
+        return rowOfPadding.toString();
+    }
+
+    private int numberOfTotalVerticalRowPadding() {
+        int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols();
+        return maxLengthOfSymbols/3;
+    }
+
+    private int numberOfUpperVerticalRowOfPadding() {
+        return this.numberOfTotalVerticalRowPadding()/2;
+    }
+
+    private int numberOfLowerVerticalRowOfPadding() {
+        return this.numberOfTotalVerticalRowPadding()/2 + 1;
     }
 
     private String drawingDividerUnit(String pattern) {
