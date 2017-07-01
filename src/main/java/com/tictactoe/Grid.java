@@ -114,7 +114,8 @@ public class Grid {
 
     private int numberOfTotalVerticalRowPadding() {
         int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols();
-        return maxLengthOfSymbols/3;
+        int WIDTH_TO_HEIGHT_RELATIVE_CONVERSION_UNIT = 3;
+        return maxLengthOfSymbols/WIDTH_TO_HEIGHT_RELATIVE_CONVERSION_UNIT;
     }
 
     private int numberOfUpperVerticalRowOfPadding() {
