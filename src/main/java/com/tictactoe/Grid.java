@@ -139,28 +139,46 @@ public class Grid {
         return unit;
     }
 
-    public void drawGridWithOnlyCellNumberId() {
-        System.out.println(getGridWithOnlyCellNumberId());
+    public void drawGridWithOnlyCellNumberId(int maxLengthOfId) {
+        System.out.println(getGridWithOnlyCellNumberId(maxLengthOfId));
     }
 
-    public String getGridWithOnlyCellNumberId() {
+    public String getGridWithOnlyCellNumberId(int maxLengthOfId) {
         StringBuilder grid = new StringBuilder ("");
         for (int cellIndex = 0; cellIndex <= this.boardSize - this.cellsPerRow; cellIndex += this.cellsPerRow){
-            grid.append(drawARowWithCellId(cellIndex));
+            grid.append(drawARowWithCellId(cellIndex, maxLengthOfId));
             if (cellIndex < this.boardSize - this.cellsPerRow) {
-                grid.append(drawRowDivider());
+                grid.append(drawRowDividerForIdNumberGrid(maxLengthOfId));
             }
         }
         grid.append("\n");
         return grid.toString();
     }
 
-    private String drawARowWithCellId(int startingCell) {
+    private String drawRowDividerForIdNumberGrid(int maxLengthOfId) {
+        String horizontalLine = "\n";
+        for (int i = 0; i < this.cellsPerRow; i++) {
+            horizontalLine += this.drawingDividerForIdNumberGrid(maxLengthOfId);
+            horizontalLine += " ";
+        }
+        horizontalLine += "\n";
+        return horizontalLine;
+    }
+
+    private String drawingDividerForIdNumberGrid(int maxLengthOfId) {
+        String unit = "";
+        int paddedSpaceCharacterOnBothEndsOfSymbols = 2;
+        for (int j = 0; j < maxLengthOfId + paddedSpaceCharacterOnBothEndsOfSymbols; j++) {
+            unit += "-";
+        }
+        return unit;
+    }
+
+    private String drawARowWithCellId(int startingCell, int maxLengthOfId) {
         StringBuilder row = new StringBuilder ("");
-        int maxLengthOfSymbols = this.findMaxStringLengthOfSymbols();
         for (int i = startingCell; i < startingCell + cellsPerRow; i++) {
             String lastCellCharacter = (i % cellsPerRow == this.cellsPerRow - CELL_OFFSET)? " " : " |";
-            row.append(" " + this.getCenteredSymbols(Integer.toString(i+CELL_OFFSET), maxLengthOfSymbols) + lastCellCharacter);
+            row.append(" " + this.getCenteredSymbols(Integer.toString(i+CELL_OFFSET), maxLengthOfId) + lastCellCharacter);
         }
         return row.toString();
     }

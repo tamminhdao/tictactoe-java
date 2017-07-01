@@ -79,7 +79,7 @@ public class GridTest {
 
     @Test
     public void canRenderGridWithOnlyCellNumberId() throws Exception {
-        String newGrid = tictactoe.getGridWithOnlyCellNumberId();
+        String newGrid = tictactoe.getGridWithOnlyCellNumberId(1);
 
 
         String expected =   " 1 | 2 | 3 " + "\n--- --- --- \n" +
