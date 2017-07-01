@@ -122,7 +122,10 @@ public class Grid {
     }
 
     private int numberOfLowerVerticalRowOfPadding() {
-        return this.numberOfTotalVerticalRowPadding()/2 + 1;
+        int halfOfTotal = this.numberOfTotalVerticalRowPadding()/2;
+        int oddOrEven = this.numberOfTotalVerticalRowPadding() % 2;
+        int numberOfLowerPaddingRows = (oddOrEven == 0)? halfOfTotal : (halfOfTotal+1);
+        return numberOfLowerPaddingRows;
     }
 
     private String drawingDividerUnit(String pattern) {
