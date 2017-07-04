@@ -35,6 +35,16 @@ public class GridTest {
         }
     }
 
+    private void populateBoardWithSymbolsOfDifferentStringLength(int numberOfCells) {
+        for (int i = 0; i < numberOfCells; i++) {
+            if (i % 2 == 0) {
+                board.insertSymbol("ABCDEF", i);
+            } else {
+                board.insertSymbol("$$$", i);
+            }
+        }
+    }
+
     @Test
     public void canRenderGridWithSymbolsInserted() throws Exception {
         populateBoard(4);
@@ -48,8 +58,28 @@ public class GridTest {
     }
 
     @Test
+    public void gridSizeAdjustToSymbolsLength() throws Exception {
+        populateBoardWithSymbolsOfDifferentStringLength(3);
+        String newGrid = tictactoe.getGrid();
+
+        String expected =   "        |        |        \n" +
+                            " ABCDEF |  $$$   | ABCDEF \n" +
+                            "        |        |        \n" +
+                            "-------- -------- -------- \n" +
+                            "        |        |        \n" +
+                            "        |        |        \n" +
+                            "        |        |        \n" +
+                            "-------- -------- -------- \n" +
+                            "        |        |        \n" +
+                            "        |        |        \n" +
+                            "        |        |        \n";
+
+        assertEquals (newGrid, expected);
+    }
+
+    @Test
     public void canRenderGridWithOnlyCellNumberId() throws Exception {
-        String newGrid = tictactoe.getGridWithOnlyCellNumberId();
+        String newGrid = tictactoe.getGridWithOnlyCellNumberId(1);
 
 
         String expected =   " 1 | 2 | 3 " + "\n--- --- --- \n" +

@@ -43,7 +43,7 @@ public class Game {
     }
 
     public void makeMove(Board board, HumanPlayer player) {
-        grid.drawGridWithOnlyCellNumberId();
+        grid.drawGridWithOnlyCellNumberId(1);
         int cellSelection = player.obtainValidCellSelection();
         int cellIndex = cellSelection - 1;
         board.insertSymbol(player.getSymbol(), cellIndex);
