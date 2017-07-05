@@ -11,7 +11,7 @@ public class UserInput {
 
     public String obtainInput() {
         String input = this.scanner.nextLine();
-        input = input.replaceAll("\\s+", "");
+        input = input.trim();
         return input;
     }
 }
