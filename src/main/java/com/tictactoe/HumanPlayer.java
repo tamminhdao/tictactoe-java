@@ -1,11 +1,10 @@
 package com.tictactoe;
 
-public class HumanPlayer {
+public class HumanPlayer implements Player{
     private String input;
     private UserInput receiver;
     private UserInputValidator validator;
     private String symbol;
-    private int cellWidth;
 
     public HumanPlayer(UserInput receiver, String symbol, UserInputValidator validator) {
        this.receiver = receiver;
