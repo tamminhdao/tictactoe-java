@@ -5,6 +5,6 @@ public interface Rules {
 
     boolean checkForWinner(Board board);
     boolean gameProgress(Board board);
-    boolean endsInADraw();
+    boolean endsInADraw(Board board);
     String getWinner();
 }

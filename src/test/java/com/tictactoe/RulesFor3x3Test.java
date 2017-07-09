@@ -134,7 +134,7 @@ public class RulesFor3x3Test {
         simulateAGameWhichEndsInATie();
         gameRulesFor3x3.gameProgress(tictactoe);
         gameRulesFor3x3.checkForWinner(tictactoe);
-        assertTrue(gameRulesFor3x3.endsInADraw());
+        assertTrue(gameRulesFor3x3.endsInADraw(tictactoe));
     }
 
     @Test

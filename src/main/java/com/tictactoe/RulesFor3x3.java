@@ -51,8 +51,8 @@ public class RulesFor3x3 implements Rules {
     }
 
     @Override
-    public boolean endsInADraw() {
-        if (!hasWinner && !gameInProgress) {
+    public boolean endsInADraw(Board board) {
+        if (!checkForWinner(board) && !gameProgress(board)) {
             this.isADraw = true;
         }
         return isADraw;
