@@ -52,7 +52,7 @@ public class MinimaxTest {
         Rules rules = new RulesFor3x3();
         Player smartAI = new UnbeatableComputerPlayer("X", board);
         Minimax minimax = new Minimax(rules, board, smartAI);
-        int score = minimax.getWinLoseOrTieScore();
+        int score = minimax.minimax();
         assertEquals(0, score);
     }
 
@@ -63,7 +63,7 @@ public class MinimaxTest {
         Rules rules = new RulesFor3x3();
         Player smartAI = new UnbeatableComputerPlayer("X", board);
         Minimax minimax = new Minimax(rules, board, smartAI);
-        int score = minimax.getWinLoseOrTieScore();
+        int score = minimax.minimax();
         assertEquals(10, score);
     }
 
@@ -74,7 +74,7 @@ public class MinimaxTest {
         Rules rules = new RulesFor3x3();
         Player smartAI = new UnbeatableComputerPlayer("X", board);
         Minimax minimax = new Minimax(rules, board, smartAI);
-        int score = minimax.getWinLoseOrTieScore();
+        int score = minimax.minimax();
         assertEquals(-10, score);
     }
 
@@ -85,7 +85,7 @@ public class MinimaxTest {
         Rules rules = new RulesFor3x3();
         Player smartAI = new UnbeatableComputerPlayer("X", board);
         Minimax minimax = new Minimax(rules, board, smartAI);
-        int score = minimax.getWinLoseOrTieScore();
+        int score = minimax.minimax();
         assertEquals(0, score);
     }
 }
