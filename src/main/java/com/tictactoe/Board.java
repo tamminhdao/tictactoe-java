@@ -59,6 +59,10 @@ public class Board {
         this.cells[index] = symbol;
     }
 
+    public void resetCell (int index) {
+        this.cells[index] = " ";
+    }
+
     public String turnArrayToString(String[] array) {
         return Arrays.toString(array);
     }
