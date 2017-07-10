@@ -4,14 +4,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class MinimaxTest {
-    private void populateBoard_GameInProgress(Board board) {
-        board.insertSymbol("O", 0);
-        board.insertSymbol("O", 7);
-        board.insertSymbol("O", 8);
-        board.insertSymbol("X", 2);
-        board.insertSymbol("X", 3);
-        board.insertSymbol("X", 6);
-    }
 
     private void populateBoard_X_Wins(Board board) {
         for (int i = 0; i < 7; i++) {
@@ -45,15 +37,10 @@ public class MinimaxTest {
         board.insertSymbol("X", 8);
     }
 
-    @Test
-    public void canReturnCorrectScoreOf0IfGameStillInProgress() throws Exception {
-        Board board = new Board();
-        populateBoard_GameInProgress(board);
-        Rules rules = new RulesFor3x3();
-        Player smartAI = new UnbeatableComputerPlayer("X", board);
-        Minimax minimax = new Minimax(rules, board, smartAI);
-        int score = minimax.minimax();
-        assertEquals(0, score);
+    private void populateBoard(Board board) {
+        board.insertSymbol("X", 0);
+        board.insertSymbol("X", 7);
+        board.insertSymbol("X", 8);
     }
 
     @Test
@@ -61,9 +48,8 @@ public class MinimaxTest {
         Board board = new Board();
         populateBoard_X_Wins(board);
         Rules rules = new RulesFor3x3();
-        Player smartAI = new UnbeatableComputerPlayer("X", board);
-        Minimax minimax = new Minimax(rules, board, smartAI);
-        int score = minimax.minimax();
+        Minimax minimax = new Minimax(rules, board, "X", "O");
+        int score = minimax.minimax(board, true);
         assertEquals(10, score);
     }
 
@@ -72,9 +58,8 @@ public class MinimaxTest {
         Board board = new Board();
         populateBoard_O_Wins(board);
         Rules rules = new RulesFor3x3();
-        Player smartAI = new UnbeatableComputerPlayer("X", board);
-        Minimax minimax = new Minimax(rules, board, smartAI);
-        int score = minimax.minimax();
+        Minimax minimax = new Minimax(rules, board, "X", "O");
+        int score = minimax.minimax(board, true);
         assertEquals(-10, score);
     }
 
@@ -83,9 +68,8 @@ public class MinimaxTest {
         Board board = new Board();
         populateBoard_GameEndsInATie(board);
         Rules rules = new RulesFor3x3();
-        Player smartAI = new UnbeatableComputerPlayer("X", board);
-        Minimax minimax = new Minimax(rules, board, smartAI);
-        int score = minimax.minimax();
+        Minimax minimax = new Minimax(rules, board, "X", "O");
+        int score = minimax.minimax(board, true);
         assertEquals(0, score);
     }
 }

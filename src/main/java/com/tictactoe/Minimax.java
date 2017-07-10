@@ -3,16 +3,18 @@ package com.tictactoe;
 public class Minimax {
     private Rules rules;
     private Board board;
-    private Player AIplayer;
+    private String selfSymbol;
+    private String opponentSymbol;
 
-    public Minimax(Rules rules, Board board, Player AIplayer) {
+    public Minimax(Rules rules, Board board, String selfSymbol, String opponentSymbol) {
         this.rules = rules;
         this.board = board;
-        this.AIplayer = AIplayer;
+        this.selfSymbol = selfSymbol;
+        this.opponentSymbol = opponentSymbol;
     }
 
-    private int getWinLoseScore() {
-        if (rules.getWinner().equals(AIplayer.getSymbol())) {
+    private int getWinOrLoseScore() {
+        if (rules.getWinner().equals(selfSymbol)) {
             return 10;
         }
         return -10;
@@ -26,15 +28,33 @@ public class Minimax {
         return this.rules.endsInADraw(this.board);
     }
 
-    //minimax function return the max score (from computer's pt of view) for a given board
-    public int minimax() {
-        int score = 0;
+    public int minimax(Board board, boolean maximizingPlayersTurn) {
         if (this.thereIsAWinner()) {
-            score = this.getWinLoseScore();
+            return this.getWinOrLoseScore();
         } else if (this.isADraw()) {
-            score = 0;
+            return 0;
+        } else {
+            if (maximizingPlayersTurn) {
+                for (int index = 0; index < board.getBoardSize(); index++) {
+                    if (isEmptyCell(board, index)) {
+                        board.insertSymbol(selfSymbol, index);
+                        return this.minimax(board, !maximizingPlayersTurn);
+                    }
+                }
+            }
+            else {
+                for (int index = 0; index < board.getBoardSize(); index++) {
+                    if (isEmptyCell(board, index)) {
+                        board.insertSymbol(opponentSymbol, index);
+                        return this.minimax(board, !maximizingPlayersTurn);
+                    }
+                }
+            }
         }
-        return score;
+        return 10000;
+    }
+
+    private boolean isEmptyCell(Board board, int index) {
+        return board.getSymbol(index).equals(" ");
     }
 }
-
