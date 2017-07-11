@@ -10,8 +10,9 @@ public class Program {
     private GameSettings menu = new GameSettings(receiver, validator);
     private GamePreference preference = menu.collectGamePreference();
 
-    private HumanPlayer player1 = new HumanPlayer(receiver, preference.player1Symbol, validator);
-    private HumanPlayer player2 = new HumanPlayer(receiver, preference.player2Symbol, validator);
+    //private Player player1 = new UnbeatableComputerPlayer(board, preference.player1Symbol, preference.player2Symbol);
+    private Player player1 = new HumanPlayer(receiver, preference.player1Symbol, validator);
+    private Player player2 = new UnbeatableComputerPlayer(board, preference.player2Symbol, preference.player1Symbol);
 
     private Game tictactoe = new Game(player1, player2, board);
 

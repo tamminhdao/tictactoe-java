@@ -58,7 +58,7 @@ public class MinimaxTest {
     }
 
     @Test
-    public void canReturnWinOrLoseScoreWhenXWins() throws Exception {
+    public void canReturnWinOrLoseScoreWhenTheAiItselfWins() throws Exception {
         Board board = new Board();
         populateBoard_X_Wins(board);
         Rules rules = new RulesFor3x3();
@@ -68,7 +68,7 @@ public class MinimaxTest {
     }
 
     @Test
-    public void canReturnWinOrLoseScoreWhenOWins() throws Exception {
+    public void canReturnWinOrLoseScoreWhenOpponentWins() throws Exception {
         Board board = new Board();
         populateBoard_O_Wins(board);
         Rules rules = new RulesFor3x3();

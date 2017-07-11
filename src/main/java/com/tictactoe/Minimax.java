@@ -40,12 +40,14 @@ public class Minimax {
             ArrayList<Integer> scores = new ArrayList<>();
             if (maximizingPlayersTurn) {
                 calculateMinimaxScore(board, maximizingPlayersTurn, scores, this.selfSymbol);
-                System.out.println("Maximizer: " + scores);
+//                System.out.println("Maximizer scores: " + scores);
+//                System.out.println(Collections.max(scores));
                 return Collections.max(scores);
             }
             else {
                 calculateMinimaxScore(board, maximizingPlayersTurn, scores, this.opponentSymbol);
-                System.out.println("Minimizer: " + scores);
+//                System.out.println("Minimizer scores: " + scores);
+//                System.out.println(Collections.min(scores));
                 return Collections.min(scores);
             }
         }
@@ -55,6 +57,7 @@ public class Minimax {
         for (int index = 0; index < board.getBoardSize(); index++) {
             if (isEmptyCell(board, index)) {
                 board.insertSymbol(symbol, index);
+                board.printBoard();
                 int score = this.minimax(board, !maximizingPlayersTurn);
                 scores.add(score);
                 board.resetCell(index);

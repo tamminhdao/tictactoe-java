@@ -4,10 +4,10 @@ public class Game {
     private Rules rules = new RulesFor3x3();
     private Board board;
     private Grid grid;
-    private HumanPlayer player1;
-    private HumanPlayer player2;
+    private Player player1;
+    private Player player2;
 
-    public Game(HumanPlayer player1, HumanPlayer player2, Board board) {
+    public Game(Player player1, Player player2, Board board) {
         this.board = board;
         this.grid = new Grid(board);
         this.player1 = player1;
@@ -42,10 +42,16 @@ public class Game {
         return this.rules.gameProgress(this.board);
     }
 
-    public void makeMove(Board board, HumanPlayer player) {
+    private void notifyPlayersTurn(Player player) {
+        System.out.println("Player " + player.getSymbol() + "'s turn. \n");
+    }
+
+    public void makeMove(Board board, Player player) {
         grid.drawGridWithOnlyCellNumberId(1);
+        int CELL_OFFSET = 1;
+        this.notifyPlayersTurn(player);
         int cellSelection = player.obtainValidCellSelection();
-        int cellIndex = cellSelection - 1;
+        int cellIndex = cellSelection - CELL_OFFSET;
         board.insertSymbol(player.getSymbol(), cellIndex);
     }
 
