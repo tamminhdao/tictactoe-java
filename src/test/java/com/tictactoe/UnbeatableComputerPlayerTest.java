@@ -32,6 +32,19 @@ public class UnbeatableComputerPlayerTest {
     }
 
     @Test
+    public void preventOpponentFromCreatingAFork() throws Exception {
+        Board board = new Board();
+        int CELL_OFFSET = 1;
+        board.insertSymbol("O", 3);
+        board.insertSymbol("O", 8);
+        board.insertSymbol("AI", 4);
+        UnbeatableComputerPlayer smartAI = new UnbeatableComputerPlayer(board, "AI", "O");
+        int cell = smartAI.obtainValidCellSelection();
+        int cellIndex = cell - CELL_OFFSET;
+        assertEquals(6, cellIndex);
+    }
+
+    @Test
     public void takeCenterCell() throws Exception {
         Board board = new Board();
         int CELL_OFFSET = 1;
