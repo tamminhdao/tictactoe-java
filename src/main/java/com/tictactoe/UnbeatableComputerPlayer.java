@@ -9,14 +9,11 @@ public class UnbeatableComputerPlayer implements Player {
     private Board board;
     private String selfSymbol;
     private String opponentSymbol;
-    private Rules rules = new RulesFor3x3();
-    private Minimax algorithm;
 
     public UnbeatableComputerPlayer(Board board, String selfSymbol, String opponentSymbol) {
         this.selfSymbol = selfSymbol;
         this.opponentSymbol = opponentSymbol;
         this.board = board;
-        this.algorithm = new Minimax(rules, board, this.selfSymbol, this.opponentSymbol);
     }
 
     @Override
@@ -31,6 +28,8 @@ public class UnbeatableComputerPlayer implements Player {
         for (int index = 0; index < board.getBoardSize(); index++) {
             if (isEmptyCell(board, index)) {
                 board.insertSymbol(selfSymbol, index);
+                Rules rules = new RulesFor3x3();
+                Minimax algorithm = new Minimax(rules, board, this.selfSymbol, this.opponentSymbol);
                 int score = algorithm.minimax(board, false);
                 scoreAndCell.put(score, index);
                 board.resetCell(index);

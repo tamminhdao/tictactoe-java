@@ -41,7 +41,6 @@ public class RulesFor3x3 implements Rules {
                 this.hasWinner = false;
             }
         }
-        board.printBoard();
         return this.hasWinner;
     }
 
@@ -56,7 +55,6 @@ public class RulesFor3x3 implements Rules {
         if (!checkForWinner(board) && !gameProgress(board)) {
             this.isADraw = true;
         }
-        board.printBoard();
         return isADraw;
     }
 
