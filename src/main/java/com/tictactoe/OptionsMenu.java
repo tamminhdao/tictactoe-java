@@ -14,11 +14,12 @@ public class OptionsMenu {
     }
 
     private void listAllOptions() {
-        System.out.println("Selection one of the game options by picking a number [1-4]");
+        System.out.println("Types of game:");
         System.out.println("1. Human Versus Human");
         System.out.println("2. Human Versus Computer");
         System.out.println("3. Computer Versus Human");
         System.out.println("4. Computer Versus Computer");
+        System.out.println("Select one of the game types by picking a corresponding number [1-4]");
     }
 
     private void humanVsHuman() {
@@ -59,9 +60,13 @@ public class OptionsMenu {
         int gameType = Integer.parseInt(input);
         switch (gameType) {
             case 1: humanVsHuman();
+            break;
             case 2: humanVsComputer();
+            break;
             case 3: computerVsHuman();
+            break;
             case 4: computerVsComputer();
+            break;
         }
     }
 }
