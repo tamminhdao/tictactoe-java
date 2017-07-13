@@ -2,7 +2,7 @@ package com.tictactoe;
 
 public class main {
     public static void main (String arg[]) {
-        Program program = new Program();
-        program.run();
+        OptionsMenu startMenu = new OptionsMenu();
+        startMenu.open();
     }
 }
