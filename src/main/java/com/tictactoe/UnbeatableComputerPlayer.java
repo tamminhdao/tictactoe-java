@@ -28,6 +28,8 @@ public class UnbeatableComputerPlayer implements Player {
         for (int index = 0; index < board.getBoardSize(); index++) {
             if (isEmptyCell(board, index)) {
                 board.insertSymbol(selfSymbol, index);
+                System.out.println("Top level simulation: ");
+                board.printBoard();
                 Rules rules = new RulesFor3x3();
                 Minimax algorithm = new Minimax(rules, board, this.selfSymbol, this.opponentSymbol);
                 int score = algorithm.minimax(board, false);

@@ -3,9 +3,6 @@ package com.tictactoe;
 
 public class RulesFor3x3 implements Rules {
     private boolean gameInProgress = true;
-    private boolean hasWinner = false;
-    private boolean isADraw = false;
-    private String winner;
 
     private int[][] winningCombos;
 
@@ -17,7 +14,7 @@ public class RulesFor3x3 implements Rules {
     public boolean gameProgress(Board board) {
         if (board.countEmptyCells() == 0) {
             this.gameInProgress = false;
-        } else if (this.checkForWinner(board)) {
+        } else if (!checkForWinner(board).equals("")) {
             this.gameInProgress = false;
         }
         return this.gameInProgress;
@@ -29,19 +26,14 @@ public class RulesFor3x3 implements Rules {
         this.winningCombos = new int[][] {{0,1,2}, {3,4,5}, {6,7,8}, {0,3,6}, {1,4,7}, {2,5,8}, {0,4,8}, {2,4,6}};
     }
 
-
     @Override
-    public boolean checkForWinner(Board board) {
+    public String checkForWinner(Board board) {
         for (int index = 0; index < this.winningCombos.length; index++) {
             if (threeInARow(board, index)) {
-                this.hasWinner = true;
-                this.winner = board.getSymbol(this.winningCombos[index][0]);
-                break;
-            } else {
-                this.hasWinner = false;
+                return board.getSymbol(this.winningCombos[index][0]);
             }
         }
-        return this.hasWinner;
+        return "";
     }
 
     private boolean threeInARow(Board board, int index) {
@@ -52,14 +44,6 @@ public class RulesFor3x3 implements Rules {
 
     @Override
     public boolean endsInADraw(Board board) {
-        if (!checkForWinner(board) && !gameProgress(board)) {
-            this.isADraw = true;
-        }
-        return isADraw;
-    }
-
-    @Override
-    public String getWinner() {
-        return this.winner;
+        return (checkForWinner(board).equals("") && !gameProgress(board));
     }
 }

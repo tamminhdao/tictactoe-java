@@ -17,14 +17,15 @@ public class Minimax {
     }
 
     private int getWinOrLoseScore() {
-        if (rules.getWinner().equals(selfSymbol)) {
+        if (rules.checkForWinner(board).equals(selfSymbol)) {
             return 10;
         }
         return -10;
     }
 
     private boolean thereIsAWinner() {
-        return this.rules.checkForWinner(this.board);
+        String winner = this.rules.checkForWinner(this.board);
+        return !winner.equals("");
     }
 
     private boolean isADraw() {
@@ -54,6 +55,9 @@ public class Minimax {
             if (isEmptyCell(board, index)) {
                 board.insertSymbol(symbol, index);
                 int score = this.minimax(board, !maximizingPlayersTurn);
+                System.out.println(symbol);
+                board.printBoard();
+                System.out.println(scores);
                 scores.add(score);
                 board.resetCell(index);
             }

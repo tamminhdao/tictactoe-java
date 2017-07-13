@@ -31,8 +31,9 @@ public class Game {
     }
 
     private void getResult() {
-        if (this.rules.checkForWinner(board)) {
-            this.announceWinner(this.rules.getWinner());
+        String winner = this.rules.checkForWinner(board);
+        if(!winner.equals("")){
+            this.announceWinner(winner);
         } else {
             this.announceTie();
         }
