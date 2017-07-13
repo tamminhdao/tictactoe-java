@@ -8,6 +8,9 @@ public class OptionsMenu {
     private Board board = new Board();
     private UserInputValidator validator = new UserInputValidator(board);
     private GameSettings menu = new GameSettings(receiver, validator);
+    private Player player1;
+    private Player player2;
+
 
     private String getInput() {
         return this.receiver.obtainInput();
@@ -45,40 +48,32 @@ public class OptionsMenu {
     private void humanVsHuman() {
         System.out.println("Starting a human vs. human game!");
         GamePreference preference = menu.collectGamePreference();
-        Player player1 = new HumanPlayer (receiver, preference.player1Symbol, validator);
-        Player player2 = new HumanPlayer (receiver, preference.player2Symbol, validator);
-        Game tictactoe = new Game(player1, player2, board);
-        tictactoe.play();
+        this.player1 = new HumanPlayer (receiver, preference.player1Symbol, validator);
+        this.player2 = new HumanPlayer (receiver, preference.player2Symbol, validator);
     }
 
     private void humanVsComputer() {
         System.out.println("Starting a human vs. computer game!");
         GamePreference preference = menu.collectGamePreference();
-        Player player1 = new HumanPlayer (receiver, preference.player1Symbol, validator);
-        Player player2 = new EasyComputerPlayer (preference.player2Symbol, board);
-        Game tictactoe = new Game(player1, player2, board);
-        tictactoe.play();
+        this.player1 = new HumanPlayer (receiver, preference.player1Symbol, validator);
+        this.player2 = new EasyComputerPlayer (preference.player2Symbol, board);
     }
 
     private void computerVsHuman() {
         System.out.println("Starting a computer vs. human game!");
         GamePreference preference = menu.collectGamePreference();
-        Player player1 = new EasyComputerPlayer (preference.player1Symbol, board);
-        Player player2 = new HumanPlayer (receiver, preference.player2Symbol, validator);
-        Game tictactoe = new Game(player1, player2, board);
-        tictactoe.play();
+        this.player1 = new EasyComputerPlayer (preference.player1Symbol, board);
+        this.player2 = new HumanPlayer (receiver, preference.player2Symbol, validator);
     }
 
     private void computerVsComputer() {
         System.out.println("Starting a computer vs. computer game!");
         GamePreference preference = menu.collectGamePreference();
-        Player player1 = new EasyComputerPlayer (preference.player1Symbol, board);
-        Player player2 = new EasyComputerPlayer (preference.player2Symbol, board);
-        Game tictactoe = new Game(player1, player2, board);
-        tictactoe.play();
+        this.player1 = new EasyComputerPlayer (preference.player1Symbol, board);
+        this.player2 = new EasyComputerPlayer (preference.player2Symbol, board);
     }
 
-    public void open() {
+    private void setPlayers() {
         listAllOptions();
         int gameType = obtainValidGameTypeSelection();
         switch (gameType) {
@@ -91,5 +86,11 @@ public class OptionsMenu {
             case 4: computerVsComputer();
             break;
         }
+    }
+
+    public void open() {
+        setPlayers();
+        Game tictactoe = new Game(this.player1, this.player2, board);
+        tictactoe.play();
     }
 }
