@@ -1,16 +1,25 @@
 package com.tictactoe;
 
-public class Game {
+public class Game implements GameInterface {
     private Rules rules = new RulesFor3x3();
     private Board board;
     private Grid grid;
     private Player player1;
     private Player player2;
 
-    public Game(Player player1, Player player2, Board board) {
+    @Override
+    public void addBoard(Board board){
         this.board = board;
         this.grid = new Grid(board);
+    }
+
+    @Override
+    public void addPlayerOne(Player player1) {
         this.player1 = player1;
+    }
+
+    @Override
+    public void addPlayerTwo(Player player2) {
         this.player2 = player2;
     }
 
@@ -55,6 +64,7 @@ public class Game {
         board.insertSymbol(player.getSymbol(), cellIndex);
     }
 
+    @Override
     public void play() {
         this.gameIntro();
         while (gameInPlay()) {

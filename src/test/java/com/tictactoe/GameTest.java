@@ -10,7 +10,10 @@ public class GameTest {
         Board board = new Board();
         Player player1 = new EasyComputerPlayer("X", board);
         Player player2 = new EasyComputerPlayer("O", board);
-        Game game = new Game(player1, player2, board);
+        Game game = new Game();
+        game.addBoard(board);
+        game.addPlayerOne(player1);
+        game.addPlayerTwo(player2);
         game.play();
         String[] boardCells = board.getSymbol();
         String[] expected = {"X","O","X","O","X","O","X"," ", " "};
