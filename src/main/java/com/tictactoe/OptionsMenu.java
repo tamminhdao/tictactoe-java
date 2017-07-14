@@ -10,7 +10,11 @@ public class OptionsMenu {
     private GameSettings menu = new GameSettings(receiver, validator);
     private Player player1;
     private Player player2;
+    private GameInterface game;
 
+    public OptionsMenu(GameInterface game) {
+        this.game = game;
+    }
 
     private String getInput() {
         return this.receiver.obtainInput();
@@ -88,9 +92,15 @@ public class OptionsMenu {
         }
     }
 
+    private void setUpNewGame() {
+        game.addBoard(board);
+        game.addPlayerOne(this.player1);
+        game.addPlayerTwo(this.player2);
+    }
+
     public void open() {
         setPlayers();
-        Game tictactoe = new Game(this.player1, this.player2, board);
-        tictactoe.play();
+        setUpNewGame();
+        game.play();
     }
 }
