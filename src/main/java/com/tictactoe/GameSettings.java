@@ -4,7 +4,7 @@ public class GameSettings {
     private UserInput receiver;
     private UserInputValidator validator;
     private String input;
-    public GamePreference gamePreference = new GamePreference();
+    private GamePreference gamePreference = new GamePreference();
 
     public GameSettings(UserInput receiver, UserInputValidator validator) {
         this.receiver = receiver;
