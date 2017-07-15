@@ -4,9 +4,15 @@ public class EasyComputerPlayer implements Player {
     Board board;
     String symbol;
 
-    public EasyComputerPlayer(String symbol, Board board) {
-        this.symbol = symbol;
+    public EasyComputerPlayer() {
+    }
+
+    public void addBoard(Board board) {
         this.board = board;
+    }
+
+    public void addSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     @Override

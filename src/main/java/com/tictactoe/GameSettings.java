@@ -43,4 +43,18 @@ public class GameSettings {
         }
         return playerSymbol;
     }
+
+    private Player pickPlayerType (String playerId) {
+        System.out.println("Select a type for player " + playerId + " by pressing [H] or [C]");
+        String playerType = this.getInput();
+        if (playerType.equals("C")) {
+            Player player = new EasyComputerPlayer();
+            return player;
+        } else if (playerType.equals("H")) {
+            Player player = new HumanPlayer (receiver, validator);
+            return player;
+        } else {
+            return pickPlayerType(playerId);
+        }
+    }
 }
