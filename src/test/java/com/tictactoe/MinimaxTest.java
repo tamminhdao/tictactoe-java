@@ -43,7 +43,7 @@ public class MinimaxTest {
         populateBoard_X_Wins(board);
         Rules rules = new RulesFor3x3();
         Minimax minimax = new Minimax(rules, board, "X", "O");
-        int score = minimax.minimax(board, true);
+        int score = minimax.minimax(board, true, 0);
         assertEquals(10, score);
     }
 
@@ -53,7 +53,7 @@ public class MinimaxTest {
         populateBoard_O_Wins(board);
         Rules rules = new RulesFor3x3();
         Minimax minimax = new Minimax(rules, board, "X", "O");
-        int score = minimax.minimax(board, true);
+        int score = minimax.minimax(board, true, 0);
         assertEquals(-10, score);
     }
 
@@ -63,7 +63,7 @@ public class MinimaxTest {
         populateBoard_GameEndsInATie(board);
         Rules rules = new RulesFor3x3();
         Minimax minimax = new Minimax(rules, board, "X", "O");
-        int score = minimax.minimax(board, true);
+        int score = minimax.minimax(board, true, 0);
         assertEquals(0, score);
     }
 }

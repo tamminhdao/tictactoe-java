@@ -1,9 +1,6 @@
 package com.tictactoe;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Set;
+import java.util.*;
 
 public class UnbeatableComputerPlayer implements Player {
     private Board board;
@@ -32,13 +29,17 @@ public class UnbeatableComputerPlayer implements Player {
                 board.printBoard();
                 Rules rules = new RulesFor3x3();
                 Minimax algorithm = new Minimax(rules, board, this.selfSymbol, this.opponentSymbol);
-                int score = algorithm.minimax(board, false);
+                int score = algorithm.minimax(board, false, 0);
                 scoreAndCell.put(score, index);
+                System.out.println("Finish simulation");
+                System.out.println("Current score " + score);
+                System.out.println("Current cell " + index);
                 board.resetCell(index);
             }
         }
         Set allKeys = scoreAndCell.keySet();
         ArrayList<Integer> listOfKeys = new ArrayList<>(allKeys);
+        System.out.println("All scores " + Arrays.toString(listOfKeys.toArray()));
         int maxScore = Collections.max(listOfKeys);
         int cell = scoreAndCell.get(maxScore);
         return cell + CELL_OFFSET;

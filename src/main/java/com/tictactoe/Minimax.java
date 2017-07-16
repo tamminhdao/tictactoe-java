@@ -16,7 +16,7 @@ public class Minimax {
         this.opponentSymbol = opponentSymbol;
     }
 
-    private int getWinOrLoseScore() {
+    private int getWinOrLoseScore(int depth) {
         if (rules.checkForWinner(board).equals(selfSymbol)) {
             return 10;
         }
@@ -32,34 +32,49 @@ public class Minimax {
         return this.rules.endsInADraw(this.board);
     }
 
-    public int minimax(Board board, boolean maximizingPlayersTurn) {
+    public int minimax(Board board, boolean maximizingPlayersTurn, int depth) {
+        depth += 1;
+        System.out.println("Depth " + depth);
+
         if (this.thereIsAWinner()) {
-            return this.getWinOrLoseScore();
+            System.out.println("There is a win");
+            System.out.println("Depth " + depth);
+            board.printBoard();
+            System.out.println(this.getWinOrLoseScore(depth));
+            return this.getWinOrLoseScore(depth);
         } else if (this.isADraw()) {
+            System.out.println("There is a draw");
+            System.out.println("Depth " + depth);
+            board.printBoard();
             return 0;
         } else {
             ArrayList<Integer> scores = new ArrayList<>();
             if (maximizingPlayersTurn) {
-                calculateMinimaxScore(board, maximizingPlayersTurn, scores, this.selfSymbol);
+                System.out.println("Simulating AI's move");
+                for (int index = 0; index < board.getBoardSize(); index++) {
+                    if (isEmptyCell(board, index)) {
+                        board.insertSymbol(this.selfSymbol, index);
+                            board.printBoard();
+                        int score = this.minimax(board, !maximizingPlayersTurn, depth);
+                        scores.add(score);
+                        board.resetCell(index);
+                            System.out.println(scores + "after AI's turn \n");
+                    }
+                }
                 return Collections.max(scores);
-            }
-            else {
-                calculateMinimaxScore(board, maximizingPlayersTurn, scores, this.opponentSymbol);
+            } else {
+                System.out.println("Simulating human's move");
+                for (int index = 0; index < board.getBoardSize(); index++) {
+                    if (isEmptyCell(board, index)) {
+                        board.insertSymbol(this.opponentSymbol, index);
+                            board.printBoard();
+                        int score = this.minimax(board, !maximizingPlayersTurn, depth);
+                        scores.add(score);
+                        board.resetCell(index);
+                            System.out.println(scores + "after human's turn \n");
+                    }
+                }
                 return Collections.min(scores);
-            }
-        }
-    }
-
-    private void calculateMinimaxScore(Board board, boolean maximizingPlayersTurn, ArrayList<Integer> scores, String symbol) {
-        for (int index = 0; index < board.getBoardSize(); index++) {
-            if (isEmptyCell(board, index)) {
-                board.insertSymbol(symbol, index);
-                int score = this.minimax(board, !maximizingPlayersTurn);
-                System.out.println(symbol);
-                board.printBoard();
-                System.out.println(scores);
-                scores.add(score);
-                board.resetCell(index);
             }
         }
     }

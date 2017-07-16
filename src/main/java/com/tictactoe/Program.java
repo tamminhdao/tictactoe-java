@@ -13,6 +13,7 @@ public class Program {
     //private Player player1 = new UnbeatableComputerPlayer(board, preference.player1Symbol, preference.player2Symbol);
     private Player player1 = new HumanPlayer(receiver, preference.player1Symbol, validator);
     private Player player2 = new UnbeatableComputerPlayer(board, preference.player2Symbol, preference.player1Symbol);
+    //private Player player2 = new HumanPlayer(receiver, preference.player2Symbol, validator);
 
     private Game tictactoe = new Game(player1, player2, board);
 
