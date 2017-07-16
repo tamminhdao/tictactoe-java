@@ -12,6 +12,8 @@ public class GameSettings {
     }
 
     public GamePreference collectGamePreference(){
+        gamePreference.player1 = pickPlayerType("Player 1");
+        gamePreference.player2 = pickPlayerType("Player 2");
         gamePreference.player1Symbol = chooseSymbol("Player 1");
         gamePreference.player2Symbol = chooseSymbol("Player 2");
         boolean uniqueSymbols = validator.playersHaveUniqueSymbols(gamePreference.player1Symbol, gamePreference.player2Symbol);
@@ -45,7 +47,7 @@ public class GameSettings {
     }
 
     private Player pickPlayerType (String playerId) {
-        System.out.println("Select a type for player " + playerId + " by pressing [H] or [C]");
+        System.out.println("Select the type of " + playerId + " by pressing [H] for a human player or [C] for a computer player");
         String playerType = this.getInput();
         if (playerType.equals("C")) {
             Player player = new EasyComputerPlayer();
