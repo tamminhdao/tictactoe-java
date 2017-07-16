@@ -35,13 +35,15 @@ public class UnbeatableComputerPlayerTest {
     public void preventOpponentFromCreatingAFork() throws Exception {
         Board board = new Board();
         int CELL_OFFSET = 1;
+        board.insertSymbol("O", 1);
         board.insertSymbol("O", 3);
         board.insertSymbol("O", 8);
         board.insertSymbol("AI", 4);
+        board.insertSymbol("AI", 7);
         UnbeatableComputerPlayer smartAI = new UnbeatableComputerPlayer(board, "AI", "O");
         int cell = smartAI.obtainValidCellSelection();
         int cellIndex = cell - CELL_OFFSET;
-        assertEquals(6, cellIndex);
+        assertEquals(2, cellIndex);
     }
 
     @Test
