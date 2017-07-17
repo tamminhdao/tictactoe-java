@@ -7,7 +7,7 @@ public class Program {
     private UserInput receiver = new UserInput(scanner);
     private Board board = new Board();
     private UserInputValidator validator = new UserInputValidator(board);
-    private GameSettings menu = new GameSettings(receiver, validator);
+    private GameSettings menu = new GameSettings(receiver, validator, board);
     private GamePreference preference = menu.collectGamePreference();
 
     private Player player1 = preference.player1;
@@ -22,10 +22,8 @@ public class Program {
         tictactoe.addBoard(board);
         tictactoe.addPlayerOne(player1);
         player1.addSymbol(player1Symbol);
-        player1.addBoard(board);
         tictactoe.addPlayerTwo(player2);
         player2.addSymbol(player2Symbol);
-        player2.addBoard(board);
         tictactoe.play();
     }
 }

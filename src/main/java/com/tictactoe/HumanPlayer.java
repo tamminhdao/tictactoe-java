@@ -20,8 +20,6 @@ public class HumanPlayer implements Player {
         this.symbol = symbol;
     }
 
-    public void addBoard(Board board) {}
-
     @Override
     public String getSymbol() {
         return this.symbol;

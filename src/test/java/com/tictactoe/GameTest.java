@@ -8,11 +8,9 @@ public class GameTest {
     @Test
     public void playAFullGameWithTwoEasyComputerPlayers() throws Exception {
         Board board = new Board();
-        Player player1 = new EasyComputerPlayer();
-        Player player2 = new EasyComputerPlayer();
-        player1.addBoard(board);
+        Player player1 = new EasyComputerPlayer(board);
+        Player player2 = new EasyComputerPlayer(board);
         player1.addSymbol("X");
-        player2.addBoard(board);
         player2.addSymbol("O");
         Game game = new Game();
         game.addBoard(board);

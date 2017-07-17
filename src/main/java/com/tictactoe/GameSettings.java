@@ -3,12 +3,13 @@ package com.tictactoe;
 public class GameSettings {
     private UserInput receiver;
     private UserInputValidator validator;
-    private String input;
+    private Board board;
     private GamePreference gamePreference = new GamePreference();
 
-    public GameSettings(UserInput receiver, UserInputValidator validator) {
+    public GameSettings(UserInput receiver, UserInputValidator validator, Board board) {
         this.receiver = receiver;
         this.validator = validator;
+        this.board = board;
     }
 
     public GamePreference collectGamePreference(){
@@ -30,8 +31,8 @@ public class GameSettings {
     }
 
     private String getInput() {
-        this.input = this.receiver.obtainInput();
-        return this.input;
+        String input = this.receiver.obtainInput();
+        return input;
     }
 
     public String chooseSymbol(String playerId) {
@@ -50,7 +51,7 @@ public class GameSettings {
         System.out.println("Select the type of " + playerId + " by pressing [H] for a human player or [C] for a computer player");
         String playerType = this.getInput();
         if (playerType.equals("C")) {
-            Player player = new EasyComputerPlayer();
+            Player player = new EasyComputerPlayer(board);
             return player;
         } else if (playerType.equals("H")) {
             Player player = new HumanPlayer (receiver, validator);

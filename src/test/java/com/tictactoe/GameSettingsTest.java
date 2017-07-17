@@ -20,7 +20,7 @@ public class GameSettingsTest {
         Board board = new Board();
         UserInputValidator validator = new UserInputValidator(board);
         UserInput receiver = simulateUserInput("abc");
-        GameSettings settings = new GameSettings(receiver, validator);
+        GameSettings settings = new GameSettings(receiver, validator, board);
         String testPlayersSymbol = settings.chooseSymbol("Test Player");
         assertEquals("abc", testPlayersSymbol);
     }
@@ -30,9 +30,9 @@ public class GameSettingsTest {
         Board board = new Board();
         UserInputValidator validator = new UserInputValidator(board);
         UserInput receiver = simulateUserInput("C");
-        GameSettings settings = new GameSettings(receiver, validator);
+        GameSettings settings = new GameSettings(receiver, validator, board);
         Player testPlayers = settings.pickPlayerType("Test Player");
-        Player easyLevelAI = new EasyComputerPlayer();
+        Player easyLevelAI = new EasyComputerPlayer(board);
         assertEquals(testPlayers.getClass(), easyLevelAI.getClass());
     }
 }

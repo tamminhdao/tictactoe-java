@@ -23,8 +23,7 @@ public class EasyComputerPlayerTest {
     @Test
     public void easyComputerPlayerTakesFirstCellOnEmptyBoard() throws Exception {
         Board board = new Board();
-        EasyComputerPlayer simpleAI = new EasyComputerPlayer();
-        simpleAI.addBoard(board);
+        EasyComputerPlayer simpleAI = new EasyComputerPlayer(board);
         simpleAI.addSymbol("X");
         int cell = simpleAI.obtainValidCellSelection();
         assertEquals(1, cell);
@@ -34,8 +33,7 @@ public class EasyComputerPlayerTest {
     public void easyComputerPlayerTakesFirstAvailableSpotOnBoard_Case1() throws Exception {
         Board board = new Board();
         this.populateBoard(board,4);
-        EasyComputerPlayer simpleAI = new EasyComputerPlayer();
-        simpleAI.addBoard(board);
+        EasyComputerPlayer simpleAI = new EasyComputerPlayer(board);
         simpleAI.addSymbol("X");
         int cell = simpleAI.obtainValidCellSelection();
         assertEquals(5, cell);
@@ -45,8 +43,7 @@ public class EasyComputerPlayerTest {
     public void easyComputerPlayerTakesFirstAvailableSpotOnBoard_Case2() throws Exception {
         Board board = new Board();
         this.populateAnotherBoard(board);
-        EasyComputerPlayer simpleAI = new EasyComputerPlayer();
-        simpleAI.addBoard(board);
+        EasyComputerPlayer simpleAI = new EasyComputerPlayer(board);
         simpleAI.addSymbol("X");
         int cell = simpleAI.obtainValidCellSelection();
         assertEquals(2, cell);
@@ -56,8 +53,7 @@ public class EasyComputerPlayerTest {
     public void testFullBoard() throws Exception {
         Board board = new Board();
         this.populateBoard(board,9);
-        EasyComputerPlayer simpleAI = new EasyComputerPlayer();
-        simpleAI.addBoard(board);
+        EasyComputerPlayer simpleAI = new EasyComputerPlayer(board);
         simpleAI.addSymbol("X");
         int cell = simpleAI.obtainValidCellSelection();
         assertEquals(10, cell);
