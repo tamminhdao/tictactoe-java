@@ -86,13 +86,6 @@ public class RulesFor3x3Test {
     @Test
     public void gameTiesWhenThereIsNoWinAndNoMoreEmptyCells() throws Exception {
         simulateAGameWhichEndsInATie();
-        gameRulesFor3x3.checkForWinner(tictactoe);
-        assertTrue(gameRulesFor3x3.endsInADraw(tictactoe));
-    }
-
-    @Test
-    public void gameEndsWhenThereIsATie() throws Exception {
-        simulateAGameWhichEndsInATie();
         boolean draw = gameRulesFor3x3.endsInADraw(tictactoe);
         assertTrue(draw);
     }

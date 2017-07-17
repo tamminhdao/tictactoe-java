@@ -34,6 +34,6 @@ public class RulesFor3x3 implements Rules {
 
     @Override
     public boolean endsInADraw(Board board) {
-        return (!checkForWinner(board).equals("") && board.countEmptyCells() == 0);
+        return (checkForWinner(board).equals("") && board.countEmptyCells() == 0);
     }
 }

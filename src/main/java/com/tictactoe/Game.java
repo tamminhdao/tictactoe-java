@@ -37,15 +37,15 @@ public class Game {
     }
 
     private void getResult() {
-        if (this.rules.checkForWinner(board)) {
-            this.announceWinner(this.rules.getWinner());
+        if (!this.rules.checkForWinner(board).equals("")) {
+            this.announceWinner(this.rules.checkForWinner(board));
         } else {
             this.announceTie();
         }
     }
 
     public boolean gameInPlay() {
-        return this.rules.gameProgress(this.board);
+        return (!this.rules.endsInADraw(this.board) && this.rules.checkForWinner(board).equals(""));
     }
 
     private void notifyPlayersTurn(Player player) {

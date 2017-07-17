@@ -25,11 +25,12 @@ public class Program {
         tictactoe.addPlayerTwo(player2);
         player2.addSymbol(player2Symbol);
         tictactoe.play();
+        this.askToPlayAgain();
     }
 
     public void askToPlayAgain() {
         boolean rematch = menu.askPlayerToRematch();
-        if (rematch == true) {
+        if (rematch) {
             board.populateBoardWithEmptyCells();
             this.run();
         }
