@@ -12,8 +12,7 @@ public class GameSettingsTest {
     private UserInput simulateUserInput (String input) {
         InputStream stream = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8));
         Scanner scanner = new Scanner(stream);
-        UserInput receiver = new UserInput(scanner);
-        return receiver;
+        return new UserInput(scanner);
     }
 
     @Test
