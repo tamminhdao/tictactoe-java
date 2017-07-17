@@ -60,4 +60,17 @@ public class GameSettings {
             return pickPlayerType(playerId);
         }
     }
+
+    public boolean askPlayerToRematch() {
+        System.out.println("Do you want to play again? Enter [y] or [n]");
+        String rematch = this.getInput();
+        if (rematch.equals("y")) {
+            return gamePreference.rematch = true;
+        } else if (rematch.equals("n")) {
+            System.out.println("Goodbye");
+            return gamePreference.rematch = false;
+        } else {
+            return askPlayerToRematch();
+        }
+    }
 }

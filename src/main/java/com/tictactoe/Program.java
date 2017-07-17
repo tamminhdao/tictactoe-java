@@ -26,4 +26,12 @@ public class Program {
         player2.addSymbol(player2Symbol);
         tictactoe.play();
     }
+
+    public void askToPlayAgain() {
+        boolean rematch = menu.askPlayerToRematch();
+        if (rematch == true) {
+            board.populateBoardWithEmptyCells();
+            this.run();
+        }
+    }
 }
