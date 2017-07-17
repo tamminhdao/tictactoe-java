@@ -34,7 +34,7 @@ public class GameSettings {
         return this.input;
     }
 
-    private String chooseSymbol(String playerId) {
+    public String chooseSymbol(String playerId) {
         System.out.println("Pick a unique symbol for " + playerId);
         String playerSymbol = this.getInput();
         boolean validSymbol = validator.validateSymbolSelection(playerSymbol);
