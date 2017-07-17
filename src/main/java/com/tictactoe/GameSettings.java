@@ -46,7 +46,7 @@ public class GameSettings {
         return playerSymbol;
     }
 
-    private Player pickPlayerType (String playerId) {
+    public Player pickPlayerType (String playerId) {
         System.out.println("Select the type of " + playerId + " by pressing [H] for a human player or [C] for a computer player");
         String playerType = this.getInput();
         if (playerType.equals("C")) {
