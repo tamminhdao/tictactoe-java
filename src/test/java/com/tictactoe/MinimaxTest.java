@@ -44,7 +44,7 @@ public class MinimaxTest {
         Rules rules = new RulesFor3x3();
         Minimax minimax = new Minimax(rules, board, "X", "O");
         int score = minimax.minimax(board, true, 0);
-        assertEquals(10, score);
+        assertEquals(9, score);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class MinimaxTest {
         Rules rules = new RulesFor3x3();
         Minimax minimax = new Minimax(rules, board, "X", "O");
         int score = minimax.minimax(board, true, 0);
-        assertEquals(-10, score);
+        assertEquals(-9, score);
     }
 
     @Test
