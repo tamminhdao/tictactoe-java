@@ -54,62 +54,62 @@ public class RulesFor3x3Test {
         boolean gameInProgress = gameRulesFor3x3.gameProgress(tictactoe);
         assertFalse(gameInProgress);
     }
-//
-//    @Test
-//    public void winningByRow() throws Exception {
-//        for (int i = 0; i < 3; i++) {
-//            tictactoe.insertSymbol("X", i);
-//        }
-//        boolean hasWinner = gameRulesFor3x3.checkForWinner(tictactoe);
-//        assertTrue(hasWinner);
-//    }
-//
-//    @Test
-//    public void verifyRowWinner() throws Exception {
-//        for (int i = 0; i < 3; i++) {
-//            tictactoe.insertSymbol("X", i);
-//        }
-//        gameRulesFor3x3.checkForWinner(tictactoe);
-//        String winner = "X";
-//        assertEquals(winner, gameRulesFor3x3.getWinner());
-//    }
-//
-//    @Test
-//    public void winningByColumn() throws Exception {
-//        for (int i = 0; i < 7; i += 3) {
-//            tictactoe.insertSymbol("O", i);
-//        }
-//        boolean hasWinner = gameRulesFor3x3.checkForWinner(tictactoe);
-//        assertTrue(hasWinner);
-//    }
-//
-//    @Test
-//    public void verifyColumnWinner() throws Exception {
-//        for (int i = 0; i < 7; i += 3) {
-//            tictactoe.insertSymbol("O", i);
-//        }
-//        gameRulesFor3x3.checkForWinner(tictactoe);
-//        String winner = "O";
-//        assertEquals(winner, gameRulesFor3x3.getWinner());
-//    }
-//
-//    @Test
-//    public void winningByDiagonalTopLeftToBottomRight() throws Exception {
-//        for (int i = 0; i < 9; i += 4) {
-//            tictactoe.insertSymbol("X", i);
-//        }
-//        boolean hasWinner = gameRulesFor3x3.checkForWinner(tictactoe);
-//        assertTrue(hasWinner);
-//    }
-//
-//    @Test
-//    public void winningByDiagonalTopRightToBottomLeft() throws Exception {
-//        for (int i = 2; i < 7; i += 2) {
-//            tictactoe.insertSymbol("O", i);
-//        }
-//        boolean hasWinner = gameRulesFor3x3.checkForWinner(tictactoe);
-//        assertTrue(hasWinner);
-//    }
+
+    @Test
+    public void winningByRow() throws Exception {
+        for (int i = 0; i < 3; i++) {
+            tictactoe.insertSymbol("X", i);
+        }
+        boolean hasWinner = gameRulesFor3x3.checkForWinner(tictactoe);
+        assertTrue(hasWinner);
+    }
+
+    @Test
+    public void verifyRowWinner() throws Exception {
+        for (int i = 0; i < 3; i++) {
+            tictactoe.insertSymbol("X", i);
+        }
+        gameRulesFor3x3.checkForWinner(tictactoe);
+        String winner = "X";
+        assertEquals(winner, gameRulesFor3x3.getWinner());
+    }
+
+    @Test
+    public void winningByColumn() throws Exception {
+        for (int i = 0; i < 7; i += 3) {
+            tictactoe.insertSymbol("O", i);
+        }
+        boolean hasWinner = gameRulesFor3x3.checkForWinner(tictactoe);
+        assertTrue(hasWinner);
+    }
+
+    @Test
+    public void verifyColumnWinner() throws Exception {
+        for (int i = 0; i < 7; i += 3) {
+            tictactoe.insertSymbol("O", i);
+        }
+        gameRulesFor3x3.checkForWinner(tictactoe);
+        String winner = "O";
+        assertEquals(winner, gameRulesFor3x3.getWinner());
+    }
+
+    @Test
+    public void winningByDiagonalTopLeftToBottomRight() throws Exception {
+        for (int i = 0; i < 9; i += 4) {
+            tictactoe.insertSymbol("X", i);
+        }
+        boolean hasWinner = gameRulesFor3x3.checkForWinner(tictactoe);
+        assertTrue(hasWinner);
+    }
+
+    @Test
+    public void winningByDiagonalTopRightToBottomLeft() throws Exception {
+        for (int i = 2; i < 7; i += 2) {
+            tictactoe.insertSymbol("O", i);
+        }
+        boolean hasWinner = gameRulesFor3x3.checkForWinner(tictactoe);
+        assertTrue(hasWinner);
+    }
 
     private void simulateAGameWhichEndsInATie() {
         tictactoe.insertSymbol("X", 0);
