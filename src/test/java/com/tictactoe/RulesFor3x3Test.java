@@ -2,14 +2,13 @@ package com.tictactoe;
 
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
 public class RulesFor3x3Test {
-    Board tictactoe;
-    RulesFor3x3 gameRulesFor3x3;
+    private Board tictactoe;
+    private RulesFor3x3 gameRulesFor3x3;
 
     @Before
     public void createRules() {
@@ -27,25 +26,7 @@ public class RulesFor3x3Test {
     }
 
     @Test
-    public void verifyRowWinner() throws Exception {
-        for (int i = 0; i < 3; i++) {
-            tictactoe.insertSymbol("X", i);
-        }
-        String winner = gameRulesFor3x3.checkForWinner(tictactoe);
-        assertEquals(winner, "X");
-    }
-
-    @Test
     public void winningByColumn() throws Exception {
-        for (int i = 0; i < 7; i += 3) {
-            tictactoe.insertSymbol("O", i);
-        }
-        String winner = gameRulesFor3x3.checkForWinner(tictactoe);
-        assertEquals("O", winner);
-    }
-
-    @Test
-    public void verifyColumnWinner() throws Exception {
         for (int i = 0; i < 7; i += 3) {
             tictactoe.insertSymbol("O", i);
         }
