@@ -2,24 +2,12 @@ package com.tictactoe;
 
 
 public class RulesFor3x3 implements Rules {
-    private boolean gameInProgress = true;
 
     private int[][] winningCombos;
 
     public RulesFor3x3() {
         this.identifyWinningCombos();
     }
-
-    @Override
-    public boolean gameProgress(Board board) {
-        if (board.countEmptyCells() == 0) {
-            this.gameInProgress = false;
-        } else if (!checkForWinner(board).equals("")) {
-            this.gameInProgress = false;
-        }
-        return this.gameInProgress;
-    }
-
 
     @Override
     public void identifyWinningCombos() {
