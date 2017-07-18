@@ -3,8 +3,7 @@ package com.tictactoe;
 public class GameSettings {
     private UserInput receiver;
     private UserInputValidator validator;
-    private String input;
-    public GamePreference gamePreference = new GamePreference();
+    private GamePreference gamePreference = new GamePreference();
 
     public GameSettings(UserInput receiver, UserInputValidator validator) {
         this.receiver = receiver;
@@ -28,8 +27,8 @@ public class GameSettings {
     }
 
     private String getInput() {
-        this.input = this.receiver.obtainInput();
-        return this.input;
+        return this.receiver.obtainInput();
+
     }
 
     private String chooseSymbol(String playerId) {

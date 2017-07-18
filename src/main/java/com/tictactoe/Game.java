@@ -40,7 +40,9 @@ public class Game {
     }
 
     public boolean gameInPlay() {
-        return this.rules.gameProgress(this.board);
+        boolean hasNoWinner = this.rules.checkForWinner(board).equals("");
+        boolean isNotADraw = !this.rules.endsInADraw(this.board);
+        return (hasNoWinner && isNotADraw);
     }
 
     private void notifyPlayersTurn(Player player) {
