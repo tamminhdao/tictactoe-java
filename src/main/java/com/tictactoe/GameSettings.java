@@ -4,7 +4,7 @@ public class GameSettings {
     private UserInput receiver;
     private UserInputValidator validator;
     private Board board;
-    private GamePreference gamePreference = new GamePreference();
+    private SelectedGameSettings selectedGameSettings = new SelectedGameSettings();
 
     public GameSettings(UserInput receiver, UserInputValidator validator, Board board) {
         this.receiver = receiver;
@@ -12,27 +12,26 @@ public class GameSettings {
         this.board = board;
     }
 
-    public GamePreference collectGamePreference(){
-        gamePreference.player1 = pickPlayerType("Player 1");
-        gamePreference.player2 = pickPlayerType("Player 2");
-        gamePreference.player1Symbol = chooseSymbol("Player 1");
-        gamePreference.player2Symbol = chooseSymbol("Player 2");
-        boolean uniqueSymbols = validator.playersHaveUniqueSymbols(gamePreference.player1Symbol, gamePreference.player2Symbol);
+    public SelectedGameSettings collectGamePreference(){
+        selectedGameSettings.player1 = pickPlayerType("Player 1");
+        selectedGameSettings.player2 = pickPlayerType("Player 2");
+        selectedGameSettings.player1Symbol = chooseSymbol("Player 1");
+        selectedGameSettings.player2Symbol = chooseSymbol("Player 2");
+        boolean uniqueSymbols = validator.playersHaveUniqueSymbols(selectedGameSettings.player1Symbol, selectedGameSettings.player2Symbol);
         this.checkForUniqueSymbols(uniqueSymbols);
-        return this.gamePreference;
+        return this.selectedGameSettings;
     }
 
     private void checkForUniqueSymbols(boolean uniqueSymbols) {
         while (!uniqueSymbols) {
             System.out.println("Another player already picked that symbol.");
-            gamePreference.player2Symbol = chooseSymbol("Player 2");
-            uniqueSymbols = validator.playersHaveUniqueSymbols(gamePreference.player1Symbol, gamePreference.player2Symbol);
+            selectedGameSettings.player2Symbol = chooseSymbol("Player 2");
+            uniqueSymbols = validator.playersHaveUniqueSymbols(selectedGameSettings.player1Symbol, selectedGameSettings.player2Symbol);
         }
     }
 
     private String getInput() {
-        String input = this.receiver.obtainInput();
-        return input;
+        return this.receiver.obtainInput();
     }
 
     public String chooseSymbol(String playerId) {
@@ -51,26 +50,24 @@ public class GameSettings {
         System.out.println("Select the type of " + playerId + " by pressing [H] for a human player or [C] for a computer player");
         String playerType = this.getInput();
         if (playerType.equals("C")) {
-            Player player = new EasyComputerPlayer(board);
-            return player;
+            return new EasyComputerPlayer(board);
         } else if (playerType.equals("H")) {
-            Player player = new HumanPlayer (receiver, validator);
-            return player;
+            return new HumanPlayer (receiver, validator);
         } else {
             return pickPlayerType(playerId);
         }
     }
 
-    public boolean askPlayerToRematch() {
+    public boolean askToPlayAgain() {
         System.out.println("Do you want to play again? Enter [y] or [n]");
         String rematch = this.getInput();
         if (rematch.equals("y")) {
-            return gamePreference.rematch = true;
+            return selectedGameSettings.rematch = true;
         } else if (rematch.equals("n")) {
             System.out.println("Goodbye");
-            return gamePreference.rematch = false;
+            return selectedGameSettings.rematch = false;
         } else {
-            return askPlayerToRematch();
+            return askToPlayAgain();
         }
     }
 }
