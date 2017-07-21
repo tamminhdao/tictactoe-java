@@ -81,19 +81,28 @@ public class UnbeatableComputerPlayerTest {
         //boolean smartAILoses = false;
         UnbeatableComputerPlayer smartAI = new UnbeatableComputerPlayer(rules, board, "AI", "O");
         for (int index = 0; index < board.getBoardSize(); index++) {
+            //board.populateBoardWithEmptyCells();
+            System.out.println ("top level index " + index);
             if (isEmptyCell(board, index)) {
-                makeMove(board, smartAI);
+                makeMove(board, smartAI, 0);
             }
         }
     }
 
-    private void makeMove (Board board, UnbeatableComputerPlayer smartAI) {
+    private void makeMove (Board board, UnbeatableComputerPlayer smartAI, int depth) {
+        depth += 1;
+        System.out.println("Depth" + depth);
+        System.out.println("Enter MakeMove function");
         if (!gameInPlay()) {
-            board.populateBoardWithEmptyCells();
+            System.out.println("Game ends");
             return;
         }
         ArrayList<Integer> listOfEmptyCells = getPossibleMoves(board);
+
+
+        System.out.println ("list of empty cells" + listOfEmptyCells);
         for (int index = 0; index < listOfEmptyCells.size(); index++) {
+            System.out.println ("index " + index + " at depth " + depth);
             if (isEmptyCell(board, listOfEmptyCells.get(index))) {
                 board.insertSymbol("O", listOfEmptyCells.get(index));
                 board.printBoard();
@@ -102,7 +111,11 @@ public class UnbeatableComputerPlayerTest {
                 int cellSelection = smartAI.obtainValidCellSelection();
                 board.insertSymbol("AI", cellSelection - CELL_OFFSET);
                 board.printBoard();
-                makeMove(board, smartAI);
+                makeMove(board, smartAI, depth);
+                System.out.println("Reset human's move at " + listOfEmptyCells.get(index));
+                board.resetCell(listOfEmptyCells.get(index));
+                System.out.println("Reset computer's move at " + (cellSelection - CELL_OFFSET));
+                board.resetCell(cellSelection - CELL_OFFSET);
             }
         }
     }
