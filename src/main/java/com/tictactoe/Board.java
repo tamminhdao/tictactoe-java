@@ -21,7 +21,7 @@ public class Board {
         this.populateBoardWithEmptyCells();
     }
 
-    private void populateBoardWithEmptyCells() {
+    public void populateBoardWithEmptyCells() {
         String emptyCell = " ";
         for (int i = 0; i < this.cells.length; i++) {
             this.cells[i] = emptyCell;

@@ -23,16 +23,7 @@ public class Minimax {
         return -10 + depth;
     }
 
-    private boolean thereIsAWinner() {
-        String winner = this.rules.checkForWinner(this.board);
-        return !winner.equals("");
-    }
-
-    private boolean isADraw() {
-        return this.rules.endsInADraw(this.board);
-    }
-
-    public int minimax(Board board, boolean maximizingPlayersTurn, int depth) {
+    public int scoreACell(Board board, boolean maximizingPlayersTurn, int depth) {
         depth += 1;
 
         if (thereIsAWinner()) {
@@ -46,7 +37,7 @@ public class Minimax {
             for (int index = 0; index < board.getBoardSize(); index++) {
                 if (isEmptyCell(board, index)) {
                     board.insertSymbol(selfOrOpponent, index);
-                    int score = this.minimax(board, !maximizingPlayersTurn, depth);
+                    int score = this.scoreACell(board, !maximizingPlayersTurn, depth);
                     scores.add(score);
                     board.resetCell(index);
                 }
@@ -56,7 +47,16 @@ public class Minimax {
         }
     }
 
+    private boolean thereIsAWinner() {
+        String winner = this.rules.checkForWinner(this.board);
+        return !winner.equals("");
+    }
+
     private boolean isEmptyCell(Board board, int index) {
         return board.getSymbol(index).equals(" ");
+    }
+
+    private boolean isADraw() {
+        return this.rules.endsInADraw(this.board);
     }
 }

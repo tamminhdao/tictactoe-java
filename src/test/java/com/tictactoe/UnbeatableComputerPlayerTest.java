@@ -73,4 +73,50 @@ public class UnbeatableComputerPlayerTest {
         int cellIndex = cell - CELL_OFFSET;
         assertEquals(2, cellIndex);
     }
+
+    @Test
+    public void computerNeverLosesIfHumanGoesFirst() throws Exception {
+        //boolean smartAILoses = false;
+        UnbeatableComputerPlayer smartAI = new UnbeatableComputerPlayer(rules, board, "AI", "O");
+        for (int index = 0; index < board.getBoardSize(); index++) {
+            if (isEmptyCell(board, index)) {
+                board.insertSymbol("O", index);
+                makeMove(board, smartAI);
+                board.resetCell(index);
+            }
+        }
+    }
+
+    private void makeMove (Board board, UnbeatableComputerPlayer smartAI) {
+        for (int index = 0; index < board.getBoardSize(); index++) {
+            if (!gameInPlay()) {
+                board.populateBoardWithEmptyCells();
+                int c = counter + 1;
+                board.insertSymbol("O", c);
+                System.out.println(c);
+                makeMove(board, smartAI, c);
+            } else {
+                if (isEmptyCell(board, index)) {
+                    board.insertSymbol("O", index);
+                    //board.printBoard();
+                    if (board.countEmptyCells() != 0) {
+                        int computerSelection = smartAI.obtainValidCellSelection();
+                        board.insertSymbol("AI", computerSelection - CELL_OFFSET);
+                        //board.printBoard();
+                    }
+                    makeMove(board, smartAI, 0);
+                }
+            }
+        }
+    }
+
+    public boolean gameInPlay() {
+        boolean hasNoWinner = this.rules.checkForWinner(board).equals("");
+        boolean isNotADraw = !this.rules.endsInADraw(this.board);
+        return (hasNoWinner && isNotADraw);
+    }
+
+    private boolean isEmptyCell(Board board, int index) {
+        return board.getSymbol(index).equals(" ");
+    }
 }

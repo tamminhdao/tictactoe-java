@@ -27,7 +27,7 @@ public class UnbeatableComputerPlayer implements Player {
             if (isEmptyCell(board, index)) {
                 board.insertSymbol(selfSymbol, index);
                 Minimax algorithm = new Minimax(this.rule, this.board, this.selfSymbol, this.opponentSymbol);
-                int score = algorithm.minimax(board, false, 0);
+                int score = algorithm.scoreACell(board, false, 0);
                 scoreAndCell.put(score, index);
                 board.resetCell(index);
             }
