@@ -3,6 +3,8 @@ package com.tictactoe;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 
 public class UnbeatableComputerPlayerTest {
@@ -80,34 +82,39 @@ public class UnbeatableComputerPlayerTest {
         UnbeatableComputerPlayer smartAI = new UnbeatableComputerPlayer(rules, board, "AI", "O");
         for (int index = 0; index < board.getBoardSize(); index++) {
             if (isEmptyCell(board, index)) {
-                board.insertSymbol("O", index);
                 makeMove(board, smartAI);
-                board.resetCell(index);
             }
         }
     }
 
     private void makeMove (Board board, UnbeatableComputerPlayer smartAI) {
-        for (int index = 0; index < board.getBoardSize(); index++) {
-            if (!gameInPlay()) {
-                board.populateBoardWithEmptyCells();
-                int c = counter + 1;
-                board.insertSymbol("O", c);
-                System.out.println(c);
-                makeMove(board, smartAI, c);
-            } else {
-                if (isEmptyCell(board, index)) {
-                    board.insertSymbol("O", index);
-                    //board.printBoard();
-                    if (board.countEmptyCells() != 0) {
-                        int computerSelection = smartAI.obtainValidCellSelection();
-                        board.insertSymbol("AI", computerSelection - CELL_OFFSET);
-                        //board.printBoard();
-                    }
-                    makeMove(board, smartAI, 0);
-                }
+        if (!gameInPlay()) {
+            board.populateBoardWithEmptyCells();
+            return;
+        }
+        ArrayList<Integer> listOfEmptyCells = getPossibleMoves(board);
+        for (int index = 0; index < listOfEmptyCells.size(); index++) {
+            if (isEmptyCell(board, listOfEmptyCells.get(index))) {
+                board.insertSymbol("O", listOfEmptyCells.get(index));
+                board.printBoard();
+            }
+            if (gameInPlay()) {
+                int cellSelection = smartAI.obtainValidCellSelection();
+                board.insertSymbol("AI", cellSelection - CELL_OFFSET);
+                board.printBoard();
+                makeMove(board, smartAI);
             }
         }
+    }
+
+    private ArrayList<Integer> getPossibleMoves(Board board) {
+        ArrayList<Integer> availableCells = new ArrayList<>();
+        for (int index = 0; index < board.getBoardSize(); index++) {
+            if (isEmptyCell(board, index)) {
+                availableCells.add(index);
+            }
+        }
+        return availableCells;
     }
 
     public boolean gameInPlay() {
