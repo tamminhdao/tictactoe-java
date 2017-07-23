@@ -6,15 +6,18 @@ public class HumanPlayer implements Player {
     private UserInputValidator validator;
     private String symbol;
 
-    public HumanPlayer(UserInput receiver, String symbol, UserInputValidator validator) {
+    public HumanPlayer(UserInput receiver, UserInputValidator validator) {
        this.receiver = receiver;
-       this.symbol = symbol;
        this.validator = validator;
     }
 
     public String getInput() {
         this.input = this.receiver.obtainInput();
         return this.input;
+    }
+
+    public void addSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     @Override

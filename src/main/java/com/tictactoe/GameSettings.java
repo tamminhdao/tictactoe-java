@@ -3,15 +3,18 @@ package com.tictactoe;
 public class GameSettings {
     private UserInput receiver;
     private UserInputValidator validator;
-    private String input;
-    public GamePreference gamePreference = new GamePreference();
+    private Board board;
+    private GamePreference gamePreference = new GamePreference();
 
-    public GameSettings(UserInput receiver, UserInputValidator validator) {
+    public GameSettings(UserInput receiver, UserInputValidator validator, Board board) {
         this.receiver = receiver;
         this.validator = validator;
+        this.board = board;
     }
 
     public GamePreference collectGamePreference(){
+        gamePreference.player1 = pickPlayerType("Player 1");
+        gamePreference.player2 = pickPlayerType("Player 2");
         gamePreference.player1Symbol = chooseSymbol("Player 1");
         gamePreference.player2Symbol = chooseSymbol("Player 2");
         boolean uniqueSymbols = validator.playersHaveUniqueSymbols(gamePreference.player1Symbol, gamePreference.player2Symbol);
@@ -28,11 +31,11 @@ public class GameSettings {
     }
 
     private String getInput() {
-        this.input = this.receiver.obtainInput();
-        return this.input;
+        String input = this.receiver.obtainInput();
+        return input;
     }
 
-    private String chooseSymbol(String playerId) {
+    public String chooseSymbol(String playerId) {
         System.out.println("Pick a unique symbol for " + playerId);
         String playerSymbol = this.getInput();
         boolean validSymbol = validator.validateSymbolSelection(playerSymbol);
@@ -42,5 +45,19 @@ public class GameSettings {
             validSymbol = validator.validateSymbolSelection(playerSymbol);
         }
         return playerSymbol;
+    }
+
+    public Player pickPlayerType (String playerId) {
+        System.out.println("Select the type of " + playerId + " by pressing [H] for a human player or [C] for a computer player");
+        String playerType = this.getInput();
+        if (playerType.equals("C")) {
+            Player player = new EasyComputerPlayer(board);
+            return player;
+        } else if (playerType.equals("H")) {
+            Player player = new HumanPlayer (receiver, validator);
+            return player;
+        } else {
+            return pickPlayerType(playerId);
+        }
     }
 }
