@@ -8,7 +8,7 @@ public class Program {
     private Board board = new Board();
     private UserInputValidator validator = new UserInputValidator(board);
     private GameSettings menu = new GameSettings(receiver, validator, board);
-    private GamePreference preference = menu.collectGamePreference();
+    private SelectedGameSettings preference = menu.collectGamePreference();
 
     private Player player1 = preference.player1;
     private Player player2 = preference.player2;
@@ -25,5 +25,14 @@ public class Program {
         tictactoe.addPlayerTwo(player2);
         player2.addSymbol(player2Symbol);
         tictactoe.play();
+        askToPlayAgain();
+    }
+
+    private void askToPlayAgain() {
+        boolean rematch = menu.askToPlayAgain();
+        if (rematch) {
+            tictactoe.clearBoardToStartANewGame();
+            this.run();
+        }
     }
 }
