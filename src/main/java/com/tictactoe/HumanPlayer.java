@@ -16,6 +16,7 @@ public class HumanPlayer implements Player {
         return this.input;
     }
 
+    @Override
     public void addSymbol(String symbol) {
         this.symbol = symbol;
     }

@@ -8,6 +8,7 @@ public class EasyComputerPlayer implements Player {
         this.board = board;
     }
 
+    @Override
     public void addSymbol(String symbol) {
         this.symbol = symbol;
     }
