@@ -49,13 +49,4 @@ public class MediumComputerPlayerTest {
         int cellIndex = cellSelection - CELL_OFFSET;
         assertEquals(6, cellIndex);
     }
-
-    @Test
-    public void makeRandomMoveIfThereIsNoBlockNorWinToTake() throws Exception {
-        board.insertSymbol("O", 2);
-        board.insertSymbol("AI", 3);
-        int cellSelection = mediumAI.obtainValidCellSelection();
-        int cellIndex = cellSelection - CELL_OFFSET;
-        assertEquals(6, cellIndex);
-    }
 }
