@@ -21,4 +21,23 @@ public class GameTest {
 
         assertArrayEquals(expected, boardCells);
     }
+
+    @Test
+    public void mediumComputerPlayerBeatsEasyComputerPlayer() throws Exception {
+        Board board = new Board();
+        Player player1 = new EasyComputerPlayer(board);
+        Player player2 = new MediumComputerPlayer(board);
+        player1.addSymbol("X");
+        player2.addSymbol("O");
+        player2.addOpponentSymbol("X");
+        Game game = new Game();
+        game.addBoard(board);
+        game.addPlayerOne(player1);
+        game.addPlayerTwo(player2);
+        game.play();
+        String[] boardCells = board.getSymbol();
+        String[] expected = {"X","O","X","O","X","O","X"," ", " "};
+
+        assertArrayEquals(expected, boardCells);
+    }
 }
