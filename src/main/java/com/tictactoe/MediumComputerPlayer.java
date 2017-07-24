@@ -35,19 +35,32 @@ public class MediumComputerPlayer implements Player, SmartAI {
     public int obtainValidCellSelection() {
         int CELL_OFFSET = 1;
         HashMap<Integer, Integer> scoreAndCell = new HashMap<>();
+        lookForAWinOrABlock(scoreAndCell, selfSymbol);
+        lookForAWinOrABlock(scoreAndCell, opponentSymbol);
+        Set allKeys = scoreAndCell.keySet();
+        ArrayList<Integer> listOfKeys = new ArrayList<>(allKeys);
+        if (listOfKeys.size() != 0) {
+            int maxScore = Collections.max(listOfKeys);
+            int cell = scoreAndCell.get(maxScore);
+            return cell + CELL_OFFSET;
+        } else {
+            
+        }
+    }
+
+    private void lookForAWinOrABlock(HashMap<Integer, Integer> scoreAndCell, String symbol) {
         for (int index = 0; index < board.getBoardSize(); index++) {
             if (isEmptyCell(board, index)) {
-                board.insertSymbol(selfSymbol, index);
-                int score = scoreEachCell(board);
-                scoreAndCell.put(score, index);
+                System.out.println("Insert at: " + index);
+                board.insertSymbol(symbol, index);
+                int score = scoreEachCell();
+                System.out.println("Score: " + score);
+                if (score != 0) {
+                    scoreAndCell.put(score, index);
+                }
                 board.resetCell(index);
             }
         }
-        Set allKeys = scoreAndCell.keySet();
-        ArrayList<Integer> listOfKeys = new ArrayList<>(allKeys);
-        int maxScore = Collections.max(listOfKeys);
-        int cell = scoreAndCell.get(maxScore);
-        return cell + CELL_OFFSET;
     }
 
     private boolean thereIsAWinner() {
@@ -67,7 +80,7 @@ public class MediumComputerPlayer implements Player, SmartAI {
         return -1;
     }
 
-    public int scoreEachCell(Board board) {
+    public int scoreEachCell() {
         if (thereIsAWinner()) {
             return getWinOrLoseScore();
         }
