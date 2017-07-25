@@ -23,6 +23,19 @@ public class UnbeatableComputerPlayer implements Player {
     public int obtainValidCellSelection() {
         int CELL_OFFSET = 1;
         HashMap<Integer, Integer> scoreAndCell = new HashMap<>();
+        testAndScoreEveryEmptyCell(scoreAndCell);
+        int cell = pickCellWithTheHighestScore(scoreAndCell);
+        return cell + CELL_OFFSET;
+    }
+
+    private int pickCellWithTheHighestScore(HashMap<Integer, Integer> scoreAndCell) {
+        Set allKeys = scoreAndCell.keySet();
+        ArrayList<Integer> listOfKeys = new ArrayList<>(allKeys);
+        int maxScore = Collections.max(listOfKeys);
+        return scoreAndCell.get(maxScore);
+    }
+
+    private void testAndScoreEveryEmptyCell(HashMap<Integer, Integer> scoreAndCell) {
         for (int index = 0; index < board.getBoardSize(); index++) {
             if (isEmptyCell(board, index)) {
                 board.insertSymbol(selfSymbol, index);
@@ -32,11 +45,6 @@ public class UnbeatableComputerPlayer implements Player {
                 board.resetCell(index);
             }
         }
-        Set allKeys = scoreAndCell.keySet();
-        ArrayList<Integer> listOfKeys = new ArrayList<>(allKeys);
-        int maxScore = Collections.max(listOfKeys);
-        int cell = scoreAndCell.get(maxScore);
-        return cell + CELL_OFFSET;
     }
 
     private boolean isEmptyCell(Board board, int index) {
