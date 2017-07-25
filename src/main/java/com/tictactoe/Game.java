@@ -45,6 +45,10 @@ public class Game {
         }
     }
 
+    public String getWinnerSymbol() {
+        return this.rules.checkForWinner(board);
+    }
+
     public boolean gameInPlay() {
         return (!this.rules.endsInADraw(this.board) && this.rules.checkForWinner(board).equals(""));
     }
