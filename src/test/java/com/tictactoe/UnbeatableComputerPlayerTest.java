@@ -78,10 +78,8 @@ public class UnbeatableComputerPlayerTest {
 
     @Test
     public void computerNeverLosesIfHumanGoesFirst() throws Exception {
-        //boolean smartAILoses = false;
         UnbeatableComputerPlayer smartAI = new UnbeatableComputerPlayer(rules, board, "AI", "O");
         for (int index = 0; index < board.getBoardSize(); index++) {
-            //board.populateBoardWithEmptyCells();
             System.out.println ("top level index " + index);
             if (isEmptyCell(board, index)) {
                 makeMove(board, smartAI, 0);
