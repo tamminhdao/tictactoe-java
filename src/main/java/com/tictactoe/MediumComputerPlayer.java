@@ -1,7 +1,7 @@
 package com.tictactoe;
 import java.util.*;
 
-public class MediumComputerPlayer implements Player, SmartAI {
+public class MediumComputerPlayer implements Player {
     private Board board;
     private String selfSymbol;
     private String opponentSymbol;
@@ -50,11 +50,8 @@ public class MediumComputerPlayer implements Player, SmartAI {
 
     private int getARandomCell() {
         ArrayList<Integer> availableCells = getAllEmptyCells(board);
-        System.out.println("All empty cells: " + availableCells);
         Random r = new Random();
         int randomIndex = r.nextInt(availableCells.size());
-        System.out.println("random index number: " + randomIndex);
-        System.out.println("picked cell: " + availableCells.get(randomIndex));
         return availableCells.get(randomIndex);
     }
 
