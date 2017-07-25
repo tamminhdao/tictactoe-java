@@ -8,6 +8,7 @@ public class Program {
     private Board board = new Board();
     private UserInputValidator validator = new UserInputValidator(board);
     private GameSettings menu = new GameSettings(receiver, validator, board);
+    private Rules rules = new RulesFor3x3();
     private SelectedGameSettings preference = menu.collectGamePreference();
 
     private Player player1 = preference.player1;
@@ -22,8 +23,12 @@ public class Program {
         tictactoe.addBoard(board);
         tictactoe.addPlayerOne(player1);
         player1.addSymbol(player1Symbol);
+        player1.addOpponentSymbol(player2Symbol);
+        player1.addRules(rules);
         tictactoe.addPlayerTwo(player2);
         player2.addSymbol(player2Symbol);
+        player2.addOpponentSymbol(player1Symbol);
+        player2.addRules(rules);
         tictactoe.play();
         askToPlayAgain();
     }
