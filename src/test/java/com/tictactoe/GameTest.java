@@ -42,7 +42,6 @@ public class GameTest {
             game.play();
             if (game.getWinnerSymbol() == "E") {
                 mediumLevelComputerPlayerWins = false;
-            } else {
                 board.printBoard();
             }
         }
