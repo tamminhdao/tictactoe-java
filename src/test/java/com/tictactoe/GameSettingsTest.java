@@ -29,7 +29,7 @@ public class GameSettingsTest {
     public void canSelectPlayerType() throws Exception {
         Board board = new Board();
         UserInputValidator validator = new UserInputValidator(board);
-        UserInput receiver = simulateUserInput("C");
+        UserInput receiver = simulateUserInput("E");
         GameSettings settings = new GameSettings(receiver, validator, board);
         Player testPlayers = settings.pickPlayerType("Test Player");
         Player easyLevelAI = new EasyComputerPlayer(board);
