@@ -19,7 +19,7 @@ public class GameTest {
     }
 
     @Test
-    public void unbeatableAiAlwaysBeatMediumAI() throws Exception {
+    public void unbeatableAiNeverLosesToMediumAI() throws Exception {
         boolean unbeatableAINeverLose = true;
         Board board = new Board();
         Rules rules = new RulesFor3x3();
