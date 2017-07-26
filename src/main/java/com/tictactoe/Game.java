@@ -39,6 +39,10 @@ public class Game {
         }
     }
 
+    public String getWinnerSymbol() {
+        return this.rules.checkForWinner(board);
+    }
+
     public boolean gameInPlay() {
         boolean hasNoWinner = this.rules.checkForWinner(board).equals("");
         boolean isNotADraw = !this.rules.endsInADraw(this.board);
