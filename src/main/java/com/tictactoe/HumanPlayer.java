@@ -1,14 +1,15 @@
 package com.tictactoe;
 
-public class HumanPlayer implements Player{
+public class HumanPlayer implements Player {
     private String input;
     private UserInput receiver;
     private UserInputValidator validator;
     private String symbol;
+    private String opponentSymbol;
+    private Rules rules;
 
-    public HumanPlayer(UserInput receiver, String symbol, UserInputValidator validator) {
+    public HumanPlayer(UserInput receiver, UserInputValidator validator) {
        this.receiver = receiver;
-       this.symbol = symbol;
        this.validator = validator;
     }
 
@@ -17,15 +18,32 @@ public class HumanPlayer implements Player{
         return this.input;
     }
 
+    @Override
+    public void addRules(Rules rules) {
+        this.rules = rules;
+    }
+
+    @Override
+    public void addOpponentSymbol(String opponentSymbol) {
+        this.opponentSymbol = opponentSymbol;
+    }
+
+    @Override
+    public void addSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    @Override
     public String getSymbol() {
         return this.symbol;
     }
 
+    @Override
     public int obtainValidCellSelection() {
         int cell = 0;
         System.out.println("Enter your cell selection (1 - 9): ");
         boolean awaitingSelection = true;
-        while (awaitingSelection)  {
+        while (awaitingSelection) {
             try {
                 String selection = this.getInput();
                 cell = Integer.parseInt(selection);

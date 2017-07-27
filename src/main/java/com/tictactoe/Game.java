@@ -6,11 +6,17 @@ public class Game {
     private Grid grid;
     private Player player1;
     private Player player2;
-
-    public Game(Player player1, Player player2, Board board) {
+  
+    public void addBoard(Board board){
         this.board = board;
         this.grid = new Grid(board);
+    }
+
+    public void addPlayerOne(Player player1) {
         this.player1 = player1;
+    }
+
+    public void addPlayerTwo(Player player2) {
         this.player2 = player2;
     }
 
@@ -32,7 +38,7 @@ public class Game {
 
     private void getResult() {
         String winner = this.rules.checkForWinner(board);
-        if(!winner.equals("")){
+        if (!winner.equals("")) {
             this.announceWinner(winner);
         } else {
             this.announceTie();
@@ -74,5 +80,9 @@ public class Game {
             this.renderBoard();
         }
         this.getResult();
+    }
+
+    public void clearBoardToStartANewGame() {
+        board.populateBoardWithEmptyCells();
     }
 }

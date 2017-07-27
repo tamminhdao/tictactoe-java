@@ -7,11 +7,23 @@ public class MediumComputerPlayer implements Player {
     private String opponentSymbol;
     private Rules rules;
 
-    public MediumComputerPlayer(Rules rules, Board board, String selfSymbol, String opponentSymbol) {
-        this.selfSymbol = selfSymbol;
-        this.opponentSymbol = opponentSymbol;
+    public MediumComputerPlayer(Board board) {
         this.board = board;
+    }
+
+    @Override
+    public void addRules(Rules rules) {
         this.rules = rules;
+    }
+
+    @Override
+    public void addSymbol(String symbol) {
+        this.selfSymbol = symbol;
+    }
+
+    @Override
+    public void addOpponentSymbol(String opponentSymbol) {
+        this.opponentSymbol = opponentSymbol;
     }
 
     @Override

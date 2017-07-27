@@ -7,18 +7,37 @@ public class Program {
     private UserInput receiver = new UserInput(scanner);
     private Board board = new Board();
     private UserInputValidator validator = new UserInputValidator(board);
-    private GameSettings menu = new GameSettings(receiver, validator);
-    private GamePreference preference = menu.collectGamePreference();
+    private GameSettings menu = new GameSettings(receiver, validator, board);
     private Rules rules = new RulesFor3x3();
+    private SelectedGameSettings preference = menu.collectGamePreference();
 
-    private Player player1 = new UnbeatableComputerPlayer(rules, board, preference.player1Symbol, preference.player2Symbol);
-    //private Player player1 = new HumanPlayer(receiver, preference.player1Symbol, validator);
-    private Player player2 = new UnbeatableComputerPlayer(rules, board, preference.player2Symbol, preference.player1Symbol);
-    //private Player player2 = new HumanPlayer(receiver, preference.player2Symbol, validator);
+    private Player player1 = preference.player1;
+    private Player player2 = preference.player2;
 
-    private Game tictactoe = new Game(player1, player2, board);
+    private String player1Symbol = preference.player1Symbol;
+    private String player2Symbol = preference.player2Symbol;
+
+    private Game tictactoe = new Game();
 
     public void run() {
+        tictactoe.addBoard(board);
+        tictactoe.addPlayerOne(player1);
+        player1.addSymbol(player1Symbol);
+        player1.addOpponentSymbol(player2Symbol);
+        player1.addRules(rules);
+        tictactoe.addPlayerTwo(player2);
+        player2.addSymbol(player2Symbol);
+        player2.addOpponentSymbol(player1Symbol);
+        player2.addRules(rules);
         tictactoe.play();
+        askToPlayAgain();
+    }
+
+    private void askToPlayAgain() {
+        boolean rematch = menu.askToPlayAgain();
+        if (rematch) {
+            tictactoe.clearBoardToStartANewGame();
+            this.run();
+        }
     }
 }

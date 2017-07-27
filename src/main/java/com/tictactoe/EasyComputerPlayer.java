@@ -1,12 +1,28 @@
 package com.tictactoe;
 
 public class EasyComputerPlayer implements Player {
-    Board board;
-    String symbol;
+    private Board board;
+    private String symbol;
+    private String opponentSymbol;
+    private Rules rules;
 
-    public EasyComputerPlayer(String symbol, Board board) {
-        this.symbol = symbol;
+    public EasyComputerPlayer(Board board) {
         this.board = board;
+    }
+
+    @Override
+    public void addRules(Rules rules) {
+        this.rules = rules;
+    }
+
+    @Override
+    public void addSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    @Override
+    public void addOpponentSymbol(String opponentSymbol) {
+        this.opponentSymbol = opponentSymbol;
     }
 
     @Override
