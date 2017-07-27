@@ -47,12 +47,18 @@ public class GameSettings {
     }
 
     public Player pickPlayerType (String playerId) {
-        System.out.println("Select the type of " + playerId + " by pressing [H] for a human player or [C] for a computer player");
+        System.out.println("Select the type of " + playerId + " by pressing \n [H] for a human player \n" +
+                " [E] for an easy level computer player \n [M] for a medium level computer player \n" +
+                " [U] for an unbeatable computer player.");
         String playerType = this.getInput();
-        if (playerType.equals("C")) {
+        if (playerType.equals("E")) {
             return new EasyComputerPlayer(board);
         } else if (playerType.equals("H")) {
             return new HumanPlayer (receiver, validator);
+        } else if (playerType.equals("M")) {
+            return new MediumComputerPlayer(board);
+        } else if (playerType.equals("U")) {
+            return new UnbeatableComputerPlayer(board);
         } else {
             return pickPlayerType(playerId);
         }
