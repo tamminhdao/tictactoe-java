@@ -6,7 +6,7 @@ public class Game {
     private Grid grid;
     private Player player1;
     private Player player2;
-
+  
     public void addBoard(Board board){
         this.board = board;
         this.grid = new Grid(board);
@@ -50,7 +50,9 @@ public class Game {
     }
 
     public boolean gameInPlay() {
-        return (!this.rules.endsInADraw(this.board) && this.rules.checkForWinner(board).equals(""));
+        boolean hasNoWinner = this.rules.checkForWinner(board).equals("");
+        boolean isNotADraw = !this.rules.endsInADraw(this.board);
+        return (hasNoWinner && isNotADraw);
     }
 
     private void notifyPlayersTurn(Player player) {

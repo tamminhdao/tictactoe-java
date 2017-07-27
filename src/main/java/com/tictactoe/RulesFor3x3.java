@@ -1,6 +1,5 @@
 package com.tictactoe;
 
-
 public class RulesFor3x3 implements Rules {
 
     private int[][] winningCombos;
@@ -9,12 +8,10 @@ public class RulesFor3x3 implements Rules {
         this.identifyWinningCombos();
     }
 
-
     @Override
     public void identifyWinningCombos() {
         this.winningCombos = new int[][] {{0,1,2}, {3,4,5}, {6,7,8}, {0,3,6}, {1,4,7}, {2,5,8}, {0,4,8}, {2,4,6}};
     }
-
 
     @Override
     public String checkForWinner(Board board) {

@@ -43,7 +43,7 @@ public class HumanPlayer implements Player {
         int cell = 0;
         System.out.println("Enter your cell selection (1 - 9): ");
         boolean awaitingSelection = true;
-        while (awaitingSelection)  {
+        while (awaitingSelection) {
             try {
                 String selection = this.getInput();
                 cell = Integer.parseInt(selection);
