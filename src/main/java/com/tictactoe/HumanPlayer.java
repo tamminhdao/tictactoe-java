@@ -5,6 +5,8 @@ public class HumanPlayer implements Player {
     private UserInput receiver;
     private UserInputValidator validator;
     private String symbol;
+    private String opponentSymbol;
+    private Rules rules;
 
     public HumanPlayer(UserInput receiver, UserInputValidator validator) {
        this.receiver = receiver;
@@ -16,6 +18,17 @@ public class HumanPlayer implements Player {
         return this.input;
     }
 
+    @Override
+    public void addRules(Rules rules) {
+        this.rules = rules;
+    }
+
+    @Override
+    public void addOpponentSymbol(String opponentSymbol) {
+        this.opponentSymbol = opponentSymbol;
+    }
+
+    @Override
     public void addSymbol(String symbol) {
         this.symbol = symbol;
     }
