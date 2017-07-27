@@ -10,12 +10,17 @@ import static org.junit.Assert.assertEquals;
 public class UnbeatableComputerPlayerTest {
     private Board board;
     private Rules rules;
+    private UnbeatableComputerPlayer smartAI;
     private final int CELL_OFFSET = 1;
 
     @Before
     public void initBoardAndRules() {
         board = new Board();
         rules = new RulesFor3x3();
+        smartAI = new UnbeatableComputerPlayer(board);
+        smartAI.addSymbol("AI");
+        smartAI.addOpponentSymbol("O");
+        smartAI.addRules(rules);
     }
 
     @Test
@@ -23,7 +28,6 @@ public class UnbeatableComputerPlayerTest {
         board.insertSymbol("O", 2);
         board.insertSymbol("O", 4);
         board.insertSymbol("AI", 8);
-        UnbeatableComputerPlayer smartAI = new UnbeatableComputerPlayer(rules, board, "AI", "O");
         int cell = smartAI.obtainValidCellSelection();
         int cellIndex = cell - CELL_OFFSET;
         assertEquals(6, cellIndex);
@@ -35,7 +39,6 @@ public class UnbeatableComputerPlayerTest {
         board.insertSymbol("O", 8);
         board.insertSymbol("AI", 4);
         board.insertSymbol("AI", 7);
-        UnbeatableComputerPlayer smartAI = new UnbeatableComputerPlayer(rules, board, "AI", "O");
         int cell = smartAI.obtainValidCellSelection();
         int cellIndex = cell - CELL_OFFSET;
         assertEquals(1, cellIndex);
@@ -48,7 +51,6 @@ public class UnbeatableComputerPlayerTest {
         board.insertSymbol("O", 8);
         board.insertSymbol("AI", 4);
         board.insertSymbol("AI", 7);
-        UnbeatableComputerPlayer smartAI = new UnbeatableComputerPlayer(rules, board, "AI", "O");
         int cell = smartAI.obtainValidCellSelection();
         int cellIndex = cell - CELL_OFFSET;
         assertEquals(2, cellIndex);
@@ -57,7 +59,6 @@ public class UnbeatableComputerPlayerTest {
     @Test
     public void takeCenterCell() throws Exception {
         board.insertSymbol("O", 0);
-        UnbeatableComputerPlayer smartAI = new UnbeatableComputerPlayer(rules, board, "AI", "O");
         int cell = smartAI.obtainValidCellSelection();
         int cellIndex = cell - CELL_OFFSET;
         assertEquals(4, cellIndex);
@@ -70,7 +71,6 @@ public class UnbeatableComputerPlayerTest {
         board.insertSymbol("O", 8);
         board.insertSymbol("AI", 6);
         board.insertSymbol("AI", 7);
-        UnbeatableComputerPlayer smartAI = new UnbeatableComputerPlayer(rules, board, "AI", "O");
         int cell = smartAI.obtainValidCellSelection();
         int cellIndex = cell - CELL_OFFSET;
         assertEquals(2, cellIndex);
