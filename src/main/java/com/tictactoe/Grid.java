@@ -28,22 +28,22 @@ public class Grid {
         if (symbol.length() == maxLength) {
             return symbol;
         } else {
-            int lengthOfPaddedSpace = maxLength - symbol.length();
-            if (lengthOfPaddedSpace % 2 == 0) {
-                String padding = getPaddingSpace(lengthOfPaddedSpace);
+            int paddingOnBothSides = maxLength - symbol.length();
+            if (paddingOnBothSides % 2 == 0) {
+                String padding = getPaddingSpace(paddingOnBothSides);
                 return padding + symbol + padding;
             } else {
-                String paddingLeft = getPaddingSpace(lengthOfPaddedSpace);
+                String paddingLeft = getPaddingSpace(paddingOnBothSides);
                 String paddingRight = paddingLeft + " ";
                 return paddingLeft + symbol + paddingRight;
             }
         }
     }
 
-    private String getPaddingSpace (int lengthOfPaddedSpace) {
+    private String getPaddingSpace (int paddingOnBothSides) {
         String unit = "";
-        int paddingAmount = lengthOfPaddedSpace / 2;
-        for (int j = 0; j < paddingAmount; j++) {
+        int paddingOnEachSide = paddingOnBothSides / 2;
+        for (int j = 0; j < paddingOnEachSide; j++) {
             unit += " ";
         }
         return unit;
