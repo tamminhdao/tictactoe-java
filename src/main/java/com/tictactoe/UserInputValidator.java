@@ -18,8 +18,4 @@ public class UserInputValidator {
     public boolean validateCellSelection(int cellSelectionInput) {
         return 0 < cellSelectionInput && cellSelectionInput < 10 && (this.board.getSymbol(cellSelectionInput-1).equals(" "));
     }
-
-    public boolean validateGameTypeSelection(int gameTypeInput) {
-        return 1 <= gameTypeInput && gameTypeInput <= 4;
-    }
 }

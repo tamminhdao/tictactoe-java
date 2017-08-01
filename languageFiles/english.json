@@ -1,0 +1,21 @@
+{
+  "GameSettings": {
+    "checkForUniqueSymbols": "Another player already picked that symbol.",
+    "chooseSymbol": "Pick a unique symbol for player",
+    "invalidSymbol": "Invalid symbol selection. Pick a string of any length.",
+    "pickPlayerType": "Select the type of _____ by pressing [H] or [E] or [M] or [U] for an unbeatable computer player.",
+    "askToPlayAgain": "Do you want to play again? Enter [y] or [n]",
+    "goodbye": "Goodbye"
+  },
+  "Game": {
+    "gameIntro": "Tic Tac Toe",
+    "announceWinner": "The winner is: ",
+    "announceTie": "It's a tie",
+    "notifyPlayersTurn": "Player..."
+  },
+  "HumanPlayer": {
+    "obtainValidCellSelection": "Enter your cell selection (1 - 9): ",
+    "numberFormatException": "Expected a number. Enter a number between 1 and 9: ",
+    "invalidCellNumber": "Invalid cell number. Choose one of the available cells between 1 and 9"
+  }
+}
