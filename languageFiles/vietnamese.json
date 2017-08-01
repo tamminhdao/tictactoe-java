@@ -1,0 +1,15 @@
+{
+  "GameSettings_checkForUniqueSymbols": "Người chơi khác đã chọn biểu tượng này.",
+  "GameSettings_chooseSymbol": "Chọn một biểu tượng đặc trưng cho người chơi này.",
+  "GameSettings_invalidSymbol": "Invalid symbol selection. Pick a string of any length.",
+  "GameSettings_pickPlayerType": "Select the type of _____ by pressing [H] or [E] or [M] or [U] for an unbeatable computer player.",
+  "GameSettings_askToPlayAgain": "Bạn có muốn chơi lại không? Chọn [y] nếu có, [n] nếu không",
+  "GameSettings_goodbye": "Tạm biệt",
+  "Game_gameIntro": "Tic Tac Toe",
+  "Game_announceWinner": "Người thắng là: ",
+  "Game_announceTie": "Hoà ",
+  "Game_notifyPlayersTurn": "Người chơi ...",
+  "HumanPlayer_obtainValidCellSelection": "Chọn một số giữa 1 và 9: ",
+  "HumanPlayer_numberFormatException": "Ban phải chọn số. Chọn một số giữa 1 và 9: ",
+  "HumanPlayer_invalidCellNumber": "Số không đúng. Chọn một ô trống giữa 1 và 9."
+}
