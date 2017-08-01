@@ -30,7 +30,7 @@ public class Game {
     }
 
     private void gameIntro() {
-        System.out.println(messages.Game_gameIntro);
+        System.out.println("\n" + messages.Game_gameIntro + "\n");
     }
 
     private void announceWinner (String winner) {
