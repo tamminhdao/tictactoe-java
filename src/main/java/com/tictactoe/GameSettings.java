@@ -7,11 +7,11 @@ public class GameSettings {
     private SelectedGameSettings selectedGameSettings = new SelectedGameSettings();
     private Messages messages;
 
-    public GameSettings(UserInput receiver, UserInputValidator validator, Board board, LanguageMenu menu) {
+    public GameSettings(UserInput receiver, UserInputValidator validator, Board board, Messages messages) {
         this.receiver = receiver;
         this.validator = validator;
         this.board = board;
-        this.messages = menu.chooseLanguage();
+        this.messages = messages;
     }
 
     public SelectedGameSettings collectGamePreference(){
@@ -49,12 +49,12 @@ public class GameSettings {
     }
 
     public Player pickPlayerType (String playerId) {
-        System.out.println(messages.GameSettings_pickPlayerTypePart1 + playerId + messages.GameSettings_pickPlayerTypePart2);
+        System.out.println(messages.GameSettings_pickPlayerType + playerId);
         String playerType = this.getInput();
         if (playerType.equals("E")) {
             return new EasyComputerPlayer(board);
         } else if (playerType.equals("H")) {
-            return new HumanPlayer (receiver, validator);
+            return new HumanPlayer (receiver, validator, messages);
         } else if (playerType.equals("M")) {
             return new MediumComputerPlayer(board);
         } else if (playerType.equals("U")) {

@@ -6,6 +6,11 @@ public class Game {
     private Grid grid;
     private Player player1;
     private Player player2;
+    private Messages messages;
+
+    public Game (Messages messages) {
+        this.messages = messages;
+    }
   
     public void addBoard(Board board){
         this.board = board;
@@ -25,15 +30,15 @@ public class Game {
     }
 
     private void gameIntro() {
-        System.out.println("3x3 Tic Tac Toe" + "\n");
+        System.out.println(messages.Game_gameIntro);
     }
 
     private void announceWinner (String winner) {
-        System.out.println("The winner is: " + winner);
+        System.out.println(messages.Game_announceWinner + winner);
     }
 
     private void announceTie () {
-        System.out.println("It's a tie");
+        System.out.println(messages.Game_announceTie);
     }
 
     private void getResult() {
@@ -56,7 +61,7 @@ public class Game {
     }
 
     private void notifyPlayersTurn(Player player) {
-        System.out.println("Player " + player.getSymbol() + "'s turn. \n");
+        System.out.println(player.getSymbol() + messages.Game_notifyPlayersTurn + "\n");
     }
 
     public void makeMove(Board board, Player player) {

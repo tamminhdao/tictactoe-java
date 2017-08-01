@@ -7,10 +7,12 @@ public class HumanPlayer implements Player {
     private String symbol;
     private String opponentSymbol;
     private Rules rules;
+    private Messages messages;
 
-    public HumanPlayer(UserInput receiver, UserInputValidator validator) {
+    public HumanPlayer(UserInput receiver, UserInputValidator validator, Messages messages) {
        this.receiver = receiver;
        this.validator = validator;
+       this.messages = messages;
     }
 
     public String getInput() {
@@ -41,7 +43,7 @@ public class HumanPlayer implements Player {
     @Override
     public int obtainValidCellSelection() {
         int cell = 0;
-        System.out.println("Enter your cell selection (1 - 9): ");
+        System.out.println(messages.HumanPlayer_obtainValidCellSelection);
         boolean awaitingSelection = true;
         while (awaitingSelection) {
             try {
@@ -49,12 +51,12 @@ public class HumanPlayer implements Player {
                 cell = Integer.parseInt(selection);
                 awaitingSelection = false;
             } catch (NumberFormatException e) {
-                System.out.println("Expected a number. Enter a number between 1 and 9: ");
+                System.out.println(messages.HumanPlayer_numberFormatException);
             }
         }
         boolean isValid = validator.validateCellSelection(cell);
         if (!isValid) {
-            System.out.println ("Invalid cell number. Choose one of the available cells between 1 and 9");
+            System.out.println (messages.HumanPlayer_invalidCellNumber);
             cell = this.obtainValidCellSelection();
         }
         return cell;

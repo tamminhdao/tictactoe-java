@@ -8,7 +8,8 @@ public class Program {
     private Board board = new Board();
     private UserInputValidator validator = new UserInputValidator(board);
     private LanguageMenu languageMenu = new LanguageMenu(receiver);
-    private GameSettings menu = new GameSettings(receiver, validator, board, languageMenu);
+    private Messages messages = languageMenu.chooseLanguage();
+    private GameSettings menu = new GameSettings(receiver, validator, board, messages);
     private Rules rules = new RulesFor3x3();
     private SelectedGameSettings preference = menu.collectGamePreference();
 
@@ -18,7 +19,7 @@ public class Program {
     private String player1Symbol = preference.player1Symbol;
     private String player2Symbol = preference.player2Symbol;
 
-    private Game tictactoe = new Game();
+    private Game tictactoe = new Game(messages);
 
     public void run() {
         tictactoe.addBoard(board);

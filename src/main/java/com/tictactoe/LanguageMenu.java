@@ -8,7 +8,6 @@ import java.io.FileReader;
 public class LanguageMenu {
     private UserInput receiver;
     private Gson gson = new Gson();
-    private Messages messages;
 
     public LanguageMenu(UserInput receiver) {
         this.receiver = receiver;
@@ -24,7 +23,7 @@ public class LanguageMenu {
             } catch (FileNotFoundException fnf) {
                 System.out.println("Language not available.");
             }
-        } else {
+        } else if (languageSelection.equals("V")) {
             try {
                 Messages messages = gson.fromJson(new FileReader("languageFiles/vietnamese.json"), Messages.class);
                 return messages;
@@ -32,7 +31,7 @@ public class LanguageMenu {
                 System.out.println("Language not available.");
             }
         }
-        return this.messages;
+        return chooseLanguage();
     }
 
     private String getInput() {

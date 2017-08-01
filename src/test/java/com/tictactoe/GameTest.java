@@ -8,11 +8,12 @@ public class GameTest {
     @Test
     public void playAFullGameWithTwoEasyComputerPlayers() throws Exception {
         Board board = new Board();
+        Messages m = new Messages();
         Player player1 = new EasyComputerPlayer(board);
         Player player2 = new EasyComputerPlayer(board);
         player1.addSymbol("X");
         player2.addSymbol("O");
-        Game game = new Game();
+        Game game = new Game(m);
         game.addBoard(board);
         game.addPlayerOne(player1);
         game.addPlayerTwo(player2);
@@ -28,6 +29,7 @@ public class GameTest {
         boolean unbeatableAINeverLoses = true;
         Board board = new Board();
         Rules rules = new RulesFor3x3();
+        Messages m = new Messages();
         Player player1 = new UnbeatableComputerPlayer(board);
         Player player2 = new MediumComputerPlayer(board);
         player1.addSymbol("W");
@@ -36,7 +38,7 @@ public class GameTest {
         player2.addSymbol("L");
         player2.addOpponentSymbol("W");
         player2.addRules(rules);
-        Game game = new Game();
+        Game game = new Game(m);
         game.addBoard(board);
         game.addPlayerOne(player1);
         game.addPlayerTwo(player2);
@@ -55,13 +57,14 @@ public class GameTest {
         boolean mediumLevelComputerPlayerWins = true;
         Board board = new Board();
         Rules rules = new RulesFor3x3();
+        Messages m = new Messages();
         Player player1 = new EasyComputerPlayer(board);
         Player player2 = new MediumComputerPlayer(board);
         player1.addSymbol("E");
         player2.addSymbol("M");
         player2.addOpponentSymbol("E");
         player2.addRules(rules);
-        Game game = new Game();
+        Game game = new Game(m);
         game.addBoard(board);
         game.addPlayerOne(player1);
         game.addPlayerTwo(player2);
