@@ -5,11 +5,13 @@ public class GameSettings {
     private UserInputValidator validator;
     private Board board;
     private SelectedGameSettings selectedGameSettings = new SelectedGameSettings();
+    private Messages messages;
 
-    public GameSettings(UserInput receiver, UserInputValidator validator, Board board) {
+    public GameSettings(UserInput receiver, UserInputValidator validator, Board board, LanguageMenu menu) {
         this.receiver = receiver;
         this.validator = validator;
         this.board = board;
+        this.messages = menu.chooseLanguage();
     }
 
     public SelectedGameSettings collectGamePreference(){
