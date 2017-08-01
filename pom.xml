@@ -7,7 +7,6 @@
   <version>1.0-SNAPSHOT</version>
   <name>tictactoe</name>
   <url>http://maven.apache.org</url>
-  <!-- maven-compiler-plugin , aka JAVA Compiler 1.8 -->
   <build>
     <plugins>
       <plugin>
@@ -20,13 +19,18 @@
       </plugin>
     </plugins>
   </build>
-  <!-- change junit version to the latest, 4.11 -->
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.0</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 </project>
