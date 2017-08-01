@@ -19,19 +19,20 @@ public class LanguageMenu {
         String languageSelection = this.getInput();
         if (languageSelection.equals("E")) {
             try {
-                messages = gson.fromJson(new FileReader("languageFiles/english.json"), Messages.class);
+                Messages messages = gson.fromJson(new FileReader("languageFiles/english.json"), Messages.class);
                 return messages;
             } catch (FileNotFoundException fnf) {
                 System.out.println("Language not available.");
             }
         } else {
             try {
-                messages = gson.fromJson(new FileReader("languageFiles/vietnamese.json"), Messages.class);
+                Messages messages = gson.fromJson(new FileReader("languageFiles/vietnamese.json"), Messages.class);
                 return messages;
             } catch (FileNotFoundException fnf) {
                 System.out.println("Language not available.");
             }
         }
+        return this.messages;
     }
 
     private String getInput() {

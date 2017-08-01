@@ -15,10 +15,10 @@ public class GameSettings {
     }
 
     public SelectedGameSettings collectGamePreference(){
-        selectedGameSettings.player1 = pickPlayerType("Player 1");
-        selectedGameSettings.player2 = pickPlayerType("Player 2");
-        selectedGameSettings.player1Symbol = chooseSymbol("Player 1");
-        selectedGameSettings.player2Symbol = chooseSymbol("Player 2");
+        selectedGameSettings.player1 = pickPlayerType("1");
+        selectedGameSettings.player2 = pickPlayerType("2");
+        selectedGameSettings.player1Symbol = chooseSymbol("1");
+        selectedGameSettings.player2Symbol = chooseSymbol("2");
         boolean uniqueSymbols = validator.playersHaveUniqueSymbols(selectedGameSettings.player1Symbol, selectedGameSettings.player2Symbol);
         this.checkForUniqueSymbols(uniqueSymbols);
         return this.selectedGameSettings;
@@ -26,8 +26,8 @@ public class GameSettings {
 
     private void checkForUniqueSymbols(boolean uniqueSymbols) {
         while (!uniqueSymbols) {
-            System.out.println("Another player already picked that symbol.");
-            selectedGameSettings.player2Symbol = chooseSymbol("Player 2");
+            System.out.println(messages.GameSettings_checkForUniqueSymbols);
+            selectedGameSettings.player2Symbol = chooseSymbol("2");
             uniqueSymbols = validator.playersHaveUniqueSymbols(selectedGameSettings.player1Symbol, selectedGameSettings.player2Symbol);
         }
     }
@@ -37,11 +37,11 @@ public class GameSettings {
     }
 
     public String chooseSymbol(String playerId) {
-        System.out.println("Pick a unique symbol for " + playerId);
+        System.out.println(messages.GameSettings_chooseSymbol + playerId);
         String playerSymbol = this.getInput();
         boolean validSymbol = validator.validateSymbolSelection(playerSymbol);
         while (!validSymbol) {
-            System.out.println ("Invalid symbol selection. Pick a string of any length.");
+            System.out.println (messages.GameSettings_invalidSymbol);
             playerSymbol = this.chooseSymbol(playerId);
             validSymbol = validator.validateSymbolSelection(playerSymbol);
         }
@@ -49,9 +49,7 @@ public class GameSettings {
     }
 
     public Player pickPlayerType (String playerId) {
-        System.out.println("Select the type of " + playerId + " by pressing \n [H] for a human player \n" +
-                " [E] for an easy level computer player \n [M] for a medium level computer player \n" +
-                " [U] for an unbeatable computer player.");
+        System.out.println(messages.GameSettings_pickPlayerTypePart1 + playerId + messages.GameSettings_pickPlayerTypePart2);
         String playerType = this.getInput();
         if (playerType.equals("E")) {
             return new EasyComputerPlayer(board);
@@ -67,12 +65,12 @@ public class GameSettings {
     }
 
     public boolean askToPlayAgain() {
-        System.out.println("Do you want to play again? Enter [y] or [n]");
+        System.out.println(messages.GameSettings_askToPlayAgain);
         String rematch = this.getInput();
         if (rematch.equals("y")) {
             return selectedGameSettings.rematch = true;
         } else if (rematch.equals("n")) {
-            System.out.println("Goodbye");
+            System.out.println(messages.GameSettings_goodbye);
             return selectedGameSettings.rematch = false;
         } else {
             return askToPlayAgain();

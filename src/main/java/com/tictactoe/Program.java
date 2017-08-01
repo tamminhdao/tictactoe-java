@@ -7,7 +7,8 @@ public class Program {
     private UserInput receiver = new UserInput(scanner);
     private Board board = new Board();
     private UserInputValidator validator = new UserInputValidator(board);
-    private GameSettings menu = new GameSettings(receiver, validator, board);
+    private LanguageMenu languageMenu = new LanguageMenu(receiver);
+    private GameSettings menu = new GameSettings(receiver, validator, board, languageMenu);
     private Rules rules = new RulesFor3x3();
     private SelectedGameSettings preference = menu.collectGamePreference();
 
