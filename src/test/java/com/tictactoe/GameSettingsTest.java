@@ -15,24 +15,26 @@ public class GameSettingsTest {
         return new UserInput(scanner);
     }
 
-//    @Test
-//    public void canSetPlayerSymbol() throws Exception {
-//        Board board = new Board();
-//        UserInputValidator validator = new UserInputValidator(board);
-//        UserInput receiver = simulateUserInput("abc");
-//        GameSettings settings = new GameSettings(receiver, validator, board);
-//        String testPlayersSymbol = settings.chooseSymbol("Test Player");
-//        assertEquals("abc", testPlayersSymbol);
-//    }
-//
-//    @Test
-//    public void canSelectPlayerType() throws Exception {
-//        Board board = new Board();
-//        UserInputValidator validator = new UserInputValidator(board);
-//        UserInput receiver = simulateUserInput("E");
-//        GameSettings settings = new GameSettings(receiver, validator, board);
-//        Player testPlayers = settings.pickPlayerType("Test Player");
-//        Player easyLevelAI = new EasyComputerPlayer(board);
-//        assertEquals(testPlayers.getClass(), easyLevelAI.getClass());
-//    }
+    @Test
+    public void canSetPlayerSymbol() throws Exception {
+        Board board = new Board();
+        Messages m = new Messages();
+        UserInputValidator validator = new UserInputValidator(board);
+        UserInput receiver = simulateUserInput("abc");
+        GameSettings settings = new GameSettings(receiver, validator, board, m);
+        String testPlayersSymbol = settings.chooseSymbol("Test Player");
+        assertEquals("abc", testPlayersSymbol);
+    }
+
+    @Test
+    public void canSelectPlayerType() throws Exception {
+        Board board = new Board();
+        Messages m = new Messages();
+        UserInputValidator validator = new UserInputValidator(board);
+        UserInput receiver = simulateUserInput("E");
+        GameSettings settings = new GameSettings(receiver, validator, board, m);
+        Player testPlayers = settings.pickPlayerType("Test Player");
+        Player easyLevelAI = new EasyComputerPlayer(board);
+        assertEquals(testPlayers.getClass(), easyLevelAI.getClass());
+    }
 }
