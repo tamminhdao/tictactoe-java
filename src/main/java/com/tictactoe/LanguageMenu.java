@@ -14,7 +14,7 @@ public class LanguageMenu {
     }
 
     public Messages chooseLanguage() {
-        System.out.println("English or Vietnamese");
+        System.out.println("Press [E] for English or [V] for Vietnamese");
         String languageSelection = this.getInput();
         if (languageSelection.equals("E")) {
             try {

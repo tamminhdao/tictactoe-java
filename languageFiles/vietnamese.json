@@ -10,6 +10,6 @@
   "Game_announceTie": "Hai người chơi hoà.",
   "Game_notifyPlayersTurn": " đến lượt chơi.",
   "HumanPlayer_obtainValidCellSelection": "Chọn một số giữa 1 và 9: ",
-  "HumanPlayer_numberFormatException": "Ban phải  một số giữa 1 và 9: ",
+  "HumanPlayer_numberFormatException": "Ban phải chon một số giữa 1 và 9: ",
   "HumanPlayer_invalidCellNumber": "Lựa chon không hợp lệ. Chọn một ô trống giữa 1 và 9."
 }
