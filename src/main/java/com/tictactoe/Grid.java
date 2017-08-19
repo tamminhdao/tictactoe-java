@@ -1,6 +1,5 @@
 package com.tictactoe;
 
-import org.apache.commons.lang.StringUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -29,8 +28,25 @@ public class Grid {
         if (symbol.length() == maxLength) {
             return symbol;
         } else {
-            return StringUtils.center(symbol, maxLength);
+            int paddingOnBothSides = maxLength - symbol.length();
+            if (paddingOnBothSides % 2 == 0) {
+                String padding = getPaddingSpace(paddingOnBothSides);
+                return padding + symbol + padding;
+            } else {
+                String paddingLeft = getPaddingSpace(paddingOnBothSides);
+                String paddingRight = paddingLeft + " ";
+                return paddingLeft + symbol + paddingRight;
+            }
         }
+    }
+
+    private String getPaddingSpace (int paddingOnBothSides) {
+        String unit = "";
+        int paddingOnEachSide = paddingOnBothSides / 2;
+        for (int j = 0; j < paddingOnEachSide; j++) {
+            unit += " ";
+        }
+        return unit;
     }
 
     public void draw() {
