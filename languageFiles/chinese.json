@@ -1,0 +1,15 @@
+{
+  "GameSettings_checkForUniqueSymbols": "另外一个人已经选择那个。",
+  "GameSettings_chooseSymbol": "不知道什么说： Pick a unique symbol for player ",
+  "GameSettings_invalidSymbol": "不知道什么说：Invalid symbol selection. Pick a string of any length.",
+  "GameSettings_pickPlayerType": "很久时间不用中文，学习什么都忘了. 选择【H】，【E】， 【M】还是 【U】 ",
+  "GameSettings_askToPlayAgain": "再玩一次吗? [y] 还是 [n]。",
+  "GameSettings_goodbye": "再见！",
+  "Game_gameIntro": "简单中文的 TicTacToe",
+  "Game_announceWinner": "赢了！ ",
+  "Game_announceTie": "谁输谁赢不重要",
+  "Game_notifyPlayersTurn": " 's turn",
+  "HumanPlayer_obtainValidCellSelection": "Enter your cell selection (1 - 9): ",
+  "HumanPlayer_numberFormatException": "Expected a number. Enter a number between 1 and 9: ",
+  "HumanPlayer_invalidCellNumber": "Invalid cell number. Choose one of the available cells between 1 and 9"
+}

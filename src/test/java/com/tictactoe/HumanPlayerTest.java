@@ -21,7 +21,8 @@ public class HumanPlayerTest {
         UserInput receiver = simulateHumanPlayerInput("1");
         Board board = new Board();
         UserInputValidator validator = new UserInputValidator(board);
-        HumanPlayer player = new HumanPlayer(receiver, validator);
+        Messages messages = new Messages();
+        HumanPlayer player = new HumanPlayer(receiver, validator, messages);
         player.addSymbol("X");
         int cellNumber = player.obtainValidCellSelection();
         assertEquals(1, cellNumber);

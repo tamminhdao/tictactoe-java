@@ -1,0 +1,15 @@
+{
+    "GameSettings_checkForUniqueSymbols": "Another player already picked that symbol.",
+    "GameSettings_chooseSymbol": "Pick a unique symbol for player ",
+    "GameSettings_invalidSymbol": "Invalid symbol selection. Pick a string of any length.",
+    "GameSettings_pickPlayerType": "Select between [H] for human, [E] for easy AI, [M] for medium AI, [U] for unbeatable AI to determine the type of player ",
+    "GameSettings_askToPlayAgain": "Do you want to play again? Enter [y] or [n]",
+    "GameSettings_goodbye": "Goodbye",
+    "Game_gameIntro": "Tic Tac Toe",
+    "Game_announceWinner": "The winner is: ",
+    "Game_announceTie": "It's a tie",
+    "Game_notifyPlayersTurn": " 's turn",
+    "HumanPlayer_obtainValidCellSelection": "Enter your cell selection (1 - 9): ",
+    "HumanPlayer_numberFormatException": "Expected a number. Enter a number between 1 and 9: ",
+    "HumanPlayer_invalidCellNumber": "Invalid cell number. Choose one of the available cells between 1 and 9"
+}

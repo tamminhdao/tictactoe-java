@@ -18,9 +18,10 @@ public class GameSettingsTest {
     @Test
     public void canSetPlayerSymbol() throws Exception {
         Board board = new Board();
+        Messages m = new Messages();
         UserInputValidator validator = new UserInputValidator(board);
         UserInput receiver = simulateUserInput("abc");
-        GameSettings settings = new GameSettings(receiver, validator, board);
+        GameSettings settings = new GameSettings(receiver, validator, board, m);
         String testPlayersSymbol = settings.chooseSymbol("Test Player");
         assertEquals("abc", testPlayersSymbol);
     }
@@ -28,9 +29,10 @@ public class GameSettingsTest {
     @Test
     public void canSelectPlayerType() throws Exception {
         Board board = new Board();
+        Messages m = new Messages();
         UserInputValidator validator = new UserInputValidator(board);
         UserInput receiver = simulateUserInput("E");
-        GameSettings settings = new GameSettings(receiver, validator, board);
+        GameSettings settings = new GameSettings(receiver, validator, board, m);
         Player testPlayers = settings.pickPlayerType("Test Player");
         Player easyLevelAI = new EasyComputerPlayer(board);
         assertEquals(testPlayers.getClass(), easyLevelAI.getClass());
