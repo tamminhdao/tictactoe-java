@@ -18,7 +18,7 @@ Game written in Java
 
 Clone the git repository
 ```
-$ https://github.com/tamminhdao/tictactoe-java.git
+$ git clone https://github.com/tamminhdao/tictactoe-java.git
 ```
 
 `cd` into the directory
